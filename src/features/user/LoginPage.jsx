@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function LoginPage() {
   return (
-    <div className="flex">
-      <section className="w-full grow h-screen bg-zinc-100">
+    <div className="">
+      <section className="w-full h-screen bg-zinc-100">
         <form action="">
           <img src="" alt="" />
           <p>Sign in</p>
