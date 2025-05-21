@@ -2,6 +2,14 @@
 
 @import "tailwindcss";
 
+html {
+}
+
 @theme {
   --font-barlow: "Barlow Condensed";
+
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1536px;
 }
