@@ -6,6 +6,7 @@ import LoginPage from "./features/user/LoginPage";
 import Order from "./features/order/Order";
 import Products from "./features/products/Products";
 import Product from "./features/products/Product";
+import Signup from "./features/user/Signup";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
         {
           path: "/login",
           element: <LoginPage />,
+        },
+        {
+          path: "/signup",
+          element: <Signup />,
         },
         {
           path: "/order",

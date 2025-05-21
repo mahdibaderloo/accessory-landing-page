@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function LoginPage() {
+function Signup() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
@@ -13,7 +14,7 @@ function LoginPage() {
           className="w-full flex flex-col gap-3 desktop:w-[700px] desktop:shadow desktop:p-8 desktop:rounded-2xl"
         >
           <p className="font-bold text-5xl mb-5 mt-2 mx-auto text-zinc-800 tablet:text-6xl tablet:mb-8">
-            Sign in
+            Sign up
           </p>
           <div className="flex flex-col">
             <label
@@ -34,6 +35,22 @@ function LoginPage() {
           <div className="flex flex-col">
             <label
               className="text-sm mb-0.5 text-zinc-800 tablet:text-lg"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="bg-zinc-300 p-0.5 pl-2 outline-none tablet:p-1 tablet:pl-3 tablet:text-lg"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label
+              className="text-sm mb-0.5 text-zinc-800 tablet:text-lg"
               htmlFor="password"
             >
               Password
@@ -48,12 +65,12 @@ function LoginPage() {
             />
           </div>
           <button className="mt-5 bg-zinc-800 w-20 mx-auto rounded-full text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer">
-            SIGN IN
+            SIGN UP
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">
-            I don't have an account?{" "}
-            <Link className="text-zinc-900" to="/signup">
-              Sign up
+            I have an account?{" "}
+            <Link className="text-zinc-900" to="/login">
+              Sign in
             </Link>
           </p>
         </form>
@@ -69,4 +86,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Signup;
