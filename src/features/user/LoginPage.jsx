@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 
 function LoginPage() {
   return (
-    <div className="tablet:bg-zinc-100">
-      <section className="w-full h-screen p-2 bg-zinc-100 flex justify-center items-center tablet:w-[500px] tablet:mx-auto">
-        <form action="" className="w-full flex flex-col gap-3">
+    <div className="tablet:bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
+      <section className="w-full h-screen p-2 bg-zinc-100 flex justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
+        <form
+          action=""
+          className="w-full flex flex-col gap-3 desktop:w-[700px] desktop:shadow desktop:p-8 desktop:rounded-2xl"
+        >
           <p className="font-bold text-5xl mb-5 mt-2 mx-auto text-zinc-800 tablet:text-6xl tablet:mb-8">
             Sign in
           </p>
@@ -61,8 +64,12 @@ function LoginPage() {
           </p>
         </form>
       </section>
-      <section className="hidden w-[65%] h-screen bg-zinc-800">
-        <img src="../../../public/accessory-shopping-cart.png" alt="" />
+      <section className="hidden w-[45%] h-screen bg-zinc-800 justify-center items-end laptop:flex">
+        <img
+          src="../../../public/accessory-shopping-cart.png"
+          alt=""
+          className="w-96 h-90 desktop:absolute desktop:w-[800px] desktop:h-[760px] desktop:left-[50%]"
+        />
       </section>
     </div>
   );
