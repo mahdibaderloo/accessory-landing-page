@@ -2,9 +2,6 @@
 
 @import "tailwindcss";
 
-html {
-}
-
 @theme {
   --font-barlow: "Barlow Condensed";
 
