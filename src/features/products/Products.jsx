@@ -1,5 +1,7 @@
+import Loader from "../../components/Loader";
+
 function Products() {
-  return <div></div>;
+  return <Loader />;
 }
 
 export default Products;
