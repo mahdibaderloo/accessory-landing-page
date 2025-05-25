@@ -2,20 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isOpen: false,
+  left: "-120%",
 };
 
 const sidebarSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
-    open(state, action) {
-      state.isOpen = action.payload;
+    openSidebar(state, action) {
+      state.isOpen = true;
+      state.left = action.payload;
     },
-    close(state, action) {
-      state.isOpen = action.payload;
+    closeSidebar(state) {
+      state.isOpen = false;
+      state.left = initialState.left;
     },
   },
 });
 
-export const { open, close } = sidebarSlice.actions;
+export const { openSidebar, closeSidebar } = sidebarSlice.actions;
 export default sidebarSlice.reducer;

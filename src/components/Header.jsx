@@ -1,21 +1,20 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar";
+import { openSidebar } from "./sidebarSlice";
 
 function Header() {
-  function handleOpenSidebar() {
-    console.log("click");
-  }
+  const dispatch = useDispatch();
 
   return (
     <header className="flex justify-between bg-zinc-800 pl-2 absolute top-0 left-0 right-0">
       <img
-        src="../../public/menu.svg"
+        src="/menu.svg"
         className="w-10"
         alt="menu"
-        onClick={handleOpenSidebar}
+        onClick={() => dispatch(openSidebar(0))}
       />
       <Link to="/">
-        <img src="../../public/logo.svg" className="w-12" alt="logo" />
+        <img src="/logo.svg" className="w-12" alt="logo" />
       </Link>
     </header>
   );
