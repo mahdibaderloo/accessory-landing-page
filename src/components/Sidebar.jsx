@@ -20,19 +20,29 @@ function Sidebar() {
         />
       </li>
       <li>
-        <Link to="/products">Products</Link>
+        <Link to="/products" onClick={() => dispatch(closeSidebar())}>
+          Products
+        </Link>
       </li>
       <li>
-        <Link to="/Cart">Shopping Cart</Link>
+        <Link to="/Cart" onClick={() => dispatch(closeSidebar())}>
+          Shopping Cart
+        </Link>
       </li>
       <li>
-        <Link to="/login">Sign in / Sign up</Link>
+        <Link to="/login" onClick={() => dispatch(closeSidebar())}>
+          Sign in / Sign up
+        </Link>
       </li>
       <li>
-        <Link to="/">About us</Link>
+        <Link to="/" onClick={() => dispatch(closeSidebar())}>
+          About us
+        </Link>
       </li>
       <li>
-        <Link to="/">Contact us</Link>
+        <Link to="/" onClick={() => dispatch(closeSidebar())}>
+          Contact us
+        </Link>
       </li>
     </ul>
   );

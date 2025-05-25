@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
 import Home from "./components/Home";
-import Cart from "./features/cart/Cart";
-import LoginPage from "./features/user/LoginPage";
+import Cart from "./features/pages/Cart";
+import LoginPage from "./features/pages/LoginPage";
 import Order from "./features/order/Order";
-import Products from "./features/products/Products";
-import Product from "./features/products/Product";
-import Signup from "./features/user/Signup";
+import Products from "./features/pages/Products";
+import Product from "./features/pages/Product";
+import Signup from "./features/pages/Signup";
 import { Provider } from "react-redux";
 import store from "../store";
 
