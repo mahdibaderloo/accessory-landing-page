@@ -15,27 +15,47 @@ function Header() {
       />
       <ul className="hidden laptop:flex gap-6 font-semibold text-zinc-800 pl-2 desktop:font-bold">
         <li>
-          <Link to="/products" onClick={() => dispatch(closeSidebar())}>
+          <Link
+            to="/products"
+            onClick={() => dispatch(closeSidebar())}
+            className="hover:text-cyan-800 transition-all duration-200"
+          >
             Products
           </Link>
         </li>
         <li>
-          <Link to="/Cart" onClick={() => dispatch(closeSidebar())}>
+          <Link
+            to="/Cart"
+            onClick={() => dispatch(closeSidebar())}
+            className="hover:text-cyan-800 transition-all duration-200"
+          >
             Shopping Cart
           </Link>
         </li>
         <li>
-          <Link to="/login" onClick={() => dispatch(closeSidebar())}>
+          <Link
+            to="/login"
+            onClick={() => dispatch(closeSidebar())}
+            className="hover:text-cyan-800 transition-all duration-200"
+          >
             Sign in
           </Link>
         </li>
         <li>
-          <Link to="/" onClick={() => dispatch(closeSidebar())}>
+          <Link
+            to="/"
+            onClick={() => dispatch(closeSidebar())}
+            className="hover:text-cyan-800 transition-all duration-200"
+          >
             About us
           </Link>
         </li>
         <li>
-          <Link to="/" onClick={() => dispatch(closeSidebar())}>
+          <Link
+            to="/"
+            onClick={() => dispatch(closeSidebar())}
+            className="hover:text-cyan-800 transition-all duration-200"
+          >
             Contact us
           </Link>
         </li>
