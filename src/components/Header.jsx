@@ -6,7 +6,7 @@ function Header() {
   const dispatch = useDispatch();
 
   return (
-    <header className="flex justify-between pl-2 absolute top-0 left-0 right-0">
+    <header className="flex justify-between pl-2 absolute top-0 left-0 right-0 desktop:max-w-[1536px] desktop:mx-auto">
       <img
         src="/menu.svg"
         className="w-10"
