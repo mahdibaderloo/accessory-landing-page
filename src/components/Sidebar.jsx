@@ -13,7 +13,7 @@ function Sidebar() {
     >
       <li className="flex justify-end mb-6">
         <img
-          src="../../public/close.svg"
+          src="./close.svg"
           alt="close"
           className="w-8"
           onClick={() => dispatch(closeSidebar())}

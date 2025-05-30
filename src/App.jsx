@@ -3,7 +3,7 @@ import AppLayout from "./components/AppLayout";
 import Home from "./components/Home";
 import Cart from "./features/pages/Cart";
 import LoginPage from "./features/pages/LoginPage";
-import Order from "./features/order/Order";
+import Order from "./features/pages/Order";
 import Products from "./features/pages/Products";
 import Product from "./features/pages/Product";
 import Signup from "./features/pages/Signup";
