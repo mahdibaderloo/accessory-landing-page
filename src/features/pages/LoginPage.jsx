@@ -7,7 +7,7 @@ function LoginPage() {
 
   return (
     <div className="tablet:bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
-      <section className="w-full h-screen p-2 bg-zinc-100 flex justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
+      <section className="w-full h-screen p-2 bg-zinc-100 flex flex-col gap-6 justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
         <form
           action=""
           className="w-full flex flex-col gap-3 desktop:w-[700px] desktop:shadow desktop:p-8 desktop:rounded-2xl"
@@ -57,6 +57,12 @@ function LoginPage() {
             </Link>
           </p>
         </form>
+        <Link
+          to="/"
+          className="text-sm text-zinc-800 hover:text-cyan-800 mr-80"
+        >
+          &larr; Back to home
+        </Link>
       </section>
       <section className="hidden w-[45%] h-screen bg-zinc-800 justify-center items-end laptop:flex">
         <img
