@@ -28,7 +28,7 @@ function LoginPage() {
               placeholder="Username..."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="bg-zinc-300 p-0.5 pl-2 outline-none tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-300 p-0.5 pl-2 outline-none text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <div className="flex flex-col">
@@ -44,10 +44,10 @@ function LoginPage() {
               placeholder="Password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-zinc-300 p-0.5 pl-2 outline-none tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-300 p-0.5 pl-2 outline-none text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
-          <button className="mt-5 bg-zinc-800 w-20 mx-auto rounded-full text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer">
+          <button className="mt-5 bg-zinc-800 w-20 mx-auto laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer">
             SIGN IN
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">
@@ -59,7 +59,7 @@ function LoginPage() {
         </form>
         <Link
           to="/"
-          className="text-sm text-zinc-800 hover:text-cyan-800 mr-80"
+          className="text- text-center leading-[30px] font-barlow bg-zinc-500 hover:bg-zinc-800 text-zinc-100 transition-all duration-200 laptop:rounded-xl py-1 px-2 laptop:py-2 laptop:px-3 laptop:leading-[40px] desktop:mr-87"
         >
           &larr; Back to home
         </Link>
