@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { closeSidebar, openSidebar } from "./sidebarSlice";
+import { openSidebar } from "./sidebarSlice";
 
 function Header() {
   const dispatch = useDispatch();
@@ -13,11 +13,15 @@ function Header() {
         alt="menu"
         onClick={() => dispatch(openSidebar(0))}
       />
-      <ul className="hidden laptop:flex gap-6 font-semibold text-zinc-800 pl-2 desktop:font-bold">
+      <ul className="hidden laptop:flex items-center gap-4 font-semibold text-zinc-800 pl-2 desktop:font-bold">
+        <li>
+          <Link to="/">
+            <img src="/logo.svg" className="w-12 desktop:w-14" alt="logo" />
+          </Link>
+        </li>
         <li>
           <Link
             to="/products"
-            onClick={() => dispatch(closeSidebar())}
             className="hover:text-cyan-800 transition-all duration-200"
           >
             Products
@@ -25,26 +29,7 @@ function Header() {
         </li>
         <li>
           <Link
-            to="/Cart"
-            onClick={() => dispatch(closeSidebar())}
-            className="hover:text-cyan-800 transition-all duration-200"
-          >
-            Shopping Cart
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/login"
-            onClick={() => dispatch(closeSidebar())}
-            className="hover:text-cyan-800 transition-all duration-200"
-          >
-            Sign in
-          </Link>
-        </li>
-        <li>
-          <Link
             to="/"
-            onClick={() => dispatch(closeSidebar())}
             className="hover:text-cyan-800 transition-all duration-200"
           >
             About us
@@ -53,14 +38,26 @@ function Header() {
         <li>
           <Link
             to="/"
-            onClick={() => dispatch(closeSidebar())}
             className="hover:text-cyan-800 transition-all duration-200"
           >
             Contact us
           </Link>
         </li>
       </ul>
-      <Link to="/">
+      <ul className="hidden laptop:flex items-center font-semibold text-zinc-800 gap-4 pr-7 desktop:font-bold">
+        <li>
+          <Link to="/login" className="flex items-center">
+            <img src="/profile.svg" className="w-6 desktop:w-8" alt="logo" />
+            <span className="text-zinc-600">Profile</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/Cart">
+            <img src="/cart.svg" className="w-6 desktop:w-8" alt="logo" />
+          </Link>
+        </li>
+      </ul>
+      <Link to="/" className="laptop:hidden">
         <img src="/logo.svg" className="w-12 desktop:w-14" alt="logo" />
       </Link>
     </header>
