@@ -2,7 +2,7 @@ import productImage from "../../data/images/ads-image.jpg";
 
 function ProductItem({ product }) {
   return (
-    <li className="bg-zinc-50 flex flex-col w-26 tablet:w-32 laptop:w-36 desktop:w-44 gap-4 shadow p-2 rounded-sm laptop:rounded-md tablet:p-3">
+    <li className="bg-zinc-50 flex flex-col w-26 tablet:w-32 laptop:w-36 desktop:w-44 gap-4 shadow p-2 rounded-sm laptop:rounded-md tablet:p-3 laptop:cursor-pointer">
       <img
         src={productImage}
         alt="productImage"
