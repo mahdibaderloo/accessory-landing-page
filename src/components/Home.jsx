@@ -1,3 +1,4 @@
+import ProductsWrapper from "../features/products/ProductsWrapper";
 import MainPic from "./MainPic";
 import Search from "./Search";
 
@@ -6,6 +7,7 @@ function Home() {
     <main>
       <MainPic />
       <Search />
+      <ProductsWrapper />
     </main>
   );
 }

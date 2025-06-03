@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 function AppLayout() {
   return (
-    <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto">
+    <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
       <Header />
       <Outlet />
 
