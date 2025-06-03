@@ -10,7 +10,7 @@ function Sidebar() {
 
   return (
     <ul
-      className="w-full bg-zinc-800 fixed top-0 bottom-0 p-2 pl-4 flex flex-col gap-4 text-zinc-200 transition-all duration-300 ease-in-out overflow-hidden"
+      className="w-full bg-zinc-800 fixed z-50 top-0 bottom-0 p-2 pl-4 flex flex-col gap-4 text-zinc-200 transition-all duration-300 ease-in-out overflow-hidden"
       style={{ left: leftPos }}
     >
       <li className="flex justify-end mb-6">
