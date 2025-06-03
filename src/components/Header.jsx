@@ -46,7 +46,7 @@ function Header() {
       </ul>
       <ul className="hidden laptop:flex items-center font-semibold text-zinc-800 gap-4 pr-7 desktop:font-bold">
         <li>
-          <Link to="/login" className="flex items-center">
+          <Link to="/profile" className="flex items-center">
             <img src="/profile.svg" className="w-6 desktop:w-7.5" alt="logo" />
             <span className="text-zinc-600">Profile</span>
           </Link>
