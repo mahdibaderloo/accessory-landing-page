@@ -1,3 +1,5 @@
+import trashIcon from "../../data/images/trash.svg";
+
 function CartItem() {
   return (
     <li className="w-full bg-zinc-50 flex justify-between items-center rounded-lg shadow p-2 mb-2 laptop:h-24 laptop:mb-3 laptop:px-4">
@@ -21,9 +23,9 @@ function CartItem() {
           <button className="laptop:cursor-pointer">+</button>
         </div>
         <img
-          src="./trash.svg"
+          src={trashIcon}
           alt="trash"
-          className="w-6 hidden laptop:block"
+          className="w-6 hidden cursor-pointer laptop:block"
         />
       </div>
     </li>

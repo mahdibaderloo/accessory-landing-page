@@ -1,9 +1,11 @@
+import searchIcon from "../data/images/search.svg";
+
 function Search() {
   return (
     <form className="w-[90%] tablet:w-[80%] laptop:w-[50%] bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-200 mx-auto mt-16 h-12 flex gap-2 rounded-full p-1 shadow">
       <div className="bg-zinc-800 px-3.5 py-1 tablet:py-2 tablet:px-2.5 rounded-full flex justify-center items-center">
         <img
-          src="./search.svg"
+          src={searchIcon}
           alt="search-icon"
           className="w-4 tablet:w-6 cursor-pointer"
         />

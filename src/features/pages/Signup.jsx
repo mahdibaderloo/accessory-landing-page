@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import signupImage from "../../data/images/signup-image.png";
+
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -9,7 +11,7 @@ function Signup() {
   return (
     <div className="tablet:bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
       <section className="w-full p-2 bg-zinc-100 flex flex-col justify-center gap-6 items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
-        <img src="./signup-image.png" alt="" className="w-40 laptop:hidden" />
+        <img src={signupImage} alt="" className="w-40 laptop:hidden" />
         <form
           action=""
           className="w-full flex flex-col gap-3 desktop:w-[700px] desktop:shadow desktop:p-8 desktop:rounded-2xl"
@@ -84,7 +86,7 @@ function Signup() {
       </section>
       <section className="hidden w-[45%] h-screen bg-zinc-800 justify-center items-end laptop:flex">
         <img
-          src="./signup-image.png"
+          src={signupImage}
           alt=""
           className="laptop:w-[500px] desktop:w-[800px]"
         />

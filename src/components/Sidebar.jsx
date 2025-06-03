@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { closeSidebar } from "./sidebarSlice";
 
+import closeIcon from "../data/images/close.svg";
+
 function Sidebar() {
   const leftPos = useSelector((state) => state.sidebar.left);
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ function Sidebar() {
     >
       <li className="flex justify-end mb-6">
         <img
-          src="./close.svg"
+          src={closeIcon}
           alt="close"
           className="w-8"
           onClick={() => dispatch(closeSidebar())}

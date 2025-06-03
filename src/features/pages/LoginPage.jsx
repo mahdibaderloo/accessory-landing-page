@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import loginImage from "../../data/images/login-image.png";
+
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +11,7 @@ function LoginPage() {
     <div className="h-screen bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
       <section className="w-full p-2 bg-zinc-100 flex flex-col gap-6 justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
         <img
-          src="./login-image.png"
+          src={loginImage}
           alt=""
           className="w-40 laptop:hidden tablet:w-60 tablet:mt-8"
         />
@@ -71,7 +73,7 @@ function LoginPage() {
       </section>
       <section className="hidden w-[45%] h-screen bg-zinc-800 justify-center items-end laptop:flex">
         <img
-          src="./login-image.png"
+          src={loginImage}
           alt=""
           className="laptop:w-[500px] desktop:w-[800px]"
         />
