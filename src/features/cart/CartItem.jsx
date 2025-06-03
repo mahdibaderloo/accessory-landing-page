@@ -5,7 +5,7 @@ function CartItem() {
         <img src="" alt="product" className="h-full w-10" />
         <div>
           <p className="text-lg font-medium tracking-wide">title</p>
-          <p className="tracking-wide">21$</p>
+          <p className="tracking-wide">$21</p>
         </div>
       </div>
       <div className="bg-zinc-700 rounded-md w-12 text-zinc-100 px-1.5 flex items-center justify-between">
