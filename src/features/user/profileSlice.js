@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  user: [],
   activeSection: "profile",
+  isLoading: false,
 };
 
 const profileSlice = createSlice({
@@ -10,6 +12,7 @@ const profileSlice = createSlice({
   reducers: {
     setActiveSection(state, action) {
       state.activeSection = action.payload;
+      state.isLoading = false;
     },
   },
 });

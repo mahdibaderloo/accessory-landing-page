@@ -9,8 +9,6 @@ import notificationIcon from "../../data/images/notification.svg";
 import logoutIcon from "../../data/images/logout.svg";
 
 function ProfileSidebar() {
-  const [active, setActive] = useState("profile");
-
   const items = [
     { id: "profile", label: "My Profile", icon: profileIcon },
     { id: "orders", label: "Orders", icon: orderIcon },
@@ -21,12 +19,7 @@ function ProfileSidebar() {
   return (
     <ul className="bg-zinc-50 w-[30%] p-6 flex flex-col">
       {items.map((item) => (
-        <ProfileSidebarItem
-          item={item}
-          key={item.id}
-          active={active}
-          setActive={setActive}
-        />
+        <ProfileSidebarItem item={item} key={item.id} />
       ))}
 
       <li className="flex items-center gap-2 mt-auto pl-1 mb-1 p-2 rounded-lg laptop:hover:bg-zinc-300 transition-all duration-200 laptop:cursor-pointer">
