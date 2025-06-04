@@ -3,15 +3,15 @@ import image from "../../data/images/ads-image.jpg";
 
 function ProfileForm() {
   return (
-    <form action="">
-      <section>
+    <form action="" className="w-[70%] m-4">
+      <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
         <div className="relative">
-          <img src={image} alt="" className="w-20 h-20 rounded-full" />
+          <img src={image} alt="userImage" className="w-17 h-17 rounded-full" />
           <label
             htmlFor="changeImage"
-            className="bg-white rounded-full p-1 shadow-sm absolute bottom-1 left-14 z-20"
+            className="bg-white w-5 h-5 flex justify-center items-center rounded-full shadow-sm absolute bottom-0 left-13 z-20 laptop:cursor-pointer"
           >
-            <img src={pencilIcon} alt="pencil" className="w-4" />
+            <img src={pencilIcon} alt="pencil" className="w-3.5" />
           </label>
           <input
             type="file"
@@ -19,6 +19,68 @@ function ProfileForm() {
             id="changeImage"
             className="hidden"
           />
+        </div>
+        <div className="text-lg">
+          <p className="font-semibold tracking-wide text-zinc-800">Username</p>
+          <p className="text-zinc-600">user@gmail.com</p>
+        </div>
+      </section>
+      <section className="flex flex-col mt-4 divide-y divide-zinc-200">
+        <div className="py-2 flex justify-between">
+          <label htmlFor="username" className="font-medium">
+            Name
+          </label>
+          <input
+            type="text"
+            id="username"
+            placeholder="your name"
+            className="outline-none border-none w-1/2"
+          />
+        </div>
+        <div className="py-2 flex justify-between">
+          <label htmlFor="email" className="font-medium">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="yourname@gmail.com"
+            className="outline-none border-none w-1/2"
+          />
+        </div>
+        <div className="py-2 flex justify-between">
+          <label htmlFor="mobile" className="font-medium">
+            Mobile number
+          </label>
+          <input
+            type="text"
+            id="mobile"
+            placeholder="Add number"
+            className="outline-none border-none w-1/2"
+          />
+        </div>
+        <div className="py-2 flex justify-between">
+          <label htmlFor="password" className="font-medium">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            placeholder="########"
+            className="outline-none border-none w-1/2"
+          />
+        </div>
+        <div className="py-2 flex justify-between">
+          <label htmlFor="address" className="font-medium">
+            Address
+          </label>
+
+          <textarea
+            id="address"
+            placeholder="Iran"
+            dir="ltr"
+            className="outline-none border-none w-1/2"
+          ></textarea>
         </div>
       </section>
     </form>
