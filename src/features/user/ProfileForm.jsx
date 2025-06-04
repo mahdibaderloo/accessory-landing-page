@@ -3,7 +3,7 @@ import image from "../../data/images/ads-image.jpg";
 
 function ProfileForm() {
   return (
-    <form action="" className="w-[70%] m-4">
+    <form action="" className="w-[70%] m-8">
       <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
         <div className="relative">
           <img src={image} alt="userImage" className="w-17 h-17 rounded-full" />
@@ -27,7 +27,7 @@ function ProfileForm() {
       </section>
       <section className="flex flex-col mt-4 divide-y divide-zinc-200">
         <div className="py-2 flex justify-between">
-          <label htmlFor="username" className="font-medium">
+          <label htmlFor="username" className="font-medium text-zinc-800">
             Name
           </label>
           <input
@@ -38,7 +38,7 @@ function ProfileForm() {
           />
         </div>
         <div className="py-2 flex justify-between">
-          <label htmlFor="email" className="font-medium">
+          <label htmlFor="email" className="font-medium text-zinc-800">
             Email
           </label>
           <input
@@ -49,7 +49,7 @@ function ProfileForm() {
           />
         </div>
         <div className="py-2 flex justify-between">
-          <label htmlFor="mobile" className="font-medium">
+          <label htmlFor="mobile" className="font-medium text-zinc-800">
             Mobile number
           </label>
           <input
@@ -60,7 +60,7 @@ function ProfileForm() {
           />
         </div>
         <div className="py-2 flex justify-between">
-          <label htmlFor="password" className="font-medium">
+          <label htmlFor="password" className="font-medium text-zinc-800">
             Password
           </label>
           <input
@@ -71,7 +71,7 @@ function ProfileForm() {
           />
         </div>
         <div className="py-2 flex justify-between">
-          <label htmlFor="address" className="font-medium">
+          <label htmlFor="address" className="font-medium text-zinc-800">
             Address
           </label>
 

@@ -3,7 +3,7 @@ import ProfileSidebar from "../user/ProfileSidebar";
 
 function Profile() {
   return (
-    <div className="w-full h-screen flex mt-16 bg-zinc-50">
+    <div className="w-full h-[90vh] flex mt-16 bg-zinc-50 rounded-4xl overflow-hidden">
       <ProfileSidebar />
       <ProfileForm />
     </div>
