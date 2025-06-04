@@ -7,7 +7,7 @@ function MainPic() {
       <div className="hidden absolute w-80 top-[20%] right-5  laptop:flex flex-col flex-wrap desktop:right-20 desktop:w-96">
         <h1 className=" text-6xl font-bold text-zinc-200">Accessory</h1>
         <div className="text-md font-bold text-zinc-400 mt-3 laptop:flex flex-col flex-wrap desktop:right-60">
-          <span>Simplicity meets sophistication.</span>
+          <span>Simplicity meets sophistication</span>
           <span>Find the perfect accessory for your everyday elegance</span>
         </div>
       </div>
