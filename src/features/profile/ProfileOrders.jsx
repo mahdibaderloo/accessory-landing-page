@@ -8,19 +8,7 @@ function ProfileOrders() {
         <p className="p-2 ">Desc</p>
       </div>
       <ul className="divide-y-1 divide-zinc-800">
-        <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 text-zinc-80">
-          <p className="p-2 ">498203hj398</p>
-          <p className="p-2 ">2</p>
-          <p className="p-2 ">$1200</p>
-          <p className="p-2 ">For my parents</p>
-        </li>
-        <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 text-zinc-80">
-          <p className="p-2 ">498203hj398</p>
-          <p className="p-2 ">2</p>
-          <p className="p-2 ">$1200</p>
-          <p className="p-2 ">For my parents</p>
-        </li>
-        <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 text-zinc-800">
+        <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 text-zinc-80 laptop:cursor-pointer">
           <p className="p-2 ">498203hj398</p>
           <p className="p-2 ">2</p>
           <p className="p-2 ">$1200</p>
