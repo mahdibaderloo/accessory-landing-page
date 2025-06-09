@@ -10,6 +10,10 @@ import Signup from "./features/pages/Signup";
 import { Provider } from "react-redux";
 import store from "../store";
 import Profile from "./features/pages/Profile";
+import ProfileForm from "./features/user/ProfileForm";
+import ProfileOrders from "./features/user/ProfileOrders";
+import ProfileFavorites from "./features/user/ProfileFavorites";
+import Notifications from "./features/user/Notifications";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,10 +23,6 @@ function App() {
         {
           path: "/",
           element: <Home />,
-        },
-        {
-          path: "/profile",
-          element: <Profile />,
         },
         {
           path: "/cart",
@@ -39,6 +39,28 @@ function App() {
         {
           path: "/Products/:productId",
           element: <Product />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
+          children: [
+            {
+              path: "/profile",
+              element: <ProfileForm />,
+            },
+            {
+              path: "/profile/orders",
+              element: <ProfileOrders />,
+            },
+            {
+              path: "/profile/favorites",
+              element: <ProfileFavorites />,
+            },
+            {
+              path: "/profile/notifications",
+              element: <Notifications />,
+            },
+          ],
         },
       ],
     },

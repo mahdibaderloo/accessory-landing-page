@@ -1,12 +1,11 @@
 import pencilIcon from "../../data/images/pencil.svg";
-import image from "../../data/images/ads-image.jpg";
 
 function ProfileForm() {
   return (
     <form action="" className="w-[70%] m-8">
       <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
         <div className="relative">
-          <img src={image} alt="userImage" className="w-17 h-17 rounded-full" />
+          <img src="" alt="userImage" className="w-17 h-17 rounded-full" />
           <label
             htmlFor="changeImage"
             className="bg-white w-5 h-5 flex justify-center items-center rounded-full shadow-sm absolute bottom-0 left-13 z-20 laptop:cursor-pointer"
