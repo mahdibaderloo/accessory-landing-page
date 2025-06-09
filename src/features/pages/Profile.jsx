@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 import Loader from "../../components/Loader";
 import ProfileForm from "../profile/ProfileForm";
@@ -9,7 +9,7 @@ import ProfileSidebar from "../profile/ProfileSidebar";
 import { Outlet } from "react-router-dom";
 
 function Profile() {
-  const profile = useSelector((state) => state.profile);
+  // const profile = useSelector((state) => state.profile);
 
   // function renderActiveSection() {
   //   switch (profile.activeSection) {

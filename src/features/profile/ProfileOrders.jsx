@@ -1,5 +1,34 @@
 function ProfileOrders() {
-  return <div></div>;
+  return (
+    <div className="w-[70%] m-8 rounded-3xl overflow-hidden">
+      <div className="grid grid-cols-4 bg-zinc-400 divide-x-2 divide-zinc-900 text-zinc-800 font-semibold border-b-4 border-y-zinc-800">
+        <p className="p-2 ">Order ID</p>
+        <p className="p-2 ">Products Count</p>
+        <p className="p-2 ">Price</p>
+        <p className="p-2 ">Desc</p>
+      </div>
+      <ul className="divide-y-1 divide-zinc-800">
+        <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 text-zinc-80">
+          <p className="p-2 ">498203hj398</p>
+          <p className="p-2 ">2</p>
+          <p className="p-2 ">$1200</p>
+          <p className="p-2 ">For my parents</p>
+        </li>
+        <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 text-zinc-80">
+          <p className="p-2 ">498203hj398</p>
+          <p className="p-2 ">2</p>
+          <p className="p-2 ">$1200</p>
+          <p className="p-2 ">For my parents</p>
+        </li>
+        <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 text-zinc-800">
+          <p className="p-2 ">498203hj398</p>
+          <p className="p-2 ">2</p>
+          <p className="p-2 ">$1200</p>
+          <p className="p-2 ">For my parents</p>
+        </li>
+      </ul>
+    </div>
+  );
 }
 
 export default ProfileOrders;

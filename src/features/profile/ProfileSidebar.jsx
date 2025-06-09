@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import ProfileSidebarItem from "./ProfileSidebarItem";
 
 import profileIcon from "../../data/images/profile.svg";
