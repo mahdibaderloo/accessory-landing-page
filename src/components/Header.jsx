@@ -6,7 +6,7 @@ import logoIcon from "../data/images/logo.svg";
 import menuIcon from "../data/images/menu.svg";
 import profileIcon from "../data/images/profile.svg";
 import cartIcon from "../data/images/cart.svg";
-import { setActiveSection } from "../features/user/profileSlice";
+import { setActiveSection } from "../features/profile/profileSlice";
 
 function Header() {
   const dispatch = useDispatch();

@@ -10,10 +10,10 @@ import Signup from "./features/pages/Signup";
 import { Provider } from "react-redux";
 import store from "../store";
 import Profile from "./features/pages/Profile";
-import ProfileForm from "./features/user/ProfileForm";
-import ProfileOrders from "./features/user/ProfileOrders";
-import ProfileFavorites from "./features/user/ProfileFavorites";
-import Notifications from "./features/user/Notifications";
+import ProfileForm from "./features/profile/ProfileForm";
+import ProfileOrders from "./features/profile/ProfileOrders";
+import ProfileFavorites from "./features/profile/ProfileFavorites";
+import Notifications from "./features/profile/Notifications";
 
 function App() {
   const router = createBrowserRouter([

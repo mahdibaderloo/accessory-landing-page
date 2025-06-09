@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 
 import Loader from "../../components/Loader";
-import ProfileForm from "../user/ProfileForm";
-import ProfileOrders from "../user/ProfileOrders";
-import ProfileFavorites from "../user/ProfileFavorites";
-import Notifications from "../user/Notifications";
-import ProfileSidebar from "../user/ProfileSidebar";
+import ProfileForm from "../profile/ProfileForm";
+import ProfileOrders from "../profile/ProfileOrders";
+import ProfileFavorites from "../profile/ProfileFavorites";
+import Notifications from "../profile/Notifications";
+import ProfileSidebar from "../profile/ProfileSidebar";
 import { Outlet } from "react-router-dom";
 
 function Profile() {
