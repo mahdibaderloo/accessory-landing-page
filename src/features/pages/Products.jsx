@@ -1,12 +1,14 @@
 import Search from "../../components/Search";
 import Categories from "../products/Categories";
+import ProductsWrapper from "../products/ProductsWrapper";
 
 function Products() {
   return (
-    <div className="w-full h-[90vh] mt-16">
+    <main className="mt-16">
       <Categories />
       <Search />
-    </div>
+      <ProductsWrapper count={16} />
+    </main>
   );
 }
 
