@@ -1,6 +1,6 @@
-import ProductItem from "../products/ProductItem";
 import editIcon from "../../data/images/edit.svg";
 import trashIcon from "../../data/images/trash-red.svg";
+import FavoriteItem from "./FavoriteItem";
 
 function ProfileFavorites() {
   return (
@@ -19,11 +19,8 @@ function ProfileFavorites() {
           />
         </div>
       </div>
-      <ul className="w-full flex gap-2 flex-wrap mt-4 ">
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
+      <ul className="w-full h-[95%] flex justify-center gap-2 flex-wrap mt-4 p-2 overflow-y-scroll">
+        <FavoriteItem />
       </ul>
     </div>
   );
