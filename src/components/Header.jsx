@@ -43,7 +43,7 @@ function Header() {
         </li>
         <li>
           <Link
-            to="/"
+            to="/contact-us"
             className="hover:text-cyan-800 transition-all duration-200"
           >
             Contact us

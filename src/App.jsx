@@ -14,6 +14,7 @@ import ProfileForm from "./features/profile/ProfileForm";
 import ProfileOrders from "./features/profile/ProfileOrders";
 import ProfileFavorites from "./features/profile/ProfileFavorites";
 import Notifications from "./features/profile/Notifications";
+import ContactUs from "./features/pages/ContactUs";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +40,10 @@ function App() {
         {
           path: "/Products/:productId",
           element: <Product />,
+        },
+        {
+          path: "/contact-us",
+          element: <ContactUs />,
         },
         {
           path: "/profile",
