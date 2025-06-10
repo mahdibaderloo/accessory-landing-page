@@ -45,7 +45,15 @@ function ContactUs() {
         </form>
       </section>
       <section className="w-[45%] h-full mx-auto">
-        <div className="mt-24 bg-zinc-800 rounded-lg">Map</div>
+        <div className="mt-24 rounded-lg overflow-hidden shadow">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25872.907688362247!2d50.97741995201496!3d35.84622132322883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8dc1002c7a30b9%3A0x1a4721f5d1359aa7!2z2KjYp9mFINqp2LHYrA!5e0!3m2!1sfa!2suk!4v1749582659234!5m2!1sfa!2suk"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            className="w-full h-72"
+          ></iframe>
+        </div>
         <div className="mt-8 w-full flex items-center justify-between">
           <div className="flex gap-2">
             <img src={callIcon} alt="icon" className="w-8" />
