@@ -13,6 +13,10 @@
   --animate-scale1: Scale1 1s infinite;
   --animate-scale0: Scale0 1s infinite;
   --animate-translate: Translate 1s infinite;
+
+  --hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes Translate {
