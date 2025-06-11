@@ -3,6 +3,12 @@ import { FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-cards";
 
+import necklaceImage from "../../data/images/necklace.webp";
+import earringsImage from "../../data/images/earrings.jpg";
+import braceletsImage from "../../data/images/bracelets.jpg";
+import ringsImage from "../../data/images/rings.webp";
+import watchesImage from "../../data/images/watches.jpg";
+
 function Categories() {
   return (
     <div className="w-full px-3.5">
@@ -36,26 +42,55 @@ function Categories() {
         }}
         className="w-full h-40"
       >
-        <SwiperSlide className="flex items-center justify-center rounded-2xl bg-red-500 text-zinc-800 laptop:cursor-grab laptop:active:cursor-grabbing">
-          Slide 1
+        <SwiperSlide className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium ">
+          <img
+            src={necklaceImage}
+            alt="image"
+            className="w-full h-full object-cover grayscale-75 hover:grayscale-25 transition-all duration-200 z-10 "
+          />
+          <p className="absolute top-[40%] w-full flex justify-center items-center transition-all duration-200 pointer-events-none">
+            Necklaces
+          </p>
         </SwiperSlide>
-        <SwiperSlide className="flex items-center justify-center rounded-2xl bg-blue-500 text-zinc-800 laptop:cursor-grab laptop:active:cursor-grabbing">
-          Slide 2
+        <SwiperSlide className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium ">
+          <img
+            src={earringsImage}
+            alt="image"
+            className="w-full h-full object-cover grayscale-75 hover:grayscale-25 transition-all duration-200 z-10 "
+          />
+          <p className="absolute top-[40%] w-full flex justify-center items-center transition-all duration-200 pointer-events-none">
+            Earrings
+          </p>
         </SwiperSlide>
-        <SwiperSlide className="flex items-center justify-center rounded-2xl bg-yellow-500 text-zinc-800 laptop:cursor-grab laptop:active:cursor-grabbing">
-          Slide 3
+        <SwiperSlide className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium ">
+          <img
+            src={braceletsImage}
+            alt="image"
+            className="w-full h-full object-cover grayscale-75 hover:grayscale-25 transition-all duration-200 z-10 "
+          />
+          <p className="absolute top-[40%] w-full flex justify-center items-center transition-all duration-200 pointer-events-none">
+            Bracelets
+          </p>
         </SwiperSlide>
-        <SwiperSlide className="flex items-center justify-center rounded-2xl bg-zinc-500 text-zinc-800 laptop:cursor-grab laptop:active:cursor-grabbing">
-          Slide 4
+        <SwiperSlide className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium ">
+          <img
+            src={ringsImage}
+            alt="image"
+            className="w-full h-full object-cover grayscale-75 hover:grayscale-25 transition-all duration-200 z-10 "
+          />
+          <p className="absolute top-[40%] w-full flex justify-center items-center transition-all duration-200 pointer-events-none">
+            Rings
+          </p>
         </SwiperSlide>
-        <SwiperSlide className="flex items-center justify-center rounded-2xl bg-amber-500 text-zinc-800 laptop:cursor-grab laptop:active:cursor-grabbing">
-          Slide 5
-        </SwiperSlide>
-        <SwiperSlide className="flex items-center justify-center rounded-2xl bg-emerald-500 text-zinc-800 laptop:cursor-grab laptop:active:cursor-grabbing">
-          Slide 6
-        </SwiperSlide>
-        <SwiperSlide className="flex items-center justify-center rounded-2xl bg-indigo-500 text-zinc-800 laptop:cursor-grab laptop:active:cursor-grabbing">
-          Slide 7
+        <SwiperSlide className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium ">
+          <img
+            src={watchesImage}
+            alt="image"
+            className="w-full h-full object-cover grayscale-75 hover:grayscale-25 transition-all duration-200 z-10 "
+          />
+          <p className="absolute top-[40%] w-full flex justify-center items-center transition-all duration-200 pointer-events-none">
+            Watches
+          </p>
         </SwiperSlide>
       </Swiper>
     </div>
