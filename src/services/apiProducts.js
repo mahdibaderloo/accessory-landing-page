@@ -8,6 +8,5 @@ export async function getProducts() {
     return null;
   }
 
-  console.log(data);
   return data;
 }

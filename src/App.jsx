@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Cart from "./features/pages/Cart";
 import LoginPage from "./features/pages/LoginPage";
 import Order from "./features/pages/Order";
-import Products from "./features/pages/Products";
+import Products, { loader as ProductsLoader } from "./features/pages/Products";
 import Product from "./features/pages/Product";
 import Signup from "./features/pages/Signup";
 import { Provider } from "react-redux";
@@ -36,6 +36,7 @@ function App() {
         {
           path: "/Products",
           element: <Products />,
+          loader: ProductsLoader,
         },
         {
           path: "/Products/:productId",

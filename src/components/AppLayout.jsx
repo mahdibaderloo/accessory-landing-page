@@ -1,12 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import Loader from "./Loader";
 
 function AppLayout() {
+  const navigation = useNavigation();
+  console.log(navigation.state);
+  const isLoading = navigation.state === "loading";
+
   return (
     <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
       <Header />
-      <Outlet />
+      {isLoading ? <Loader /> : <Outlet />}
 
       <Sidebar />
     </div>
