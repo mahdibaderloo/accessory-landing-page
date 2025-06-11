@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
-import Home from "./components/Home";
+import Home, { loader as ProductsLoader } from "./components/Home";
 import Cart from "./features/pages/Cart";
 import LoginPage from "./features/pages/LoginPage";
 import Order from "./features/pages/Order";
-import Products, { loader as ProductsLoader } from "./features/pages/Products";
+import Products from "./features/pages/Products";
 import Product from "./features/pages/Product";
 import Signup from "./features/pages/Signup";
 import { Provider } from "react-redux";
@@ -24,6 +24,7 @@ function App() {
         {
           path: "/",
           element: <Home />,
+          loader: ProductsLoader,
         },
         {
           path: "/cart",
@@ -36,7 +37,6 @@ function App() {
         {
           path: "/Products",
           element: <Products />,
-          loader: ProductsLoader,
         },
         {
           path: "/Products/:productId",
