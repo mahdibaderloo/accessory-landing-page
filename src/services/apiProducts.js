@@ -10,3 +10,14 @@ export async function getProducts() {
 
   return data;
 }
+
+export async function getCategories() {
+  const { data, error } = await supabase.from("products").select("category");
+
+  if (error) {
+    console.log(error.message);
+    return null;
+  }
+
+  return data;
+}

@@ -15,16 +15,16 @@ function Products() {
     [fetcher]
   );
 
-  console.log(fetcher);
-
   return (
     <main className="mt-16">
-      <Categories />
-      <Search />
       {!fetcher.data ? (
         <Loader />
       ) : (
-        <ProductsWrapper products={fetcher.data} count={16} />
+        <>
+          <Categories items={fetcher.data} />
+          <Search />
+          <ProductsWrapper products={fetcher.data} count={16} />
+        </>
       )}
     </main>
   );
