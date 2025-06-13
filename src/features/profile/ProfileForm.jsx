@@ -2,15 +2,19 @@ import pencilIcon from "../../data/images/pencil.svg";
 
 function ProfileForm() {
   return (
-    <form action="" className="w-[70%] m-8">
+    <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
       <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
         <div className="relative">
-          <img src="" alt="userImage" className="w-17 h-17 rounded-full" />
+          <img
+            src=""
+            alt="userImage"
+            className="w-14 h-14 bg-zinc-900 laptop:w-17 laptop:h-17 rounded-full"
+          />
           <label
             htmlFor="changeImage"
-            className="bg-white w-5 h-5 flex justify-center items-center rounded-full shadow-sm absolute bottom-0 left-13 z-20 laptop:cursor-pointer"
+            className="bg-white w-4.5 h-4.5 laptop:w-5 laptop:h-5 flex justify-center items-center rounded-full shadow-sm absolute bottom-0 left-11 laptop:left-13 z-20 laptop:cursor-pointer"
           >
-            <img src={pencilIcon} alt="pencil" className="w-3.5" />
+            <img src={pencilIcon} alt="pencil" className="w-3 laptop:w-3.5" />
           </label>
           <input
             type="file"
@@ -19,13 +23,15 @@ function ProfileForm() {
             className="hidden"
           />
         </div>
-        <div className="text-lg">
-          <p className="font-semibold tracking-wide text-zinc-800">Username</p>
-          <p className="text-zinc-600">user@gmail.com</p>
+        <div className="laptop:text-lg">
+          <p className="text-sm font-semibold tracking-wide text-zinc-800">
+            Username
+          </p>
+          <p className="text-sm text-zinc-600">user@gmail.com</p>
         </div>
       </section>
       <section className="flex flex-col mt-4 divide-y divide-zinc-200">
-        <div className="py-2 flex justify-between">
+        <div className="py-2 flex flex-col laptop:flex-row justify-between">
           <label htmlFor="username" className="font-medium text-zinc-800">
             Name
           </label>
@@ -36,7 +42,7 @@ function ProfileForm() {
             className="outline-none border-none w-1/2"
           />
         </div>
-        <div className="py-2 flex justify-between">
+        <div className="py-2 flex flex-col laptop:flex-row justify-between">
           <label htmlFor="email" className="font-medium text-zinc-800">
             Email
           </label>
@@ -47,7 +53,7 @@ function ProfileForm() {
             className="outline-none border-none w-1/2"
           />
         </div>
-        <div className="py-2 flex justify-between">
+        <div className="py-2 flex flex-col laptop:flex-row justify-between">
           <label htmlFor="mobile" className="font-medium text-zinc-800">
             Mobile number
           </label>
@@ -58,7 +64,7 @@ function ProfileForm() {
             className="outline-none border-none w-1/2"
           />
         </div>
-        <div className="py-2 flex justify-between">
+        <div className="py-2 flex flex-col laptop:flex-row justify-between">
           <label htmlFor="password" className="font-medium text-zinc-800">
             Password
           </label>
@@ -69,7 +75,7 @@ function ProfileForm() {
             className="outline-none border-none w-1/2"
           />
         </div>
-        <div className="py-2 flex justify-between">
+        <div className="py-2 flex flex-col laptop:flex-row justify-between">
           <label htmlFor="address" className="font-medium text-zinc-800">
             Address
           </label>
