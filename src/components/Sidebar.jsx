@@ -37,12 +37,12 @@ function Sidebar() {
         </Link>
       </li>
       <li>
-        <Link to="/contact-us" onClick={() => dispatch(closeSidebar())}>
+        <Link to="/" onClick={() => dispatch(closeSidebar())}>
           About us
         </Link>
       </li>
       <li>
-        <Link to="/" onClick={() => dispatch(closeSidebar())}>
+        <Link to="/contact-us" onClick={() => dispatch(closeSidebar())}>
           Contact us
         </Link>
       </li>
