@@ -5,18 +5,22 @@ import Ads from "./Ads";
 import MainPic from "./MainPic";
 import Search from "./Search";
 import ViewAllButton from "./ViewAllButton";
+import { Suspense } from "react";
+import Loader from "./Loader";
 
 function Home() {
   const products = useLoaderData();
 
   return (
-    <main>
-      <MainPic />
-      <Search />
-      <ProductsWrapper products={products} count={4} />
-      <ViewAllButton />
-      <Ads />
-    </main>
+    <Suspense fallback={<Loader />}>
+      <main>
+        <MainPic />
+        <Search />
+        <ProductsWrapper products={products} count={4} />
+        <ViewAllButton />
+        <Ads />
+      </main>
+    </Suspense>
   );
 }
 
