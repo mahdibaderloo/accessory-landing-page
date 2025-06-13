@@ -19,7 +19,7 @@ function ProfileFavorites() {
           />
         </div>
       </div>
-      <ul className="w-full flex justify-center gap-2 flex-wrap mt-4 p-2 overflow-y-scroll">
+      <ul className="w-full flex justify-center gap-2 flex-wrap mt-4 p-2 overflow-y-scroll laptop:overflow-y-auto">
         <FavoriteItem />
         <FavoriteItem />
       </ul>
