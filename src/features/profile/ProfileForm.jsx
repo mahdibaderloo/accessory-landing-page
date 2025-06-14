@@ -1,19 +1,17 @@
-import { useDispatch } from "react-redux";
+import { useUser } from "./ProfileContext";
+
 import pencilIcon from "../../data/images/pencil.svg";
-import { getUsers } from "../../services/apiUsers";
 
 function ProfileForm() {
-  // const dispatch = useDispatch();
-
-  // function handleChangeInfo(e) {}
-  getUsers();
+  const user = useUser();
+  const { name, email, image, mobile, password, address } = user[0];
 
   return (
     <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
       <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
         <div className="relative">
           <img
-            src=""
+            src={`${image}`}
             alt="userImage"
             className="w-14 h-14 bg-zinc-900 laptop:w-17 laptop:h-17 rounded-full"
           />
@@ -27,15 +25,16 @@ function ProfileForm() {
             type="file"
             accept="Image/*"
             id="changeImage"
-            onBlur={() => handleChangeInfo(e)}
             className="hidden"
           />
         </div>
         <div className="laptop:text-lg">
           <p className="text-sm font-semibold tracking-wide text-zinc-800">
-            Username
+            {name ? name : "Username"}
           </p>
-          <p className="text-sm text-zinc-600">user@gmail.com</p>
+          <p className="text-sm text-zinc-600">
+            {email ? email : "user@gmail.com"}
+          </p>
         </div>
       </section>
       <section className="flex flex-col mt-4 divide-y divide-zinc-200">
@@ -47,6 +46,7 @@ function ProfileForm() {
             type="text"
             id="username"
             placeholder="your name"
+            defaultValue={name}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -58,6 +58,7 @@ function ProfileForm() {
             type="email"
             id="email"
             placeholder="yourname@gmail.com"
+            defaultValue={email}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -69,6 +70,7 @@ function ProfileForm() {
             type="text"
             id="mobile"
             placeholder="Add number"
+            defaultValue={mobile}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -77,9 +79,10 @@ function ProfileForm() {
             Password
           </label>
           <input
-            type="password"
+            type="text"
             id="password"
             placeholder="########"
+            defaultValue={password}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -92,6 +95,7 @@ function ProfileForm() {
             id="address"
             placeholder="Iran"
             dir="ltr"
+            defaultValue={address}
             className="outline-none border-none w-1/2"
           ></textarea>
         </div>
