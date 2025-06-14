@@ -1,6 +1,13 @@
+import { useDispatch } from "react-redux";
 import pencilIcon from "../../data/images/pencil.svg";
+import { getUsers } from "../../services/apiUsers";
 
 function ProfileForm() {
+  // const dispatch = useDispatch();
+
+  // function handleChangeInfo(e) {}
+  getUsers();
+
   return (
     <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
       <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
@@ -20,6 +27,7 @@ function ProfileForm() {
             type="file"
             accept="Image/*"
             id="changeImage"
+            onBlur={() => handleChangeInfo(e)}
             className="hidden"
           />
         </div>
