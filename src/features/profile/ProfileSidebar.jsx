@@ -30,7 +30,7 @@ function ProfileSidebar() {
         <ProfileSidebarItem item={item} key={item.id} />
       ))}
 
-      <div className="flex items-center justify-start gap-2 mt-auto pl-1 mb-1 p-2 text-sm rounded-lg laptop:hover:bg-zinc-300 transition-all duration-200 laptop:cursor-pointer">
+      <div className="flex items-center justify-start gap-2 mt-auto pl-1 mb-1 p-2 text-sm laptop:text-lg rounded-lg laptop:hover:bg-zinc-300 transition-all duration-200 laptop:cursor-pointer">
         <img src={logoutIcon} alt="icon" className="w-6 laptop:w-8" />
         <span className="font-semibold text-red-950">Logout</span>
       </div>

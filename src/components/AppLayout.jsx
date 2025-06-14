@@ -10,9 +10,7 @@ function AppLayout() {
   return (
     <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
       <Header />
-      {isLoading && <Loader />}
-
-      <Outlet />
+      {isLoading ? <Loader /> : <Outlet />}
 
       <Sidebar />
     </div>
