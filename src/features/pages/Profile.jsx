@@ -1,19 +1,21 @@
 import { getUsers } from "../../services/apiUsers";
 import { Outlet, useLoaderData } from "react-router-dom";
+import { setUser } from "../profile/profileSlice";
 
-import { UserContext } from "../profile/ProfileContext";
 import ProfileSidebar from "../profile/ProfileSidebar";
+import { useDispatch } from "react-redux";
 
 function Profile() {
   const user = useLoaderData();
+  const dispatch = useDispatch();
+
+  if (user) dispatch(setUser(user));
 
   return (
-    <UserContext.Provider value={user}>
-      <div className="w-full laptop:h-[90vh] flex flex-col laptop:flex-row mt-12 laptop:mt-16 bg-zinc-100 laptop:rounded-4xl overflow-hidden">
-        <ProfileSidebar />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <div className="w-full laptop:h-[90vh] flex flex-col laptop:flex-row mt-12 laptop:mt-16 bg-zinc-100 laptop:rounded-4xl overflow-hidden">
+      <ProfileSidebar />
+      <Outlet />
+    </div>
   );
 }
 

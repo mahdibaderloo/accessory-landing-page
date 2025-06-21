@@ -1,9 +1,9 @@
-import { useUser } from "./ProfileContext";
+import { useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
 
 function ProfileForm() {
-  const user = useUser();
+  const user = useSelector((state) => state.profile.user);
   const { name, email, image, mobile, password, address } = user[0];
 
   return (
