@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { openSidebar } from "./sidebarSlice";
 
@@ -9,6 +9,9 @@ import cartIcon from "../data/images/cart.svg";
 import { setActiveSection } from "../features/profile/profileSlice";
 
 function Header() {
+  const user = useSelector((state) => state.profile.user);
+  const username = user?.[0]?.name || "Profile";
+
   const dispatch = useDispatch();
 
   return (
@@ -58,7 +61,7 @@ function Header() {
             onClick={() => dispatch(setActiveSection("profile"))}
           >
             <img src={profileIcon} className="w-6 desktop:w-7.5" alt="logo" />
-            <span className="text-zinc-600">Profile</span>
+            <span className="text-zinc-600">{username}</span>
           </Link>
         </li>
         <li>
