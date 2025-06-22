@@ -12,15 +12,15 @@ function Home() {
   const products = useLoaderData();
 
   return (
-    <Suspense fallback={<Loader />}>
-      <main>
-        <MainPic />
-        <Search />
-        <ProductsWrapper products={products} count={4} />
-        <ViewAllButton />
-        <Ads />
-      </main>
-    </Suspense>
+    <main>
+      <MainPic />
+      <Search />
+      <Suspense fallback={<Loader />}>
+        <ProductsWrapper products={products} count={8} />
+      </Suspense>
+      <ViewAllButton />
+      <Ads />
+    </main>
   );
 }
 
