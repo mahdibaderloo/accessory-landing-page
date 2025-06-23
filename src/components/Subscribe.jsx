@@ -3,7 +3,7 @@ import emailIcon from "../data/images/sms.svg";
 
 function Subscribe() {
   return (
-    <div className="text-zinc-50 w-[42%]">
+    <div className="text-zinc-50 w-[50%]">
       <div className="flex items-center">
         <img src={Logo} alt="icon" className="w-24" />
         <h3 className="text-2xl font-bold">Accessory</h3>

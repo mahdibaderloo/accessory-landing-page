@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function FooterLinks() {
   return (
-    <div className="w-full flex gap-20 mr-10 justify-center">
+    <div className="w-[50%] flex gap-20 mr-10 justify-center">
       <div>
         <p className="text-zinc-50 text-lg font-semibold mb-3.5">Information</p>
         <ul className="flex flex-col gap-1.5">
