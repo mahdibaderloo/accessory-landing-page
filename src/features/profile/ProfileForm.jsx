@@ -70,7 +70,7 @@ function ProfileForm() {
             type="text"
             id="mobile"
             placeholder="Add number"
-            defaultValue={mobile}
+            defaultValue={`+98 ${mobile}`}
             className="outline-none border-none w-1/2"
           />
         </div>
