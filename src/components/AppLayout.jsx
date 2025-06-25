@@ -1,4 +1,4 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Loader from "./Loader";
@@ -8,6 +8,9 @@ function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
+  const location = useLocation();
+  const hideFooter = location.pathname.includes("/profile");
+
   return (
     <>
       <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
@@ -16,7 +19,7 @@ function AppLayout() {
 
         {isLoading ? <Loader /> : <Outlet />}
       </div>
-      <Footer />
+      {isLoading || (!hideFooter && <Footer />)}
     </>
   );
 }
