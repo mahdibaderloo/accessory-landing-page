@@ -14,9 +14,7 @@ function AppLayout() {
         <Header />
         <Sidebar />
 
-        {isLoading && <Loader />}
-
-        <Outlet />
+        {isLoading ? <Loader /> : <Outlet />}
       </div>
       <Footer />
     </>

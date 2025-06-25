@@ -5,8 +5,6 @@ import Ads from "./Ads";
 import MainPic from "./MainPic";
 import Search from "./Search";
 import ViewAllButton from "./ViewAllButton";
-import { Suspense } from "react";
-import Loader from "./Loader";
 
 function Home() {
   const products = useLoaderData();
@@ -15,9 +13,7 @@ function Home() {
     <main>
       <MainPic />
       <Search />
-      <Suspense fallback={<Loader />}>
-        <ProductsWrapper products={products} count={8} />
-      </Suspense>
+      <ProductsWrapper products={products} count={8} />
       <ViewAllButton />
       <Ads />
     </main>
