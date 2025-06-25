@@ -65,7 +65,7 @@ function Header() {
           </Link>
         </li>
         <li>
-          <Link to="/Cart">
+          <Link to="/cart">
             <img src={cartIcon} className="w-6 desktop:w-8" alt="logo" />
           </Link>
         </li>
