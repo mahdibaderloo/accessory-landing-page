@@ -8,8 +8,11 @@ import earringsImage from "../../data/images/earrings.jpg";
 import braceletsImage from "../../data/images/bracelets.jpg";
 import ringsImage from "../../data/images/rings.jpg";
 import watchesImage from "../../data/images/watches.jpg";
+import { useDispatch } from "react-redux";
+import { showCategoryItems } from "./categorySlice";
 
 function Categories({ items }) {
+  const dispatch = useDispatch();
   const uniqueCategories = [...new Set(items.map((item) => item.category))];
 
   const images = {
@@ -53,7 +56,10 @@ function Categories({ items }) {
         className="w-full h-40"
       >
         {uniqueCategories.map((category) => (
-          <SwiperSlide className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium ">
+          <SwiperSlide
+            onClick={() => dispatch(showCategoryItems(category))}
+            className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium "
+          >
             <img
               src={images[`${category.toLowerCase()}Image`]}
               alt="image"

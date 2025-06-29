@@ -5,10 +5,14 @@ import Ads from "./Ads";
 import MainPic from "./MainPic";
 import Search from "./Search";
 import Button from "./Button";
+import { useDispatch } from "react-redux";
+import { showCategoryItems } from "../features/products/categorySlice";
 
 function Home() {
   const products = useLoaderData();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  dispatch(showCategoryItems("all"));
 
   function handleClick() {
     navigate("/products");
