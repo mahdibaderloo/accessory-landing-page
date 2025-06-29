@@ -4,7 +4,7 @@ import ProductsWrapper from "../features/products/ProductsWrapper";
 import Ads from "./Ads";
 import MainPic from "./MainPic";
 import Search from "./Search";
-import ViewAllButton from "./ViewAllButton";
+import Button from "./Button";
 
 function Home() {
   const products = useLoaderData();
@@ -14,7 +14,7 @@ function Home() {
       <MainPic />
       <Search />
       <ProductsWrapper products={products} count={8} />
-      <ViewAllButton />
+      {/* <ViewAllButton /> */}
       <Ads />
     </main>
   );

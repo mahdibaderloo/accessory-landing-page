@@ -13,8 +13,6 @@ function AppLayout() {
     location.pathname.includes(path)
   );
 
-  console.log(hideFooter);
-
   return (
     <>
       <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
