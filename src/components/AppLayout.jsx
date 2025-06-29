@@ -9,7 +9,7 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   const location = useLocation();
-  const hideFooter = ["/profile", "/cart"].some((path) =>
+  const hideFooter = ["/profile", "/cart", "/contact-us"].some((path) =>
     location.pathname.includes(path)
   );
 

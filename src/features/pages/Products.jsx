@@ -8,10 +8,17 @@ import ProductsWrapper from "../products/ProductsWrapper";
 import Loader from "../../components/Loader";
 import Button from "../../components/Button";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showCategoryItems } from "../products/categorySlice";
 
 function Products() {
   const [count, setCount] = useState(20);
-  const products = useLoaderData();
+  let products = [];
+  products = useLoaderData();
+
+  const category = useSelector((state) => state.category.category);
+  const dispatch = useDispatch();
+
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
@@ -25,6 +32,10 @@ function Products() {
     setCount(20);
   }
 
+  function handleClickAll() {
+    dispatch(showCategoryItems("all"));
+  }
+
   return (
     <main className="mt-16 p-1">
       {isLoading ? (
@@ -34,10 +45,14 @@ function Products() {
           <Categories items={products} />
           <Search />
           <ProductsWrapper products={products} count={count} />
-          {count !== 100 ? (
-            <Button onClick={handleClickMore}>Show More</Button>
+          {category === "all" ? (
+            count !== 100 ? (
+              <Button onClick={handleClickMore}>Show More</Button>
+            ) : (
+              <Button onClick={handleClickLess}>Show Less</Button>
+            )
           ) : (
-            <Button onClick={handleClickLess}>Show Less</Button>
+            <Button onClick={handleClickAll}>Show All Products</Button>
           )}
         </>
       )}
