@@ -1,8 +1,15 @@
 import Select from "../../components/Select";
 import EmptyHeartIcon from "../../data/images/heart.svg";
 import FillHeartIcon from "../../data/images/heart-fill.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { chooseColor, chooseSize } from "./productSlice";
 
 function ProductOptions() {
+  const size = useSelector((state) => state.product.size);
+  const color = useSelector((state) => state.product.color);
+
+  const dispatch = useDispatch();
+
   const sizes = new Array(11).fill(30).map((n, i) => n + i);
   const colors = ["Black", "White", "Red", "Yellow", "Blue", "Purple", "Gray"];
 
@@ -13,8 +20,16 @@ function ProductOptions() {
         <p className="text-zinc-800 text-[20px]">Add to favorites</p>
       </div>
       <div className="w-full flex gap-2">
-        <Select options={sizes} />
-        <Select options={colors} />
+        <Select
+          options={sizes}
+          value={size}
+          onChange={(e) => dispatch(chooseSize(e.target.value))}
+        />
+        <Select
+          options={colors}
+          value={color}
+          onChange={(e) => dispatch(chooseColor(e.target.value))}
+        />
       </div>
       <button className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200">
         Add to cart
