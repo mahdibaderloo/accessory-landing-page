@@ -16,8 +16,6 @@ function AppLayout() {
     /^\/product(\/.*)?$/,
   ].some((pattern) => pattern.test(location.pathname));
 
-  console.log(location.pathname);
-
   return (
     <>
       <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">

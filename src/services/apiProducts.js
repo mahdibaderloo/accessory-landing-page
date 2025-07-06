@@ -11,6 +11,21 @@ export async function getProducts() {
   return data;
 }
 
+export async function getProduct(productId) {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", productId);
+
+  if (error) {
+    console.log(error.message);
+    return null;
+  }
+
+  console.log(data);
+  return data;
+}
+
 export async function getCategories() {
   const { data, error } = await supabase.from("products").select("category");
 
