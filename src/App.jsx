@@ -40,7 +40,7 @@ function App() {
           loader: productsLoader,
         },
         {
-          path: "/Products/:productId",
+          path: "/Product/:productId",
           element: <Product />,
         },
         {

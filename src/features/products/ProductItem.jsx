@@ -1,8 +1,11 @@
-function ProductItem({ product }) {
+function ProductItem({ product, onClick }) {
   const { name, image, price } = product;
 
   return (
-    <li className="bg-zinc-50 flex flex-col w-26 tablet:w-32 laptop:w-36 desktop:w-48 gap-4 laptop:gap-8 desktop:gap-16 shadow p-2 rounded-xl tablet:p-3 laptop:cursor-pointer">
+    <li
+      onClick={onClick}
+      className="bg-zinc-50 flex flex-col w-26 tablet:w-32 laptop:w-36 desktop:w-48 gap-4 laptop:gap-8 desktop:gap-16 shadow p-2 rounded-xl tablet:p-3 laptop:cursor-pointer"
+    >
       <img
         src={image}
         alt="productImage"

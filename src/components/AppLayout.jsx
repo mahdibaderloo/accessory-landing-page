@@ -9,9 +9,14 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   const location = useLocation();
-  const hideFooter = ["/profile", "/cart", "/contact-us"].some((path) =>
-    location.pathname.includes(path)
-  );
+  const hideFooter = [
+    /^\/profile$/,
+    /^\/cart$/,
+    /^\/contact-us$/,
+    /^\/product(\/.*)?$/,
+  ].some((pattern) => pattern.test(location.pathname));
+
+  console.log(location.pathname);
 
   return (
     <>
