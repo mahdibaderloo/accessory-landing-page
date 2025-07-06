@@ -1,4 +1,8 @@
-import { useLoaderData, useNavigation } from "react-router-dom";
+import {
+  useLoaderData,
+  useNavigation,
+  useSearchParams,
+} from "react-router-dom";
 
 import { getProducts } from "../../services/apiProducts";
 
@@ -13,6 +17,8 @@ import { showCategoryItems } from "../products/categorySlice";
 
 function Products() {
   const [count, setCount] = useState(20);
+  const [SearchParams, setSearchParams] = useSearchParams();
+
   let products = [];
   products = useLoaderData();
 
@@ -34,6 +40,9 @@ function Products() {
 
   function handleClickAll() {
     dispatch(showCategoryItems("all"));
+
+    SearchParams.set("category", "all");
+    setSearchParams(SearchParams);
   }
 
   return (

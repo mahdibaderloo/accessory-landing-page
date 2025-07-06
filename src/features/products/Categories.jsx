@@ -10,9 +10,12 @@ import ringsImage from "../../data/images/rings.jpg";
 import watchesImage from "../../data/images/watches.jpg";
 import { useDispatch } from "react-redux";
 import { showCategoryItems } from "./categorySlice";
+import { useSearchParams } from "react-router-dom";
 
 function Categories({ items }) {
   const dispatch = useDispatch();
+  const [SearchParams, setSearchParams] = useSearchParams();
+
   const uniqueCategories = [...new Set(items.map((item) => item.category))];
 
   const images = {
@@ -22,6 +25,13 @@ function Categories({ items }) {
     ringsImage,
     watchesImage,
   };
+
+  function handleClick(category) {
+    dispatch(showCategoryItems(category));
+
+    SearchParams.set("category", category);
+    setSearchParams(SearchParams);
+  }
 
   return (
     <div className="w-full px-3.5">
@@ -57,7 +67,7 @@ function Categories({ items }) {
       >
         {uniqueCategories.map((category) => (
           <SwiperSlide
-            onClick={() => dispatch(showCategoryItems(category))}
+            onClick={() => handleClick(category)}
             className="flex items-center justify-center rounded-2xl overflow-hidden relative text-zinc-50 laptop:cursor-grab laptop:active:cursor-grabbing hover:text-2xl hover:text-zinc-600 hover:font-medium "
           >
             <img
