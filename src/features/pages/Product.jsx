@@ -12,7 +12,7 @@ function Product() {
   if (isLoading) return <Loader />;
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 flex flex-col">
       <Link to="/products"></Link>
       <ProductDetails product={product.at(0)} />
       <ProductOptions />
