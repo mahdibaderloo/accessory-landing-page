@@ -1,31 +1,33 @@
 import supabase from "./supabase";
 
-export async function signUpUser({ name, email, password }) {
-  let { data, error1 } = await supabase.auth.signUp({
+export async function signUpUser(name, email, password) {
+  let { data, error: signUpError } = await supabase.auth.signUp({
     email,
     password,
   });
 
-  if (error1) {
-    console.log(error.message);
+  if (signUpError) {
+    console.log(signUpError.message);
     return null;
   }
 
-  if (data) {
-    const { data: user, error2 } = await supabase
+  const userId = data?.user.id;
+
+  if (userId) {
+    const { data: user, insertError } = await supabase
       .from("Users")
-      .insert([{ name, email, password }])
+      .insert([{ id: userId, name, email }])
       .select();
 
-    if (error1) {
-      console.log(error2.message);
+    if (insertError) {
+      console.log(insertError.message);
       return null;
     }
 
     return user;
   }
 
-  return data;
+  return null;
 }
 
 export async function getUsers() {

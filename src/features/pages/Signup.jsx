@@ -2,11 +2,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import signupImage from "../../data/images/signup-image.png";
+import { signUpUser } from "../../services/apiUsers";
 
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function handleSignUp(e) {
+    e.preventDefault();
+
+    if (name && email && password) {
+      signUpUser(name, email, password);
+    }
+  }
 
   return (
     <div className="tablet:bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
@@ -67,7 +76,10 @@ function Signup() {
               className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
-          <button className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer">
+          <button
+            className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
+            onClick={handleSignUp}
+          >
             SIGN UP
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">
