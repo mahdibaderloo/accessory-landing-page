@@ -46,7 +46,7 @@ function ProductDetails({ product }) {
           <p className="tablet:mx-auto">{description}</p>
         </div>
 
-        <ProductOptions />
+        <ProductOptions product={product} />
       </div>
     </div>
   );

@@ -22,7 +22,6 @@ export async function getProduct(productId) {
     return null;
   }
 
-  console.log(data);
   return data;
 }
 

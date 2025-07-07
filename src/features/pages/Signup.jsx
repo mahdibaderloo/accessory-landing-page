@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import signupImage from "../../data/images/signup-image.png";
 
 function Signup() {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,14 +24,14 @@ function Signup() {
               className="text-sm font-semibold mb-0.5 text-zinc-800 tablet:text-lg"
               htmlFor="username"
             >
-              Username
+              Your name
             </label>
             <input
               type="text"
-              id="username"
-              placeholder="Username..."
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="name"
+              placeholder="Your name..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import loginImage from "../../data/images/login-image.png";
 
 function LoginPage() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
@@ -27,14 +27,14 @@ function LoginPage() {
               className="text-sm mb-0.5 text-zinc-800 font-semibold tablet:text-lg"
               htmlFor="username"
             >
-              Username
+              Email
             </label>
             <input
               type="text"
-              id="username"
-              placeholder="Username..."
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="email"
+              placeholder="Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>

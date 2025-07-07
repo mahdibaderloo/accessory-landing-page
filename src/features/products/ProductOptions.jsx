@@ -4,7 +4,7 @@ import FillHeartIcon from "../../data/images/heart-fill.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { chooseColor, chooseSize } from "./productSlice";
 
-function ProductOptions() {
+function ProductOptions({ product }) {
   const size = useSelector((state) => state.product.size);
   const color = useSelector((state) => state.product.color);
 
@@ -12,6 +12,11 @@ function ProductOptions() {
 
   const sizes = new Array(11).fill(30).map((n, i) => n + i);
   const colors = ["Black", "White", "Red", "Yellow", "Blue", "Purple", "Gray"];
+
+  function handleAddToCart(e) {
+    e.preventDefault();
+    console.log(product);
+  }
 
   return (
     <form className="w-full p-2 tablet:w-[70%] tablet:mx-auto laptop:mx-0 laptop:p-0 laptop:mt-4 laptop:w-full">
@@ -33,7 +38,10 @@ function ProductOptions() {
           onChange={(e) => dispatch(chooseColor(e.target.value))}
         />
       </div>
-      <button className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer">
+      <button
+        className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
+        onClick={handleAddToCart}
+      >
         Add to cart
       </button>
     </form>
