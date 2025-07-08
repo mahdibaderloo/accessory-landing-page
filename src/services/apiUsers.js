@@ -1,7 +1,7 @@
 import supabase from "./supabase";
 
 export async function signUpUser(name, email, password) {
-  let { data, error: signUpError } = await supabase.auth.signUp({
+  const { data, error: signUpError } = await supabase.auth.signUp({
     email,
     password,
   });
@@ -30,14 +30,38 @@ export async function signUpUser(name, email, password) {
   return null;
 }
 
-export async function getUsers() {
-  const { data, error } = await supabase.from("Users").select("*");
+export async function loginUser(email, password) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
 
   if (error) {
     console.log(error.message);
     return null;
   }
 
+  console.log(data);
+}
+
+export async function getUsers() {
+  const user = JSON.parse(
+    localStorage.getItem("sb-ywipdwyvwyrqejrfdahl-auth-token")
+  );
+
+  const userId = user?.user?.id;
+
+  const { data, error } = await supabase
+    .from("Users")
+    .select("*")
+    .eq("id", userId);
+
+  if (error) {
+    console.log(error.message);
+    return null;
+  }
+
+  console.log(data);
   return data;
 }
 

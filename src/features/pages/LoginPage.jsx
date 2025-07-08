@@ -2,10 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import loginImage from "../../data/images/login-image.png";
+import { loginUser } from "../../services/apiUsers";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function handleLogin(e) {
+    e.preventDefault();
+
+    loginUser(email, password);
+  }
 
   return (
     <div className="h-screen bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
@@ -54,7 +61,10 @@ function LoginPage() {
               className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
-          <button className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer">
+          <button
+            className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
+            onClick={handleLogin}
+          >
             SIGN IN
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">

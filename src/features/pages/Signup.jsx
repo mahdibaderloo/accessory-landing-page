@@ -12,8 +12,12 @@ function Signup() {
   function handleSignUp(e) {
     e.preventDefault();
 
-    if (name && email && password) {
+    if (name.split() && /.+@(gmail|yahoo)(.com)/.test(email) && password > 7) {
       signUpUser(name, email, password);
+
+      setName("");
+      setEmail("");
+      setPassword("");
     }
   }
 
