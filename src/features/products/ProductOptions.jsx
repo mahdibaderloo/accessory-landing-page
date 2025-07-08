@@ -3,8 +3,11 @@ import EmptyHeartIcon from "../../data/images/heart.svg";
 import FillHeartIcon from "../../data/images/heart-fill.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { chooseColor, chooseSize } from "./productSlice";
+import { addItem } from "../cart/cartSlice";
 
 function ProductOptions({ product }) {
+  const { id, name, price, description } = product;
+
   const size = useSelector((state) => state.product.size);
   const color = useSelector((state) => state.product.color);
 
@@ -15,7 +18,19 @@ function ProductOptions({ product }) {
 
   function handleAddToCart(e) {
     e.preventDefault();
-    console.log(product);
+
+    const newItem = {
+      id,
+      name,
+      price,
+      description,
+      size,
+      color,
+      count: 1,
+      totalPrice: price * 1,
+    };
+
+    dispatch(addItem(newItem));
   }
 
   return (
