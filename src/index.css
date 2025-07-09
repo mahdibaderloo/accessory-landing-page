@@ -13,6 +13,7 @@
   --animate-scale1: Scale1 1s infinite;
   --animate-scale0: Scale0 1s infinite;
   --animate-translate: Translate 1s infinite;
+  --animate-translate-mini: TranslateMini 1s infinite;
 
   --hide-scrollbar::-webkit-scrollbar {
     display: none;
@@ -25,6 +26,15 @@
   }
   100% {
     transform: translateX(40px);
+  }
+}
+
+@keyframes TranslateMini {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(16px);
   }
 }
 

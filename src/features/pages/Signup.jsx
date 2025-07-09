@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 
 import signupImage from "../../data/images/signup-image.png";
 import { signUp } from "../profile/profileSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import MiniLoader from "../../components/MiniLoader";
 
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const status = useSelector((state) => state.profile.status);
+  const isLoading = status === "loading";
 
   const dispatch = useDispatch();
 
@@ -54,6 +58,7 @@ function Signup() {
               id="name"
               placeholder="Your name..."
               value={name}
+              disabled={isLoading}
               onChange={(e) => setName(e.target.value)}
               className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
@@ -70,6 +75,7 @@ function Signup() {
               id="email"
               placeholder="Email..."
               value={email}
+              disabled={isLoading}
               onChange={(e) => setEmail(e.target.value)}
               className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
@@ -86,6 +92,7 @@ function Signup() {
               id="password"
               placeholder="Password..."
               value={password}
+              disabled={isLoading}
               onChange={(e) => setPassword(e.target.value)}
               className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
@@ -93,8 +100,9 @@ function Signup() {
           <button
             className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
             onClick={handleSignUp}
+            disabled={isLoading}
           >
-            SIGN UP
+            {isLoading ? <MiniLoader /> : "SIGN UP"}
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">
             I have an account?{" "}
