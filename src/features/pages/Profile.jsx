@@ -1,15 +1,37 @@
 import { getUsers } from "../../services/apiUsers";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import { setUser } from "../profile/profileSlice";
 
 import ProfileSidebar from "../profile/ProfileSidebar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../components/Loader";
+import { useEffect } from "react";
 
 function Profile() {
-  const user = useLoaderData();
+  const userData = useLoaderData();
   const dispatch = useDispatch();
 
-  if (user) dispatch(setUser(user));
+  const navigate = useNavigate();
+
+  const user = useSelector((state) => state.profile.user);
+
+  useEffect(
+    function () {
+      if (!user || user.length < 1) {
+        navigate("/login");
+      }
+    },
+    [user, navigate]
+  );
+
+  useEffect(
+    function () {
+      if (userData) dispatch(setUser(userData));
+    },
+    [userData, dispatch]
+  );
+
+  if (!user || !user[0]) return <Loader />;
 
   return (
     <div className="w-full laptop:h-[90vh] flex flex-col laptop:flex-row mt-12 laptop:mt-16 bg-zinc-100 laptop:rounded-4xl overflow-hidden">
