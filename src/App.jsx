@@ -15,6 +15,7 @@ import ProfileOrders from "./features/profile/ProfileOrders";
 import ProfileFavorites from "./features/profile/ProfileFavorites";
 import Notifications from "./features/profile/Notifications";
 import ContactUs from "./features/pages/ContactUs";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const router = createBrowserRouter([
@@ -86,6 +87,18 @@ function App() {
   return (
     <Provider store={store}>
       <RouterProvider router={router} />
+      <Toaster
+        position="top-center"
+        gutter={10}
+        containerStyle={{ borderRadius: "10px" }}
+        toastOptions={{
+          success: { duration: 3000 },
+          error: { duration: 4000 },
+          style: {
+            fontSize: "16px",
+          },
+        }}
+      />
     </Provider>
   );
 }

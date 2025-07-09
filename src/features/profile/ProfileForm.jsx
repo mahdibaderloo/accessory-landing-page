@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import Loader from "../../components/Loader";
 
 function ProfileForm() {
+  const user = useSelector((state) => state.profile.user);
+
   const { name, email, image, mobile, password, address } = user[0];
 
   return (

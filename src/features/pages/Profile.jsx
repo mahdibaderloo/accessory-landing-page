@@ -6,6 +6,7 @@ import ProfileSidebar from "../profile/ProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 function Profile() {
   const userData = useLoaderData();
@@ -18,6 +19,7 @@ function Profile() {
   useEffect(
     function () {
       if (!user || user.length < 1) {
+        toast.error("Please login first");
         navigate("/login");
       }
     },
