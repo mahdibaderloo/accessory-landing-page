@@ -11,7 +11,7 @@ function LoginPage() {
   function handleLogin(e) {
     e.preventDefault();
 
-    loginUser(email, password);
+    if (email && password) loginUser(email.trim(), password.trim());
   }
 
   return (

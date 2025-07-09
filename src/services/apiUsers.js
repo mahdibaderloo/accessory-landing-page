@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import supabase from "./supabase";
 
 export async function signUpUser(name, email, password) {
@@ -7,7 +8,7 @@ export async function signUpUser(name, email, password) {
   });
 
   if (signUpError) {
-    console.log(signUpError.message);
+    toast.error(signUpError.message);
     return null;
   }
 
@@ -20,10 +21,11 @@ export async function signUpUser(name, email, password) {
       .select();
 
     if (insertError) {
-      console.log(insertError.message);
+      toast.error(insertError.message);
       return null;
     }
 
+    toast.success("Your account successfully created");
     return user;
   }
 
@@ -31,17 +33,20 @@ export async function signUpUser(name, email, password) {
 }
 
 export async function loginUser(email, password) {
+  console.log("email:", email, "password:", password);
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
   if (error) {
+    toast.error(error.message);
     console.log(error.message);
     return null;
   }
 
   console.log(data);
+  return data;
 }
 
 export async function getUsers() {
@@ -57,7 +62,7 @@ export async function getUsers() {
     .eq("id", userId);
 
   if (error) {
-    console.log(error.message);
+    toast.error(error.message);
     return null;
   }
 
