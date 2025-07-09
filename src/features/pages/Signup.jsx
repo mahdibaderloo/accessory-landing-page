@@ -2,26 +2,32 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import signupImage from "../../data/images/signup-image.png";
-import { signUpUser } from "../../services/apiUsers";
+import { signUp } from "../profile/profileSlice";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
+
   function handleSignUp(e) {
     e.preventDefault();
 
     if (
-      name.split() &&
-      /.+@(gmail|yahoo)(.com)/.test(email) &&
-      password.length > 7
+      name.trim() &&
+      /.+@(gmail|yahoo)(\.com)/.test(email.trim()) &&
+      password.trim().length > 7
     ) {
-      signUpUser(name, email, password);
+      dispatch(signUp({ name, email, password }));
 
       setName("");
       setEmail("");
       setPassword("");
+    } else {
+      toast.error("Please enter valid values");
     }
   }
 
