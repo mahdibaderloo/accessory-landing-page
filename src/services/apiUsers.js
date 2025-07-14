@@ -33,7 +33,6 @@ export async function signUpUser(name, email, password) {
 }
 
 export async function loginUser(email, password) {
-  console.log("email:", email, "password:", password);
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -41,11 +40,9 @@ export async function loginUser(email, password) {
 
   if (error) {
     toast.error(error.message);
-    console.log(error.message);
     return null;
   }
 
-  console.log(data);
   return data;
 }
 

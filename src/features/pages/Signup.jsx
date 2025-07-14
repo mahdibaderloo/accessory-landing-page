@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import signupImage from "../../data/images/signup-image.png";
 import { signUp } from "../profile/profileSlice";
@@ -15,6 +15,7 @@ function Signup() {
   const status = useSelector((state) => state.profile.status);
   const isLoading = status === "loading";
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function handleSignUp(e) {
@@ -25,7 +26,7 @@ function Signup() {
       /.+@(gmail|yahoo)(\.com)/.test(email.trim()) &&
       password.trim().length > 7
     ) {
-      dispatch(signUp({ name, email, password }));
+      dispatch(signUp({ name, email, password, navigate }));
 
       setName("");
       setEmail("");

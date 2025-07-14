@@ -1,17 +1,29 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import loginImage from "../../data/images/login-image.png";
-import { loginUser } from "../../services/apiUsers";
+import { useDispatch } from "react-redux";
+import { login } from "../profile/profileSlice";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLogin(e) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  async function handleLogin(e) {
     e.preventDefault();
 
-    if (email && password) loginUser(email.trim(), password.trim());
+    if (
+      /.+@(gmail|yahoo)(\.com)/.test(email.trim()) &&
+      password.trim().length > 7
+    ) {
+      const result = await dispatch(login({ email, password, navigate }));
+      if (login.fulfilled.match(result)) {
+        navigate("/profile");
+      }
+    }
   }
 
   return (
