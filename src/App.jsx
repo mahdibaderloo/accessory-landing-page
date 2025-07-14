@@ -9,7 +9,7 @@ import Product, { loader as productLoader } from "./features/pages/Product";
 import Signup from "./features/pages/Signup";
 import { Provider } from "react-redux";
 import store from "../store";
-import Profile, { loader as userLoader } from "./features/pages/Profile";
+import Profile from "./features/pages/Profile";
 import ProfileForm from "./features/profile/ProfileForm";
 import ProfileOrders from "./features/profile/ProfileOrders";
 import ProfileFavorites from "./features/profile/ProfileFavorites";
@@ -52,7 +52,6 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
-          loader: userLoader,
           children: [
             {
               path: "/profile",

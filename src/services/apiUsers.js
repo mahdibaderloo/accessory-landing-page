@@ -26,7 +26,7 @@ export async function signUpUser(name, email, password) {
     }
 
     toast.success("Your account successfully created");
-    return user;
+    return user?.[0];
   }
 
   return null;
@@ -43,27 +43,21 @@ export async function loginUser(email, password) {
     return null;
   }
 
-  return data;
+  return data.user;
 }
 
-export async function getUsers() {
+export async function getUser(id) {
   const user = JSON.parse(
     localStorage.getItem("sb-ywipdwyvwyrqejrfdahl-auth-token")
   );
 
-  const userId = user?.user?.id;
-
-  const { data, error } = await supabase
-    .from("Users")
-    .select("*")
-    .eq("id", userId);
+  const { data, error } = await supabase.from("Users").select("*").eq("id", id);
 
   if (error) {
     toast.error(error.message);
     return null;
   }
 
-  console.log(data);
   return data;
 }
 
@@ -79,6 +73,5 @@ export async function UpdateUser(user) {
     return null;
   }
 
-  console.log(data);
   return data;
 }

@@ -1,11 +1,30 @@
 import { useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
+import { getUser } from "../../services/apiUsers";
+import { useEffect, useState } from "react";
+import Loader from "../../components/Loader";
 
 function ProfileForm() {
   const user = useSelector((state) => state.profile.user);
+  const [userData, setUserData] = useState(null);
 
-  const { name, email, image, mobile, password, address } = user[0];
+  useEffect(() => {
+    async function fetchUserData() {
+      if (!user?.id && !user?.user?.id) return;
+
+      const userId = user.user.id;
+
+      const result = await getUser(userId);
+      if (result) setUserData(result);
+    }
+
+    fetchUserData();
+  }, [user]);
+
+  if (!userData) return <Loader />;
+
+  const { name, email, image, mobile, password, address } = userData[0];
 
   return (
     <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
@@ -71,7 +90,7 @@ function ProfileForm() {
             type="text"
             id="mobile"
             placeholder="Add number"
-            defaultValue={`+98 ${mobile}`}
+            defaultValue={`+98 ${mobile || ""}`}
             className="outline-none border-none w-1/2"
           />
         </div>

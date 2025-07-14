@@ -2,7 +2,6 @@ import { Link, useLoaderData, useNavigation } from "react-router-dom";
 import { getProduct } from "../../services/apiProducts";
 import Loader from "../../components/Loader";
 import ProductDetails from "../products/ProductDetails";
-import ProductOptions from "../products/ProductOptions";
 
 function Product() {
   const product = useLoaderData();
