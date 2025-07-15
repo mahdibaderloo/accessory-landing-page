@@ -104,3 +104,34 @@ export async function updateFavorites(item, id) {
 
   return data[0];
 }
+
+export async function removeFavorite({ itemId, userId }) {
+  const { data: userData, error: fetchError } = await supabase
+    .from("Users")
+    .select("favorites")
+    .eq("id", userId)
+    .single();
+
+  if (fetchError) {
+    console.error(fetchError.message);
+    return null;
+  }
+
+  const userFavorites = JSON.parse(userData.favorites);
+
+  const updatedFavorites = userFavorites.filter(
+    (favorite) => favorite.id !== itemId
+  );
+
+  const { data, error } = await supabase
+    .from("Users")
+    .update({ favorites: updatedFavorites })
+    .eq("id", userId);
+
+  if (error) {
+    console.error(error.message);
+    return null;
+  }
+
+  return updatedFavorites;
+}

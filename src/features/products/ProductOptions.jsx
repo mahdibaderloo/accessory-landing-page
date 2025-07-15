@@ -3,22 +3,26 @@ import EmptyHeartIcon from "../../data/images/heart.svg";
 import FillHeartIcon from "../../data/images/heart-fill.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { chooseColor, chooseSize } from "./productSlice";
-import { addToFavorites } from "../profile/profileSlice";
+import { addToFavorites, removeFromFavorites } from "../profile/profileSlice";
 import { addItem } from "../cart/cartSlice";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { fetchUser } from "../../helpers/helper";
+import MiniLoader from "../../components/MiniLoader";
 
 function ProductOptions({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [userData, setUserData] = useState(null);
+
+  let favoritesItems = [];
 
   const size = useSelector((state) => state.product.size);
   const color = useSelector((state) => state.product.color);
   const cart = useSelector((state) => state.cart.cart);
   const user = useSelector((state) => state.profile.user);
   const favorites = useSelector((state) => state.profile.favorites);
-  // console.log(favorites);
+  const status = useSelector((state) => state.profile.status);
+  const isLoading = status === "loading";
 
   const dispatch = useDispatch();
 
@@ -36,9 +40,9 @@ function ProductOptions({ product }) {
 
   useEffect(
     function () {
-      console.log(JSON.parse(favorites).at(0));
-      if (JSON.parse(favorites)?.find((item) => item.id === id))
-        setIsFavorite(true);
+      favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
+      const isInFavorites = favoritesItems?.find((item) => item.id === id);
+      setIsFavorite(!!isInFavorites);
     },
     [userData, id, favorites]
   );
@@ -67,14 +71,25 @@ function ProductOptions({ product }) {
   }
 
   function handleAddToFavorites() {
-    if (!favorites.find((item) => item.id === id)) {
-      dispatch(addToFavorites({ item: product, id: userData?.[0]?.id }));
-      setIsFavorite(true);
+    favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
+    if (!favoritesItems.find((item) => item.id === id)) {
+      dispatch(addToFavorites({ item: product, id: userData?.[0]?.id }))
+        .unwrap()
+        .then(() => {
+          setIsFavorite(true);
+        });
     }
   }
 
   function handleRemoveFromFavorites() {
-    setIsFavorite(false);
+    favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
+    if (favoritesItems.find((item) => item.id === id)) {
+      dispatch(removeFromFavorites({ itemId: id, userId: userData?.[0]?.id }))
+        .unwrap()
+        .then(() => {
+          setIsFavorite(false);
+        });
+    }
   }
 
   return (
@@ -86,7 +101,7 @@ function ProductOptions({ product }) {
         >
           <img src={FillHeartIcon} alt="" className="w-5" />
           <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
-            Remove from favorites
+            {isLoading ? <MiniLoader /> : "Remove from favorites"}
           </p>
         </div>
       ) : (
@@ -96,7 +111,7 @@ function ProductOptions({ product }) {
         >
           <img src={EmptyHeartIcon} alt="" className="w-5" />
           <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
-            Add to favorites
+            {isLoading ? <MiniLoader /> : "Add to favorites"}
           </p>
         </div>
       )}

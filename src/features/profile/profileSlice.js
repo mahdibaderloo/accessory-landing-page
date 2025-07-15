@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   loginUser,
+  removeFavorite,
   signUpUser,
   updateFavorites,
 } from "../../services/apiUsers";
@@ -63,6 +64,23 @@ export const addToFavorites = createAsyncThunk(
   }
 );
 
+export const removeFromFavorites = createAsyncThunk(
+  "favorites/removeFromFavorites",
+  async function ({ itemId, userId }, { rejectWithValue }) {
+    try {
+      const updatedFavorites = await removeFavorite({ itemId, userId });
+
+      if (!updatedFavorites) {
+        return rejectWithValue("Failed to remove favorite item.");
+      }
+
+      return updatedFavorites;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 const profileSlice = createSlice({
   name: "profile",
   initialState,
@@ -112,6 +130,19 @@ const profileSlice = createSlice({
       })
       .addCase(addToFavorites.rejected, (state, action) => {
         state.status = "Failed";
+        toast.error(action.payload);
+      })
+
+      .addCase(removeFromFavorites.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(removeFromFavorites.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.favorites = action.payload;
+        toast.success("Product removed from favorites");
+      })
+      .addCase(removeFromFavorites.rejected, (state, action) => {
+        state.status = "failed";
         toast.error(action.payload);
       });
   },
