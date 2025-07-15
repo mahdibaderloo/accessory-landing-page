@@ -75,3 +75,18 @@ export async function UpdateUser(user) {
 
   return data;
 }
+
+export async function updateFavorites({ item, id }) {
+  const { data, error } = await supabase
+    .from("Users")
+    .insert([{ favorites: item }])
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    console.log(error.message);
+    return null;
+  }
+
+  return data;
+}

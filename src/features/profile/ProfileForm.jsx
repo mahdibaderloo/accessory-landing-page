@@ -1,25 +1,23 @@
 import { useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
-import { getUser } from "../../services/apiUsers";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
+import { fetchUser } from "../../helpers/helper";
 
 function ProfileForm() {
   const user = useSelector((state) => state.profile.user);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    async function fetchUserData() {
-      if (!user?.id && !user?.user?.id) return;
-
-      const userId = user.user.id;
-
-      const result = await getUser(userId);
-      if (result) setUserData(result);
+    async function fetch() {
+      if (user?.user) {
+        const userApi = await fetchUser(user.user);
+        setUserData(userApi);
+        console.log(userApi);
+      }
     }
-
-    fetchUserData();
+    fetch();
   }, [user]);
 
   if (!userData) return <Loader />;
