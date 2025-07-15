@@ -76,10 +76,24 @@ export async function UpdateUser(user) {
   return data;
 }
 
-export async function updateFavorites({ item, id }) {
+export async function updateFavorites(item, id) {
+  const { data: userData, error: fetchError } = await supabase
+    .from("Users")
+    .select("favorites")
+    .eq("id", id)
+    .single();
+
+  if (fetchError) {
+    console.log(fetchError.message);
+    return null;
+  }
+
+  const currentFavorites = userData?.favorites || [];
+  const updatedFavorites = [...currentFavorites, item];
+
   const { data, error } = await supabase
     .from("Users")
-    .insert([{ favorites: item }])
+    .update({ favorites: updatedFavorites })
     .eq("id", id)
     .select();
 
@@ -88,5 +102,5 @@ export async function updateFavorites({ item, id }) {
     return null;
   }
 
-  return data;
+  return data[0];
 }

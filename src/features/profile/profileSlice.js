@@ -1,10 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginUser, signUpUser } from "../../services/apiUsers";
+import {
+  loginUser,
+  signUpUser,
+  updateFavorites,
+} from "../../services/apiUsers";
 import toast from "react-hot-toast";
 
 const initialState = {
   activeSection: "profile",
   user: null,
+  favorites: [],
   status: "idle",
   error: null,
 };
@@ -42,6 +47,22 @@ export const login = createAsyncThunk(
   }
 );
 
+export const addToFavorites = createAsyncThunk(
+  "favorites/addToFavorites",
+  async function ({ item, id }, { rejectWithValue }) {
+    try {
+      const favoriteData = await updateFavorites(item, id);
+
+      if (!favoriteData) {
+        return rejectWithValue("There was a problem. Try again");
+      }
+      return favoriteData.favorites;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 const profileSlice = createSlice({
   name: "profile",
   initialState,
@@ -67,6 +88,7 @@ const profileSlice = createSlice({
         state.status = "Failed";
         toast.error(action.payload);
       })
+
       .addCase(login.pending, (state) => {
         state.status = "loading";
       })
@@ -76,6 +98,19 @@ const profileSlice = createSlice({
         toast.success("You're successfully logged in");
       })
       .addCase(login.rejected, (state, action) => {
+        state.status = "Failed";
+        toast.error(action.payload);
+      })
+
+      .addCase(addToFavorites.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addToFavorites.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.favorites = action.payload;
+        toast.success("Product successfully added to favorites");
+      })
+      .addCase(addToFavorites.rejected, (state, action) => {
         state.status = "Failed";
         toast.error(action.payload);
       });

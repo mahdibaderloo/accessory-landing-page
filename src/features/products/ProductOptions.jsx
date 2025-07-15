@@ -3,6 +3,7 @@ import EmptyHeartIcon from "../../data/images/heart.svg";
 import FillHeartIcon from "../../data/images/heart-fill.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { chooseColor, chooseSize } from "./productSlice";
+import { addToFavorites } from "../profile/profileSlice";
 import { addItem } from "../cart/cartSlice";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -16,6 +17,8 @@ function ProductOptions({ product }) {
   const color = useSelector((state) => state.product.color);
   const cart = useSelector((state) => state.cart.cart);
   const user = useSelector((state) => state.profile.user);
+  const favorites = useSelector((state) => state.profile.favorites);
+  // console.log(favorites);
 
   const dispatch = useDispatch();
 
@@ -25,7 +28,6 @@ function ProductOptions({ product }) {
     async function fetch() {
       if (user?.user) {
         const userApi = await fetchUser(user.user);
-        console.log(userApi);
         setUserData(userApi);
       }
     }
@@ -34,10 +36,11 @@ function ProductOptions({ product }) {
 
   useEffect(
     function () {
-      if (userData?.[0]?.favorites?.find((item) => item.id === id))
+      console.log(JSON.parse(favorites).at(0));
+      if (JSON.parse(favorites)?.find((item) => item.id === id))
         setIsFavorite(true);
     },
-    [userData, id]
+    [userData, id, favorites]
   );
 
   const sizes = new Array(11).fill(30).map((n, i) => n + i);
@@ -64,7 +67,10 @@ function ProductOptions({ product }) {
   }
 
   function handleAddToFavorites() {
-    setIsFavorite(true);
+    if (!favorites.find((item) => item.id === id)) {
+      dispatch(addToFavorites({ item: product, id: userData?.[0]?.id }));
+      setIsFavorite(true);
+    }
   }
 
   function handleRemoveFromFavorites() {
@@ -76,7 +82,7 @@ function ProductOptions({ product }) {
       {isFavorite ? (
         <div
           className="flex items-center gap-1 mb-4 bg-zinc-200 w-fit px-2 py-1.5 laptop:px-3 laptop:cursor-pointer hover:bg-zinc-300 transition-all duration-200"
-          onClick={handleAddToFavorites}
+          onClick={handleRemoveFromFavorites}
         >
           <img src={FillHeartIcon} alt="" className="w-5" />
           <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
@@ -86,7 +92,7 @@ function ProductOptions({ product }) {
       ) : (
         <div
           className="flex items-center gap-1 mb-4 bg-zinc-200 w-fit px-2 py-1.5 laptop:px-3 laptop:cursor-pointer hover:bg-zinc-300 transition-all duration-200"
-          onClick={handleRemoveFromFavorites}
+          onClick={handleAddToFavorites}
         >
           <img src={EmptyHeartIcon} alt="" className="w-5" />
           <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">

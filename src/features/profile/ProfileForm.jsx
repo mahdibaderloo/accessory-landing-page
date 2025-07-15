@@ -14,7 +14,6 @@ function ProfileForm() {
       if (user?.user) {
         const userApi = await fetchUser(user.user);
         setUserData(userApi);
-        console.log(userApi);
       }
     }
     fetch();
