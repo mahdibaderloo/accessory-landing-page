@@ -88,7 +88,7 @@ export async function updateFavorites(item, id) {
     return null;
   }
 
-  const currentFavorites = userData?.favorites || [];
+  const currentFavorites = JSON.parse(userData?.favorites) || [];
   const updatedFavorites = [...currentFavorites, item];
 
   const { data, error } = await supabase

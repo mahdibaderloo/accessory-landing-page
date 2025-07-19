@@ -6,6 +6,7 @@ import { chooseColor, chooseSize } from "./productSlice";
 import { addToFavorites, removeFromFavorites } from "../profile/profileSlice";
 import { addItem } from "../cart/cartSlice";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { fetchUser } from "../../helpers/helper";
 import MiniLoader from "../../components/MiniLoader";
@@ -25,6 +26,7 @@ function ProductOptions({ product }) {
   const isLoading = status === "loading";
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { id, name, price, description } = product;
 
@@ -50,34 +52,50 @@ function ProductOptions({ product }) {
   const sizes = new Array(11).fill(30).map((n, i) => n + i);
   const colors = ["Black", "White", "Red", "Yellow", "Blue", "Purple", "Gray"];
 
+  function loginFirst() {
+    toast.error("Please login first");
+    navigate("/login");
+  }
+
   function handleAddToCart(e) {
     e.preventDefault();
+    if (user === null) return;
 
-    const newItem = {
-      id,
-      name,
-      price,
-      description,
-      size,
-      color,
-      count: 1,
-      totalPrice: price * 1,
-    };
+    if (!user || user.length < 1) {
+      loginFirst();
+    } else {
+      const newItem = {
+        id,
+        name,
+        price,
+        description,
+        size,
+        color,
+        count: 1,
+        totalPrice: price * 1,
+      };
 
-    if (!cart.find((item) => item.id === id)) {
-      dispatch(addItem(newItem));
-      toast.success(`${name} added to cart`);
+      if (!cart.find((item) => item.id === id)) {
+        dispatch(addItem(newItem));
+        toast.success(`${name} added to cart`);
+      }
     }
   }
 
   function handleAddToFavorites() {
-    favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
-    if (!favoritesItems.find((item) => item.id === id)) {
-      dispatch(addToFavorites({ item: product, id: userData?.[0]?.id }))
-        .unwrap()
-        .then(() => {
-          setIsFavorite(true);
-        });
+    if (user === null) return;
+
+    if (!user || user.length < 1) {
+      loginFirst();
+    } else {
+      favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
+      if (!favoritesItems.find((item) => item.id === id)) {
+        dispatch(addToFavorites({ item: product, id: userData?.[0]?.id }))
+          .unwrap()
+          .then(() => {
+            setIsFavorite(true);
+          });
+      }
     }
   }
 
