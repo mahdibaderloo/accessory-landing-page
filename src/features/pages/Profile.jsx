@@ -28,8 +28,6 @@ function Profile() {
 
   useEffect(
     function () {
-      if (user === null) return;
-
       if (!user || user.length < 1) {
         toast.error("Please login first");
         navigate("/login");

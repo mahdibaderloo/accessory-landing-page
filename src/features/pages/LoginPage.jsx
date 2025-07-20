@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import loginImage from "../../data/images/login-image.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../profile/profileSlice";
+import MiniLoader from "../../components/MiniLoader";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -11,6 +12,9 @@ function LoginPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const status = useSelector((state) => state.profile.status);
+  const isLoading = status === "loading";
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -77,7 +81,7 @@ function LoginPage() {
             className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
             onClick={handleLogin}
           >
-            SIGN IN
+            {isLoading ? <MiniLoader /> : "SIGN IN"}
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">
             I don't have an account?{" "}
