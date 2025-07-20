@@ -12,6 +12,7 @@ const initialState = {
   user: null,
   favorites: [],
   status: "idle",
+  isAuthenticated: false,
   error: null,
 };
 
@@ -91,6 +92,9 @@ const profileSlice = createSlice({
     setUser(state, action) {
       state.user = action.payload;
     },
+    setIsAuthenticated(state, action) {
+      state.isAuthenticated = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -100,10 +104,12 @@ const profileSlice = createSlice({
       .addCase(signUp.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.user = action.payload;
+        state.isAuthenticated = true;
         toast.success("Account created successfully");
       })
       .addCase(signUp.rejected, (state, action) => {
         state.status = "Failed";
+        state.isAuthenticated = false;
         toast.error(action.payload);
       })
 
@@ -113,10 +119,12 @@ const profileSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.user = action.payload;
+        state.isAuthenticated = true;
         toast.success("You're successfully logged in");
       })
       .addCase(login.rejected, (state, action) => {
         state.status = "Failed";
+        state.isAuthenticated = false;
         toast.error(action.payload);
       })
 
@@ -148,5 +156,6 @@ const profileSlice = createSlice({
   },
 });
 
-export const { setActiveSection, setUser } = profileSlice.actions;
+export const { setActiveSection, setUser, setIsAuthenticated } =
+  profileSlice.actions;
 export default profileSlice.reducer;
