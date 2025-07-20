@@ -17,7 +17,7 @@ import { showCategoryItems } from "../products/categorySlice";
 
 function Products() {
   const [count, setCount] = useState(20);
-  const [SearchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   let products = [];
   products = useLoaderData();
@@ -41,9 +41,14 @@ function Products() {
   function handleClickAll() {
     dispatch(showCategoryItems("all"));
 
-    SearchParams.set("category", "all");
-    setSearchParams(SearchParams);
+    searchParams.set("category", "all");
+    setSearchParams(searchParams);
   }
+
+  const searchTerm = searchParams.get("search-for")?.toLowerCase() || "";
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm)
+  );
 
   return (
     <main className="mt-16 p-1">
@@ -53,7 +58,7 @@ function Products() {
         <>
           <Categories items={products} />
           <Search />
-          <ProductsWrapper products={products} count={count} />
+          <ProductsWrapper products={filteredProducts} count={count} />
           {category === "all" ? (
             count !== 100 ? (
               <Button onClick={handleClickMore}>Show More</Button>

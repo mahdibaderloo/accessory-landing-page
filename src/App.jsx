@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
-import Home, { loader as homeProductsLoader } from "./components/Home";
+import Home, { loader as homeProductsLoader } from "./features/pages/Home";
 import Cart from "./features/pages/Cart";
 import LoginPage from "./features/pages/LoginPage";
 import Order from "./features/pages/Order";
