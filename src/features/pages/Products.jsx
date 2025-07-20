@@ -42,7 +42,7 @@ function Products() {
     dispatch(showCategoryItems("all"));
 
     searchParams.set("category", "all");
-    setSearchParams(searchParams);
+    setSearchParams({});
   }
 
   const searchTerm = searchParams.get("search-for")?.toLowerCase() || "";
@@ -59,7 +59,9 @@ function Products() {
           <Categories items={products} />
           <Search />
           <ProductsWrapper products={filteredProducts} count={count} />
-          {category === "all" ? (
+          {searchTerm ? (
+            <Button onClick={handleClickAll}>Show All Products</Button>
+          ) : category === "all" ? (
             count !== 100 ? (
               <Button onClick={handleClickMore}>Show More</Button>
             ) : (

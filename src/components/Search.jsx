@@ -1,10 +1,14 @@
 import { useSearchParams } from "react-router-dom";
 import searchIcon from "../data/images/search.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [value, setValue] = useState();
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    setValue(searchParams.get("search-for") || "");
+  }, [searchParams]);
 
   function handleChange(e) {
     setValue(e.target.value);
@@ -38,6 +42,7 @@ function Search() {
         type="text"
         id=""
         placeholder="Search..."
+        value={value}
         onChange={(e) => handleChange(e)}
         className="w-full h-full outline-none border-none text-md tracking-wide tablet:text-xl"
       />
