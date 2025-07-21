@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setIsAuthenticated, setUser } from "../features/profile/profileSlice";
+import { fetchUser } from "../helpers/helper";
 
 function AppLayout() {
   const dispatch = useDispatch();
@@ -14,14 +15,18 @@ function AppLayout() {
 
   useEffect(
     function () {
-      const savedUser = JSON.parse(
-        localStorage.getItem("sb-ywipdwyvwyrqejrfdahl-auth-token")
-      );
+      async function fetch() {
+        const savedUser = JSON.parse(
+          localStorage.getItem("sb-ywipdwyvwyrqejrfdahl-auth-token")
+        );
 
-      if (savedUser) {
-        dispatch(setUser(savedUser));
-        dispatch(setIsAuthenticated(true));
+        if (savedUser) {
+          const userApi = await fetchUser(savedUser);
+          dispatch(setUser(userApi));
+          dispatch(setIsAuthenticated(true));
+        }
       }
+      fetch();
     },
     [dispatch]
   );

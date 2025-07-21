@@ -8,7 +8,6 @@ import profileIcon from "../data/images/profile.svg";
 import cartIcon from "../data/images/cart.svg";
 import { setActiveSection } from "../features/profile/profileSlice";
 import { useEffect, useState } from "react";
-import { getUser } from "../services/apiUsers";
 
 function Header() {
   const [name, setName] = useState(null);
@@ -17,16 +16,7 @@ function Header() {
   const user = useSelector((state) => state.profile.user);
 
   useEffect(() => {
-    async function fetchUserData() {
-      if (!user?.id && !user?.user?.id) return;
-
-      const userId = user.user.id;
-
-      const result = await getUser(userId);
-      if (result) setName(result[0].name);
-    }
-
-    fetchUserData();
+    setName(user?.[0]?.name);
   }, [user]);
 
   return (
