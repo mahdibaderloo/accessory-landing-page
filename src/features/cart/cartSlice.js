@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
   totalPrice: 0,
   status: "idle",
-  isEmpty: true,
+  isEmpty: JSON.parse(localStorage.getItem("cart")) ? false : true,
 };
+
+console.log(JSON.parse(localStorage.getItem("cart")));
 
 function setToLocalStorage(cart) {
   localStorage.removeItem("cart");

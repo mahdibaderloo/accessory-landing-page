@@ -11,6 +11,7 @@ function Cart() {
   const isEmpty = useSelector((state) => state.cart.isEmpty);
 
   const deliveryPrice = 15;
+  // const cartItems =
 
   return (
     <div className="w-full flex flex-col">
