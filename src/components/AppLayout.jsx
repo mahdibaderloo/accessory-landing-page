@@ -3,10 +3,28 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Loader from "./Loader";
 import Footer from "./Footer";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setIsAuthenticated, setUser } from "../features/profile/profileSlice";
 
 function AppLayout() {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
+
+  useEffect(
+    function () {
+      const savedUser = JSON.parse(
+        localStorage.getItem("sb-ywipdwyvwyrqejrfdahl-auth-token")
+      );
+
+      if (savedUser) {
+        dispatch(setUser(savedUser));
+        dispatch(setIsAuthenticated(true));
+      }
+    },
+    [dispatch]
+  );
 
   const location = useLocation();
   const hideFooter = [

@@ -6,12 +6,15 @@ import { useState } from "react";
 
 function Cart() {
   const navigate = useNavigate();
-  const [items, setItems] = useState([]);
+  // const [total, setTotal] = useState(0);
+
   const cartItems = useSelector((state) => state.cart.cart);
   const isEmpty = useSelector((state) => state.cart.isEmpty);
 
   const deliveryPrice = 15;
-  // const cartItems =
+  const total = cartItems
+    .reduce((acc, cur) => acc + cur.totalPrice, 0)
+    .toFixed(2);
 
   return (
     <div className="w-full flex flex-col">
@@ -21,7 +24,7 @@ function Cart() {
         <>
           <ul className="h-[60%] rounded-lg mt-13 p-2 laptop:p-3 desktop:p-10 laptop:h-[65vh] laptop:overflow-y-scroll">
             {cartItems.map((item) => (
-              <CartItem item={item} key={item} />
+              <CartItem item={item} key={item.id} />
             ))}
           </ul>
           <div className="flex flex-col p-4 text-zinc-700 laptop:text-xl laptop:p-6 laptop:mt-1">
@@ -35,7 +38,7 @@ function Cart() {
             </div>
             <div className="flex justify-between text-zinc-900 font-semibold mt-2 laptop:text-2xl">
               <p>Total</p>
-              <p>${}</p>
+              <p>${total}</p>
             </div>
           </div>
           <button
