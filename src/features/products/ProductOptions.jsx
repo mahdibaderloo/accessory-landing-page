@@ -25,6 +25,10 @@ function ProductOptions({ product }) {
   const status = useSelector((state) => state.profile.status);
   const isLoading = status === "loading";
 
+  const isItemInCart = cart.find((item) => item.id === product.id)
+    ? true
+    : false;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -58,6 +62,31 @@ function ProductOptions({ product }) {
   }
 
   function handleAddToCart(e) {
+    e.preventDefault();
+    if (user === null) return;
+
+    if (!user || user.length < 1) {
+      loginFirst();
+    } else {
+      const newItem = {
+        id,
+        name,
+        price,
+        description,
+        size,
+        color,
+        count: 1,
+        totalPrice: price * 1,
+      };
+
+      if (!cart.find((item) => item.id === id)) {
+        dispatch(addItem(newItem));
+        toast.success(`${name} added to cart`);
+      }
+    }
+  }
+
+  function handleRemoveFromCart(e) {
     e.preventDefault();
     if (user === null) return;
 
@@ -153,12 +182,21 @@ function ProductOptions({ product }) {
           onChange={(e) => dispatch(chooseColor(e.target.value))}
         />
       </div>
-      <button
-        className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
-        onClick={handleAddToCart}
-      >
-        {isLoading ? `Adding${(<MiniLoader />)}` : "Add to cart"}
-      </button>
+      {isItemInCart ? (
+        <button
+          className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
+          onClick={handleRemoveFromCart}
+        >
+          Remove from cart
+        </button>
+      ) : (
+        <button
+          className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
+          onClick={handleAddToCart}
+        >
+          Add to cart
+        </button>
+      )}
     </form>
   );
 }
