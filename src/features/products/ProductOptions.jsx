@@ -119,7 +119,11 @@ function ProductOptions({ product }) {
         >
           <img src={FillHeartIcon} alt="" className="w-5" />
           <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
-            {isLoading ? <MiniLoader /> : "Remove from favorites"}
+            {isLoading ? (
+              <MiniLoader color="bg-zinc-800" />
+            ) : (
+              "Remove from favorites"
+            )}
           </p>
         </div>
       ) : (
@@ -129,7 +133,11 @@ function ProductOptions({ product }) {
         >
           <img src={EmptyHeartIcon} alt="" className="w-5" />
           <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
-            {isLoading ? <MiniLoader /> : "Add to favorites"}
+            {isLoading ? (
+              <MiniLoader color="bg-zinc-800" />
+            ) : (
+              "Add to favorites"
+            )}
           </p>
         </div>
       )}
@@ -149,7 +157,7 @@ function ProductOptions({ product }) {
         className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
         onClick={handleAddToCart}
       >
-        Add to cart
+        {isLoading ? `Adding${(<MiniLoader />)}` : "Add to cart"}
       </button>
     </form>
   );
