@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cart: [],
+  totalPrice: 0,
+  status: "idle",
+  isEmpty: true,
 };
 
 const cartSlice = createSlice({
@@ -10,16 +13,22 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action) {
       state.cart.push(action.payload);
+      state.isEmpty = false;
     },
 
     removeItem(state, action) {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
+
+      if (state.cart.length === 0) {
+        state.isEmpty = true;
+      }
     },
 
     increaseItemCount(state, action) {
       const item = state.cart.find((item) => item.id === action.payload);
 
       item.count++;
+      state.isEmpty = false;
     },
 
     decreaseItemCount(state, action) {
@@ -31,6 +40,7 @@ const cartSlice = createSlice({
 
     clearCart(state) {
       state.cart = [];
+      state.isEmpty = true;
     },
   },
 });
