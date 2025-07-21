@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import CartItem from "../cart/CartItem";
-import { useState } from "react";
 import EmptyCart from "../cart/EmptyCart";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 function Cart() {
   const navigate = useNavigate();
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [items, setItems] = useState([]);
   const cartItems = useSelector((state) => state.cart.cart);
   const isEmpty = useSelector((state) => state.cart.isEmpty);
 
@@ -34,7 +34,7 @@ function Cart() {
             </div>
             <div className="flex justify-between text-zinc-900 font-semibold mt-2 laptop:text-2xl">
               <p>Total</p>
-              <p>${totalPrice}</p>
+              <p>${}</p>
             </div>
           </div>
           <button

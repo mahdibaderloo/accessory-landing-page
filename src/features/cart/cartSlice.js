@@ -7,6 +7,11 @@ const initialState = {
   isEmpty: true,
 };
 
+function setToLocalStorage(cart) {
+  localStorage.removeItem("cart");
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -14,6 +19,8 @@ const cartSlice = createSlice({
     addItem(state, action) {
       state.cart.push(action.payload);
       state.isEmpty = false;
+
+      setToLocalStorage(state.cart);
     },
 
     removeItem(state, action) {
@@ -22,6 +29,8 @@ const cartSlice = createSlice({
       if (state.cart.length === 0) {
         state.isEmpty = true;
       }
+
+      setToLocalStorage(state.cart);
     },
 
     increaseItemCount(state, action) {
@@ -29,6 +38,8 @@ const cartSlice = createSlice({
 
       item.count++;
       state.isEmpty = false;
+
+      setToLocalStorage(state.cart);
     },
 
     decreaseItemCount(state, action) {
@@ -36,11 +47,15 @@ const cartSlice = createSlice({
 
       item.count--;
       if (item.count === 0) cartSlice.caseReducers.removeItem(state, action);
+
+      setToLocalStorage(state.cart);
     },
 
     clearCart(state) {
       state.cart = [];
       state.isEmpty = true;
+
+      setToLocalStorage(state.cart);
     },
   },
 });
