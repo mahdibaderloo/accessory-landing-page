@@ -1,7 +1,19 @@
+import { useDispatch } from "react-redux";
 import trashIcon from "../../data/images/trash.svg";
+import { decreaseItemCount, increaseItemCount } from "./cartSlice";
 
 function CartItem({ item }) {
-  const { name, price, image, count } = item;
+  const dispatch = useDispatch();
+
+  const { id, name, price, image, count } = item;
+
+  function handleDecrease() {
+    dispatch(decreaseItemCount(id));
+  }
+
+  function handleIncrease() {
+    dispatch(increaseItemCount(id));
+  }
 
   return (
     <li className="w-full bg-zinc-50 flex justify-between items-center rounded-lg shadow p-2 mb-2 laptop:h-24 laptop:mb-3 laptop:px-4">
@@ -20,9 +32,13 @@ function CartItem({ item }) {
       </div>
       <div className="flex gap-2">
         <div className="bg-zinc-700 rounded-md w-12 text-zinc-100 px-1.5 flex items-center justify-between laptop:text-xl laptop:w-16 font-semibold">
-          <button className="laptop:cursor-pointer">-</button>
+          <button onClick={handleDecrease} className="laptop:cursor-pointer">
+            -
+          </button>
           <span>{count}</span>
-          <button className="laptop:cursor-pointer">+</button>
+          <button onClick={handleIncrease} className="laptop:cursor-pointer">
+            +
+          </button>
         </div>
         <img
           src={trashIcon}

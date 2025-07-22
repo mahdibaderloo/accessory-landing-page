@@ -36,6 +36,7 @@ const cartSlice = createSlice({
       const item = state.cart.find((item) => item.id === action.payload);
 
       item.count++;
+      item.totalPrice = item.price * item.count;
       state.isEmpty = false;
 
       setToLocalStorage(state.cart);
@@ -45,6 +46,7 @@ const cartSlice = createSlice({
       const item = state.cart.find((item) => item.id === action.payload);
 
       item.count--;
+      item.totalPrice = item.price * item.count;
       if (item.count === 0) cartSlice.caseReducers.removeItem(state, action);
 
       setToLocalStorage(state.cart);
