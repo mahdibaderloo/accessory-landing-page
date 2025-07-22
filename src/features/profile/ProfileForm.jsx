@@ -5,9 +5,8 @@ import Loader from "../../components/Loader";
 
 function ProfileForm() {
   const user = useSelector((state) => state.profile.user);
-  console.log(user);
 
-  if (user === null) return <Loader />;
+  if (!user) return <Loader />;
 
   const { name, email, image, mobile, password, address } = user[0];
 
