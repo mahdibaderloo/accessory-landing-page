@@ -5,7 +5,8 @@ import FavoriteItem from "./FavoriteItem";
 
 function ProfileFavorites() {
   const user = useSelector((state) => state.profile.user);
-  const items = JSON.parse(user[0].favorites);
+  console.log(user);
+  const items = JSON.parse(user.favorites) || [];
 
   return (
     <div className="w-full h-screen laptop:w-[70%] p-2 laptop:p-0 laptop:m-8 overflow-hidden">

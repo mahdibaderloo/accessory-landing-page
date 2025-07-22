@@ -1,45 +1,27 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { setIsAuthenticated, setUser } from "../profile/profileSlice";
 
 import ProfileSidebar from "../profile/ProfileSidebar";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Loader from "../../components/Loader";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 function Profile() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [authChecked, setAuthChecked] = useState(false);
 
   const isAuthenticated = useSelector((state) => state.profile.isAuthenticated);
 
   useEffect(
     function () {
-      const savedUser = JSON.parse(
-        localStorage.getItem("sb-ywipdwyvwyrqejrfdahl-auth-token")
-      );
-
-      if (savedUser) {
-        dispatch(setUser(savedUser));
-        dispatch(setIsAuthenticated(true));
-      }
-      setAuthChecked(true);
-    },
-    [dispatch]
-  );
-
-  useEffect(
-    function () {
-      if (authChecked && !isAuthenticated) {
+      if (!isAuthenticated) {
         toast.error("Please login first");
         navigate("/login");
       }
     },
-    [isAuthenticated, authChecked, navigate]
+    [isAuthenticated, navigate]
   );
 
-  if (!authChecked) return <Loader />;
+  if (!isAuthenticated) return <Loader />;
 
   return (
     <div className="w-full laptop:h-[90vh] flex flex-col laptop:flex-row mt-12 laptop:mt-16 bg-zinc-100 laptop:rounded-4xl overflow-hidden">
