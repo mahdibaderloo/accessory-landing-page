@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "../cart/CartItem";
 import EmptyCart from "../cart/EmptyCart";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 
 function Cart() {
   const navigate = useNavigate();
@@ -12,9 +11,11 @@ function Cart() {
   const isEmpty = useSelector((state) => state.cart.isEmpty);
 
   const deliveryPrice = 15;
-  const total = cartItems
+  const subTotal = cartItems
     .reduce((acc, cur) => acc + cur.totalPrice, 0)
     .toFixed(2);
+
+  const total = (Number(subTotal) + deliveryPrice).toFixed(2);
 
   return (
     <div className="w-full flex flex-col">
@@ -30,7 +31,7 @@ function Cart() {
           <div className="flex flex-col p-4 text-zinc-700 laptop:text-xl laptop:p-6 laptop:mt-1">
             <div className="flex justify-between laptop:pb-2">
               <p>Subtotal:</p>
-              <p>$146</p>
+              <p>${subTotal}</p>
             </div>
             <div className="flex justify-between border-zinc-800 border-b-2 pb-2.5 laptop:pb-3">
               <p>Delivery:</p>
