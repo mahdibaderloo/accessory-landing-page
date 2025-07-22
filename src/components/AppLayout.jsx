@@ -3,33 +3,13 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Loader from "./Loader";
 import Footer from "./Footer";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setIsAuthenticated, setUser } from "../features/profile/profileSlice";
-import { fetchUser } from "../helpers/helper";
+import useAuth from "./useAuth";
 
 function AppLayout() {
-  const dispatch = useDispatch();
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
-  useEffect(
-    function () {
-      async function fetch() {
-        const savedUser = JSON.parse(
-          localStorage.getItem("sb-ywipdwyvwyrqejrfdahl-auth-token")
-        );
-
-        if (savedUser) {
-          const userApi = await fetchUser(savedUser);
-          dispatch(setUser(userApi));
-          dispatch(setIsAuthenticated(true));
-        }
-      }
-      fetch();
-    },
-    [dispatch]
-  );
+  useAuth();
 
   const location = useLocation();
   const hideFooter = [
