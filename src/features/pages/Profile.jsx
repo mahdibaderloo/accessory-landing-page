@@ -8,23 +8,22 @@ import toast from "react-hot-toast";
 import useAuth from "../../components/useAuth";
 
 function Profile() {
+  const { isLoading } = useAuth();
   const navigate = useNavigate();
 
   const isAuthenticated = useSelector((state) => state.profile.isAuthenticated);
 
-  useAuth();
-
   useEffect(
     function () {
-      if (!isAuthenticated) {
+      if (!isLoading && !isAuthenticated) {
         toast.error("Please login first");
         navigate("/login");
       }
     },
-    [isAuthenticated, navigate]
+    [isAuthenticated, isLoading, navigate]
   );
 
-  if (!isAuthenticated) return <Loader />;
+  if (isLoading) return <Loader />;
 
   return (
     <div className="w-full laptop:h-[90vh] flex flex-col laptop:flex-row mt-12 laptop:mt-16 bg-zinc-100 laptop:rounded-4xl overflow-hidden">
