@@ -13,7 +13,7 @@ function AppLayout() {
 
   const location = useLocation();
   const hideFooter = [
-    /^\/profile$/,
+    /^\/profile(\/.*)?$/,
     /^\/cart$/,
     /^\/contact-us$/,
     /^\/product(\/.*)?$/,
