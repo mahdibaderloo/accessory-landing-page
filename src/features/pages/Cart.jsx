@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 function Cart() {
   const navigate = useNavigate();
-  // const [total, setTotal] = useState(0);
 
   const cartItems = useSelector((state) => state.cart.cart);
   const isEmpty = useSelector((state) => state.cart.isEmpty);

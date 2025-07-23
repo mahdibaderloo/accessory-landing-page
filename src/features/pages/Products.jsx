@@ -14,6 +14,7 @@ import Button from "../../components/Button";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showCategoryItems } from "../products/categorySlice";
+import useAuth from "../../components/useAuth";
 
 function Products() {
   const [count, setCount] = useState(20);
@@ -27,6 +28,8 @@ function Products() {
 
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
+
+  useAuth();
 
   function handleClickMore() {
     if (count !== 100) {

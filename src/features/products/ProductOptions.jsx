@@ -8,12 +8,10 @@ import { addItem } from "../cart/cartSlice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { fetchUser } from "../../helpers/helper";
 import MiniLoader from "../../components/MiniLoader";
 
 function ProductOptions({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [userData, setUserData] = useState(null);
 
   let favoritesItems = [];
 
@@ -34,23 +32,12 @@ function ProductOptions({ product }) {
 
   const { id, name, price, description } = product;
 
-  useEffect(() => {
-    async function fetch() {
-      if (user?.user) {
-        const userApi = await fetchUser(user.user);
-        setUserData(userApi);
-      }
-    }
-    fetch();
-  }, [user]);
-
   useEffect(
     function () {
-      favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
-      const isInFavorites = favoritesItems?.find((item) => item.id === id);
+      const isInFavorites = favorites.find((item) => item.id === id);
       setIsFavorite(!!isInFavorites);
     },
-    [userData, id, favorites]
+    [id, favorites]
   );
 
   const sizes = new Array(11).fill(30).map((n, i) => n + i);
@@ -117,9 +104,8 @@ function ProductOptions({ product }) {
     if (!user || user.length < 1) {
       loginFirst();
     } else {
-      favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
-      if (!favoritesItems.find((item) => item.id === id)) {
-        dispatch(addToFavorites({ item: product, id: userData?.[0]?.id }))
+      if (!favorites.find((item) => item.id === id)) {
+        dispatch(addToFavorites({ item: product, id: user?.[0]?.id }))
           .unwrap()
           .then(() => {
             setIsFavorite(true);
@@ -129,9 +115,8 @@ function ProductOptions({ product }) {
   }
 
   function handleRemoveFromFavorites() {
-    favoritesItems = favorites.length !== 0 ? JSON.parse(favorites) : [];
-    if (favoritesItems.find((item) => item.id === id)) {
-      dispatch(removeFromFavorites({ itemId: id, userId: userData?.[0]?.id }))
+    if (favorites.find((item) => item.id === id)) {
+      dispatch(removeFromFavorites({ itemId: id, userId: user?.[0]?.id }))
         .unwrap()
         .then(() => {
           setIsFavorite(false);
@@ -147,13 +132,13 @@ function ProductOptions({ product }) {
           onClick={handleRemoveFromFavorites}
         >
           <img src={FillHeartIcon} alt="" className="w-5" />
-          <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
+          <div className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
             {isLoading ? (
               <MiniLoader color="bg-zinc-800" />
             ) : (
-              "Remove from favorites"
+              <p>Remove from favorites</p>
             )}
-          </p>
+          </div>
         </div>
       ) : (
         <div

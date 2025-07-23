@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchUser } from "../helpers/helper";
-import { setIsAuthenticated, setUser } from "../features/profile/profileSlice";
+import {
+  setFavorites,
+  setIsAuthenticated,
+  setUser,
+} from "../features/profile/profileSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
@@ -20,9 +24,10 @@ function useAuth() {
             const userApi = await fetchUser(savedUser);
             dispatch(setUser(userApi));
             dispatch(setIsAuthenticated(true));
+            dispatch(setFavorites(userApi[0].favorites || []));
           }
         } catch (err) {
-          toast.error("Authentication failed:", err);
+          toast.error("Authentication failed: " + err.message);
           dispatch(setIsAuthenticated(false));
         } finally {
           setIsLoading(false);

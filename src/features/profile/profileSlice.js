@@ -95,6 +95,9 @@ const profileSlice = createSlice({
     setIsAuthenticated(state, action) {
       state.isAuthenticated = action.payload;
     },
+    setFavorites(state, action) {
+      state.favorites = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -156,6 +159,6 @@ const profileSlice = createSlice({
   },
 });
 
-export const { setActiveSection, setUser, setIsAuthenticated } =
+export const { setActiveSection, setUser, setIsAuthenticated, setFavorites } =
   profileSlice.actions;
 export default profileSlice.reducer;

@@ -2,11 +2,12 @@ import { useSelector } from "react-redux";
 import editIcon from "../../data/images/edit.svg";
 import trashIcon from "../../data/images/trash-red.svg";
 import FavoriteItem from "./FavoriteItem";
+import useAuth from "../../components/useAuth";
 
 function ProfileFavorites() {
-  const user = useSelector((state) => state.profile.user);
-  console.log(user);
-  const items = JSON.parse(user[0].favorites) || [];
+  useAuth();
+  const favorites = useSelector((state) => state.profile.favorites);
+  const items = JSON.parse(favorites);
 
   return (
     <div className="w-full h-screen laptop:w-[70%] p-2 laptop:p-0 laptop:m-8 overflow-hidden">

@@ -13,7 +13,7 @@ function Product() {
   return (
     <div className="mt-16 desktop:mt-20">
       <Link
-        to="/products"
+        to={-1}
         className="hidden laptop:block mb-10 ml-6 cursor-pointer text-zinc-800 bg-zinc-300 w-fit px-2 py-1 hover:bg-zinc-400 transition-all duration-200 desktop:ml-0 rounded-lg"
       >
         &larr; Back
