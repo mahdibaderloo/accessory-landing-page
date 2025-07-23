@@ -13,8 +13,6 @@ import MiniLoader from "../../components/MiniLoader";
 function ProductOptions({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  let favoritesItems = [];
-
   const size = useSelector((state) => state.product.size);
   const color = useSelector((state) => state.product.color);
   const cart = useSelector((state) => state.cart.cart);
@@ -146,13 +144,13 @@ function ProductOptions({ product }) {
           onClick={handleAddToFavorites}
         >
           <img src={EmptyHeartIcon} alt="" className="w-5" />
-          <p className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
+          <div className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
             {isLoading ? (
               <MiniLoader color="bg-zinc-800" />
             ) : (
-              "Add to favorites"
+              <p>Add to favorites</p>
             )}
-          </p>
+          </div>
         </div>
       )}
       <div className="w-full flex gap-2">

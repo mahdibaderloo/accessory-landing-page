@@ -88,12 +88,12 @@ export async function updateFavorites(item, id) {
     return null;
   }
 
-  const currentFavorites = JSON.parse(userData?.favorites) || [];
+  const currentFavorites = JSON.stringify(userData?.favorites) || "[]";
   const updatedFavorites = [...currentFavorites, item];
 
   const { data, error } = await supabase
     .from("Users")
-    .update({ favorites: updatedFavorites })
+    .update({ favorites: JSON.stringify(updatedFavorites) })
     .eq("id", id)
     .select();
 
@@ -102,7 +102,7 @@ export async function updateFavorites(item, id) {
     return null;
   }
 
-  return data[0];
+  return { ...data[0], favorites: updateFavorites };
 }
 
 export async function removeFavorite({ itemId, userId }) {
@@ -117,7 +117,7 @@ export async function removeFavorite({ itemId, userId }) {
     return null;
   }
 
-  const userFavorites = JSON.parse(userData.favorites);
+  const userFavorites = JSON.stringify(userData.favorites) || "[]";
 
   const updatedFavorites = userFavorites.filter(
     (favorite) => favorite.id !== itemId
@@ -125,7 +125,7 @@ export async function removeFavorite({ itemId, userId }) {
 
   const { data, error } = await supabase
     .from("Users")
-    .update({ favorites: updatedFavorites })
+    .update({ favorites: JSON.stringify(updatedFavorites) })
     .eq("id", userId);
 
   if (error) {

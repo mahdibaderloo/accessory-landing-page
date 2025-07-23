@@ -24,7 +24,12 @@ function useAuth() {
             const userApi = await fetchUser(savedUser);
             dispatch(setUser(userApi));
             dispatch(setIsAuthenticated(true));
-            dispatch(setFavorites(userApi[0].favorites || []));
+
+            const parsedFavorites =
+              typeof userApi[0].favorites === "string"
+                ? JSON.parse(userApi[0].favorites)
+                : userApi[0].favorites || [];
+            dispatch(setFavorites(parsedFavorites));
           }
         } catch (err) {
           toast.error("Authentication failed: " + err.message);
