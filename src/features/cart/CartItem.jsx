@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import trashIcon from "../../data/images/trash.svg";
-import { decreaseItemCount, increaseItemCount } from "./cartSlice";
+import { decreaseItemCount, increaseItemCount, removeItem } from "./cartSlice";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -13,6 +13,10 @@ function CartItem({ item }) {
 
   function handleIncrease() {
     dispatch(increaseItemCount(id));
+  }
+
+  function handleRemove() {
+    dispatch(removeItem(id));
   }
 
   return (
@@ -42,6 +46,7 @@ function CartItem({ item }) {
         </div>
         <img
           src={trashIcon}
+          onClick={handleRemove}
           alt="trash"
           className="w-6 hidden cursor-pointer laptop:block"
         />
