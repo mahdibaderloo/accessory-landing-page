@@ -8,6 +8,7 @@ function Cart() {
 
   const cartItems = useSelector((state) => state.cart.cart);
   const isEmpty = useSelector((state) => state.cart.isEmpty);
+  console.log(isEmpty);
 
   const deliveryPrice = 15;
   const subTotal = cartItems

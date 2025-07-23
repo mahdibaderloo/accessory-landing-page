@@ -25,7 +25,7 @@ const cartSlice = createSlice({
     removeItem(state, action) {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
 
-      if (state.cart.length === 0) {
+      if (state.cart.length < 1) {
         state.isEmpty = true;
       }
 
