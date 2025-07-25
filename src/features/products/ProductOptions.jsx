@@ -32,8 +32,12 @@ function ProductOptions({ product }) {
 
   useEffect(
     function () {
-      const isInFavorites = favorites.find((item) => item.id === id);
-      setIsFavorite(!!isInFavorites);
+      if (Array.isArray(favorites)) {
+        const isInFavorites = favorites.find((item) => item.id === id);
+        setIsFavorite(!!isInFavorites);
+      } else {
+        setIsFavorite(false);
+      }
     },
     [id, favorites]
   );
@@ -113,8 +117,9 @@ function ProductOptions({ product }) {
   }
 
   function handleRemoveFromFavorites() {
+    const userId = user?.[0]?.id;
     if (favorites.find((item) => item.id === id)) {
-      dispatch(removeFromFavorites({ itemId: id, userId: user?.[0]?.id }))
+      dispatch(removeFromFavorites({ itemId: id, userId }))
         .unwrap()
         .then(() => {
           setIsFavorite(false);

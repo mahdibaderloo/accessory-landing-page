@@ -88,12 +88,25 @@ export async function updateFavorites(item, id) {
     return null;
   }
 
-  const currentFavorites = JSON.stringify(userData?.favorites) || "[]";
+  let currentFavorites = [];
+  try {
+    const raw = userData?.favorites;
+
+    if (typeof raw === "string") {
+      currentFavorites = JSON.parse(raw);
+    } else if (Array.isArray(raw)) {
+      currentFavorites = raw;
+    }
+  } catch (err) {
+    console.log(err);
+    currentFavorites = [];
+  }
+
   const updatedFavorites = [...currentFavorites, item];
 
   const { data, error } = await supabase
     .from("Users")
-    .update({ favorites: JSON.stringify(updatedFavorites) })
+    .update({ favorites: updatedFavorites })
     .eq("id", id)
     .select();
 
@@ -102,10 +115,10 @@ export async function updateFavorites(item, id) {
     return null;
   }
 
-  return { ...data[0], favorites: updateFavorites };
+  return updatedFavorites;
 }
 
-export async function removeFavorite({ itemId, userId }) {
+export async function removeFavorite(itemId, userId) {
   const { data: userData, error: fetchError } = await supabase
     .from("Users")
     .select("favorites")
@@ -117,15 +130,27 @@ export async function removeFavorite({ itemId, userId }) {
     return null;
   }
 
-  const userFavorites = JSON.stringify(userData.favorites) || "[]";
+  let currentFavorites = [];
+  try {
+    const raw = userData?.favorites;
 
-  const updatedFavorites = userFavorites.filter(
+    if (typeof raw === "string") {
+      currentFavorites = JSON.parse(raw);
+    } else if (Array.isArray(raw)) {
+      currentFavorites = raw;
+    }
+  } catch (err) {
+    console.log(err);
+    currentFavorites = [];
+  }
+
+  const updatedFavorites = currentFavorites.filter(
     (favorite) => favorite.id !== itemId
   );
 
   const { data, error } = await supabase
     .from("Users")
-    .update({ favorites: JSON.stringify(updatedFavorites) })
+    .update({ favorites: updatedFavorites })
     .eq("id", userId);
 
   if (error) {

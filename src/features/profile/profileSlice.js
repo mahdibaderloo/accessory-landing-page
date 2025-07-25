@@ -58,7 +58,7 @@ export const addToFavorites = createAsyncThunk(
       if (!favoriteData) {
         return rejectWithValue("There was a problem. Try again");
       }
-      return favoriteData.favorites;
+      return favoriteData[0];
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -69,7 +69,7 @@ export const removeFromFavorites = createAsyncThunk(
   "favorites/removeFromFavorites",
   async function ({ itemId, userId }, { rejectWithValue }) {
     try {
-      const updatedFavorites = await removeFavorite({ itemId, userId });
+      const updatedFavorites = await removeFavorite(itemId, userId);
 
       if (!updatedFavorites) {
         return rejectWithValue("Failed to remove favorite item.");
@@ -137,6 +137,7 @@ const profileSlice = createSlice({
       .addCase(addToFavorites.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.favorites = action.payload;
+        console.log(action.payload);
         toast.success("Product successfully added to favorites");
       })
       .addCase(addToFavorites.rejected, (state, action) => {
