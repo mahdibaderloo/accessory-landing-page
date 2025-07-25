@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   loginUser,
+  removeAllFavorites,
   removeFavorite,
   signUpUser,
   updateFavorites,
@@ -82,6 +83,23 @@ export const removeFromFavorites = createAsyncThunk(
   }
 );
 
+export const clearFavorites = createAsyncThunk(
+  "favorites/removeAllFavorites",
+  async function (userId, { rejectWithValue }) {
+    try {
+      const updatedFavorites = await removeAllFavorites(userId);
+
+      if (!updatedFavorites) {
+        return rejectWithValue("Failed to remove favorite item.");
+      }
+
+      return updatedFavorites;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 const profileSlice = createSlice({
   name: "profile",
   initialState,
@@ -137,7 +155,6 @@ const profileSlice = createSlice({
       .addCase(addToFavorites.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.favorites = action.payload;
-        console.log(action.payload);
         toast.success("Product successfully added to favorites");
       })
       .addCase(addToFavorites.rejected, (state, action) => {
@@ -154,6 +171,19 @@ const profileSlice = createSlice({
         toast.success("Product removed from favorites");
       })
       .addCase(removeFromFavorites.rejected, (state, action) => {
+        state.status = "failed";
+        toast.error(action.payload);
+      })
+
+      .addCase(clearFavorites.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(clearFavorites.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.favorites = action.payload;
+        toast.success("Favorites cleared");
+      })
+      .addCase(clearFavorites.rejected, (state, action) => {
         state.status = "failed";
         toast.error(action.payload);
       });

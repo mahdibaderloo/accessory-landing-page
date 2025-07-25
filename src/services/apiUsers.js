@@ -160,3 +160,18 @@ export async function removeFavorite(itemId, userId) {
 
   return updatedFavorites;
 }
+
+export async function removeAllFavorites(userId) {
+  const { data, error } = await supabase
+    .from("Users")
+    .update({ favorites: [] })
+    .eq("id", userId)
+    .select();
+
+  if (error) {
+    console.error(error.message);
+    return null;
+  }
+
+  return data;
+}
