@@ -17,6 +17,7 @@ function AppLayout() {
     /^\/cart$/,
     /^\/contact-us$/,
     /^\/product(\/.*)?$/,
+    /^\/order(\/.*)?$/,
   ].some((pattern) => pattern.test(location.pathname));
 
   return (
