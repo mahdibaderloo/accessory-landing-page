@@ -15,6 +15,7 @@ function AppLayout() {
   const hideFooter = [
     /^\/profile(\/.*)?$/,
     /^\/cart$/,
+    /^\/checkout$/,
     /^\/contact-us$/,
     /^\/product(\/.*)?$/,
     /^\/order(\/.*)?$/,

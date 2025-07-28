@@ -43,7 +43,7 @@ function Cart() {
           </div>
           <button
             className="bg-zinc-800 w-24 h-8 rounded-md text-zinc-100 mx-auto mb-4 mt-2 laptop:cursor-pointer laptop:w-40 laptop:h-12 laptop:rounded-xl laptop:text-2xl hover:bg-zinc-700 transition-all duration-200"
-            onClick={() => navigate("/order")}
+            onClick={() => navigate("/checkout")}
           >
             Checkout
           </button>

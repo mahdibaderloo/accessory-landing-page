@@ -16,6 +16,7 @@ import ProfileFavorites from "./features/profile/ProfileFavorites";
 import Notifications from "./features/profile/Notifications";
 import ContactUs from "./features/pages/ContactUs";
 import { Toaster } from "react-hot-toast";
+import Checkout from "./features/pages/Checkout";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ function App() {
         {
           path: "/order",
           element: <Order />,
+        },
+        {
+          path: "/checkout",
+          element: <Checkout />,
         },
         {
           path: "/Products",
