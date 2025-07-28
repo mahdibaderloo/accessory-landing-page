@@ -67,6 +67,10 @@ function App() {
               element: <ProfileOrders />,
             },
             {
+              path: "/profile/order/:orderId",
+              element: <Order />,
+            },
+            {
               path: "/profile/favorites",
               element: <ProfileFavorites />,
             },
