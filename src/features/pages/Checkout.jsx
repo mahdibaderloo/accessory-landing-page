@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 
 import checkIcon from "../../data/images/check.svg";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const [name, setName] = useState("");
@@ -11,6 +12,8 @@ function Checkout() {
   const [isCheck, setIsCheck] = useState(false);
 
   const user = useSelector((state) => state.profile.user);
+
+  const navigate = useNavigate();
 
   useEffect(
     function () {
@@ -34,6 +37,10 @@ function Checkout() {
     setName("");
     setMobile("");
     setAddress("");
+  }
+
+  function handleCancel() {
+    navigate("/cart");
   }
 
   return (
@@ -112,7 +119,10 @@ function Checkout() {
         <button className="bg-emerald-600 text-white px-3 py-1 rounded-sm hover:bg-emerald-700 transition-all duration-200 cursor-pointer">
           Save and pay
         </button>
-        <button className="bg-red-500 text-white px-3 py-1 rounded-sm hover:bg-red-600 transition-all duration-200 cursor-pointer">
+        <button
+          className="bg-red-500 text-white px-3 py-1 rounded-sm hover:bg-red-600 transition-all duration-200 cursor-pointer"
+          onClick={handleCancel}
+        >
           Cancel
         </button>
       </div>
