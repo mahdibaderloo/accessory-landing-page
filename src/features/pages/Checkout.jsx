@@ -7,6 +7,7 @@ function Checkout() {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
+  const [desc, setDesc] = useState("");
   const [isCheck, setIsCheck] = useState(false);
 
   const user = useSelector((state) => state.profile.user);
@@ -66,6 +67,19 @@ function Checkout() {
           placeholder="Add number"
           defaultValue={`+98 ${mobile || ""}`}
           onChange={(e) => setMobile(e.target.value)}
+          className="outline-none border-none w-1/2 bg-zinc-50 p-2 rounded-lg"
+        />
+      </div>
+      <div className="py-3 flex items-center flex-col laptop:flex-row justify-between border-b border-b-zinc-200">
+        <label htmlFor="description" className="font-medium text-zinc-800">
+          Description
+        </label>
+        <input
+          type="text"
+          id="description"
+          placeholder="Description..."
+          defaultValue={desc}
+          onChange={(e) => setDesc(e.target.value)}
           className="outline-none border-none w-1/2 bg-zinc-50 p-2 rounded-lg"
         />
       </div>
