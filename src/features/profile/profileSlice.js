@@ -103,7 +103,7 @@ export const clearFavorites = createAsyncThunk(
 
 export const changeName = createAsyncThunk(
   "profile/changeName",
-  async function (userId, name, { rejectWithValue }) {
+  async function ({ userId, name }, { rejectWithValue }) {
     try {
       const updatedName = await updateUsername(userId, name);
 
@@ -211,7 +211,7 @@ const profileSlice = createSlice({
       })
       .addCase(changeName.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.user.name = action.payload;
+        state.user = action.payload;
         toast.success("Your name updated");
       })
       .addCase(changeName.rejected, (state, action) => {

@@ -1,17 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
 import Loader from "../../components/Loader";
+import { changeName } from "./profileSlice";
 
 function ProfileForm() {
   const user = useSelector((state) => state.profile.user);
+  const status = useSelector((state) => state.profile.status);
+  const dispatch = useDispatch();
 
-  if (!user) return <Loader />;
+  if (!user || status === "loading") return <Loader />;
 
-  const { name, email, image, mobile, password, address } = user[0];
+  const { id, name, email, image, mobile, password, address } = user[0];
 
   function handleChangeName(e) {
-    console.log(e.target.value);
+    const newName = e.target.value.trim();
+    if (newName && newName !== name)
+      dispatch(changeName({ userId: id, name: newName }));
   }
 
   function handleChangeEmail(e) {}
