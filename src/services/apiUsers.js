@@ -190,3 +190,18 @@ export async function updateUsername(userId, name) {
 
   return data;
 }
+
+export async function updateEmail(userId, email) {
+  const { data, error } = await supabase
+    .from("Users")
+    .update({ email })
+    .eq("id", userId)
+    .select();
+
+  if (error) {
+    toast.error(error.message);
+    return null;
+  }
+
+  return data;
+}
