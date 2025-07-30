@@ -120,7 +120,7 @@ export const changeName = createAsyncThunk(
 );
 
 export const changeEmail = createAsyncThunk(
-  "profile/changeName",
+  "profile/changeEmail",
   async function ({ userId, email }, { rejectWithValue }) {
     try {
       const updateUserEmail = await updateEmail(userId, email);
@@ -233,6 +233,19 @@ const profileSlice = createSlice({
         toast.success("Your name updated");
       })
       .addCase(changeName.rejected, (state, action) => {
+        state.status = "failed";
+        toast.error(action.payload);
+      })
+
+      .addCase(changeEmail.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(changeEmail.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload;
+        toast.success("Your email updated");
+      })
+      .addCase(changeEmail.rejected, (state, action) => {
         state.status = "failed";
         toast.error(action.payload);
       });
