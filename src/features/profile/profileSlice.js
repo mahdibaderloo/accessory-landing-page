@@ -101,6 +101,23 @@ export const clearFavorites = createAsyncThunk(
   }
 );
 
+export const changeName = createAsyncThunk(
+  "profile/changeName",
+  async function (userId, name, { rejectWithValue }) {
+    try {
+      const updatedName = await updateUsername(userId, name);
+
+      if (!updatedName) {
+        return rejectWithValue("Failed to remove favorite item.");
+      }
+
+      return updatedName;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 const profileSlice = createSlice({
   name: "profile",
   initialState,
