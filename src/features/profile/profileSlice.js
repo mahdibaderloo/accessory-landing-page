@@ -5,6 +5,7 @@ import {
   removeFavorite,
   signUpUser,
   updateFavorites,
+  updateUsername,
 } from "../../services/apiUsers";
 import toast from "react-hot-toast";
 

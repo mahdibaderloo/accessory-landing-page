@@ -10,6 +10,20 @@ function ProfileForm() {
 
   const { name, email, image, mobile, password, address } = user[0];
 
+  function handleChangeName(e) {
+    console.log(e.target.value);
+  }
+
+  function handleChangeEmail(e) {}
+
+  function handleChangeMobile(e) {}
+
+  function handleChangePassword(e) {}
+
+  function handleChangeAddress(e) {}
+
+  // function handleChangeImage () {}
+
   return (
     <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
       <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
@@ -51,6 +65,7 @@ function ProfileForm() {
             id="username"
             placeholder="your name"
             defaultValue={name}
+            onBlur={handleChangeName}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -63,6 +78,7 @@ function ProfileForm() {
             id="email"
             placeholder="yourname@gmail.com"
             defaultValue={email}
+            onBlur={handleChangeEmail}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -75,6 +91,7 @@ function ProfileForm() {
             id="mobile"
             placeholder="Add number"
             defaultValue={`+98 ${mobile || ""}`}
+            onBlur={handleChangeMobile}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -87,6 +104,7 @@ function ProfileForm() {
             id="password"
             placeholder="########"
             defaultValue={password}
+            onBlur={handleChangePassword}
             className="outline-none border-none w-1/2"
           />
         </div>
@@ -100,6 +118,7 @@ function ProfileForm() {
             placeholder="Iran"
             dir="ltr"
             defaultValue={address}
+            onBlur={handleChangeAddress}
             className="outline-none border-none w-1/2"
           ></textarea>
         </div>

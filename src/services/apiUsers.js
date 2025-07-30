@@ -175,3 +175,18 @@ export async function removeAllFavorites(userId) {
 
   return data;
 }
+
+export async function updateUsername(userId, name) {
+  const { data, error } = await supabase
+    .from("Users")
+    .update({ name })
+    .eq("id", userId)
+    .select();
+
+  if (error) {
+    toast.error(error.message);
+    return null;
+  }
+
+  return data;
+}
