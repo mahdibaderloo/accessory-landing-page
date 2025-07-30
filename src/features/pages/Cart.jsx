@@ -7,12 +7,10 @@ function Cart() {
   const navigate = useNavigate();
 
   const cartItems = useSelector((state) => state.cart.cart);
-  const isEmpty = useSelector((state) => state.cart.isEmpty);
+  const deliveryPrice = useSelector((state) => state.cart.deliveryPrice);
+  const subTotal = useSelector((state) => state.cart.subTotal);
 
-  const deliveryPrice = 15;
-  const subTotal = cartItems
-    .reduce((acc, cur) => acc + cur.totalPrice, 0)
-    .toFixed(2);
+  const isEmpty = useSelector((state) => state.cart.isEmpty);
 
   const total = (Number(subTotal) + deliveryPrice).toFixed(2);
 
