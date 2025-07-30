@@ -4,6 +4,7 @@ import {
   removeAllFavorites,
   removeFavorite,
   signUpUser,
+  updateEmail,
   updateFavorites,
   updateUsername,
 } from "../../services/apiUsers";
@@ -112,6 +113,23 @@ export const changeName = createAsyncThunk(
       }
 
       return updatedName;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const changeEmail = createAsyncThunk(
+  "profile/changeName",
+  async function ({ userId, email }, { rejectWithValue }) {
+    try {
+      const updateUserEmail = await updateEmail(userId, email);
+
+      if (!updateUserEmail) {
+        return rejectWithValue("Failed to remove favorite item.");
+      }
+
+      return updateUserEmail;
     } catch (err) {
       return rejectWithValue(err.message);
     }
