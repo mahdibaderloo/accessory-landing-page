@@ -204,6 +204,19 @@ const profileSlice = createSlice({
       .addCase(clearFavorites.rejected, (state, action) => {
         state.status = "failed";
         toast.error(action.payload);
+      })
+
+      .addCase(changeName.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(changeName.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user.name = action.payload;
+        toast.success("Your name updated");
+      })
+      .addCase(changeName.rejected, (state, action) => {
+        state.status = "failed";
+        toast.error(action.payload);
       });
   },
 });
