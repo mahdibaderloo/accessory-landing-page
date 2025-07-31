@@ -136,6 +136,23 @@ export const changeEmail = createAsyncThunk(
   }
 );
 
+export const changeMobile = createAsyncThunk(
+  "profile/changeMobile",
+  async function ({ userId, mobile }, { rejectWithValue }) {
+    try {
+      const updateUserMobile = await updateEmail(userId, mobile);
+
+      if (!updateUserMobile) {
+        return rejectWithValue("Failed to remove favorite item.");
+      }
+
+      return updateUserMobile;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 const profileSlice = createSlice({
   name: "profile",
   initialState,
