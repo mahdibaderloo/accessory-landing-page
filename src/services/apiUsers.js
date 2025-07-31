@@ -205,3 +205,18 @@ export async function updateEmail(userId, email) {
 
   return data;
 }
+
+export async function updateMobile(userId, mobile) {
+  const { data, error } = await supabase
+    .from("Users")
+    .update({ mobile })
+    .eq("id", userId)
+    .select();
+
+  if (error) {
+    toast.error(error.message);
+    return null;
+  }
+
+  return data;
+}
