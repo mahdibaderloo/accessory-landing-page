@@ -265,6 +265,19 @@ const profileSlice = createSlice({
       .addCase(changeEmail.rejected, (state, action) => {
         state.status = "failed";
         toast.error(action.payload);
+      })
+
+      .addCase(changeMobile.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(changeMobile.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload;
+        toast.success("Your mobile number updated");
+      })
+      .addCase(changeMobile.rejected, (state, action) => {
+        state.status = "failed";
+        toast.error(action.payload);
       });
   },
 });
