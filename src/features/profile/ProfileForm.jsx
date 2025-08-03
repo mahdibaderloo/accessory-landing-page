@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
 import Loader from "../../components/Loader";
-import { changeMobile, changeName } from "./profileSlice";
+import { changeEmail, changeMobile, changeName } from "./profileSlice";
 import toast from "react-hot-toast";
 
 function ProfileForm() {
@@ -20,7 +20,18 @@ function ProfileForm() {
       dispatch(changeName({ userId: id, name: newName }));
   }
 
-  function handleChangeEmail(e) {}
+  function handleChangeEmail(e) {
+    const newEmail = e.target.value;
+    if (
+      newEmail &&
+      newEmail !== email &&
+      /^[a-zA-Z0-9._%+-]+@(gmail|yahoo)\.com$/.test(newEmail)
+    ) {
+      dispatch(changeEmail({ userId: id, email: newEmail }));
+    } else {
+      toast.error("Please enter a valid email");
+    }
+  }
 
   function handleChangeMobile(e) {
     const newMobile = e.target.value.trim();
