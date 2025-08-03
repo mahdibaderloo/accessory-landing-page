@@ -26,6 +26,7 @@ function Checkout() {
   if (!user) return <Loader />;
 
   const { name: nameApi, mobile: mobileApi, address: addressApi } = user[0];
+  console.log(mobileApi);
 
   function myInformation() {
     setName(nameApi);
@@ -72,7 +73,7 @@ function Checkout() {
           type="text"
           id="mobile"
           placeholder="Add number"
-          defaultValue={`+98 ${mobile || ""}`}
+          defaultValue={mobile}
           onChange={(e) => setMobile(e.target.value)}
           className="outline-none border-none w-1/2 bg-zinc-50 p-2 rounded-lg"
         />
