@@ -4,6 +4,7 @@ import {
   removeAllFavorites,
   removeFavorite,
   signUpUser,
+  updateAddress,
   updateEmail,
   updateFavorites,
   updateMobile,
@@ -156,9 +157,9 @@ export const changeMobile = createAsyncThunk(
 
 export const changeAddress = createAsyncThunk(
   "profile/changeAddress",
-  async function ({ userId, mobile }, { rejectWithValue }) {
+  async function ({ userId, address }, { rejectWithValue }) {
     try {
-      const updateUserAddress = await updateMobile(userId, mobile);
+      const updateUserAddress = await updateAddress(userId, address);
 
       if (!updateUserAddress) {
         return rejectWithValue("Failed to remove favorite item.");

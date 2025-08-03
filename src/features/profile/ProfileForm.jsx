@@ -2,7 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
 import Loader from "../../components/Loader";
-import { changeEmail, changeMobile, changeName } from "./profileSlice";
+import {
+  changeAddress,
+  changeEmail,
+  changeMobile,
+  changeName,
+} from "./profileSlice";
 import toast from "react-hot-toast";
 
 function ProfileForm() {
@@ -48,7 +53,12 @@ function ProfileForm() {
 
   function handleChangePassword(e) {}
 
-  function handleChangeAddress(e) {}
+  function handleChangeAddress(e) {
+    const newAddress = e.target.value;
+    if (newAddress.trim() && newAddress !== address) {
+      dispatch(changeAddress({ userId: id, address: newAddress }));
+    }
+  }
 
   // function handleChangeImage () {}
 
