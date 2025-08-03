@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import pencilIcon from "../../data/images/pencil.svg";
 import Loader from "../../components/Loader";
-import { changeName } from "./profileSlice";
+import { changeMobile, changeName } from "./profileSlice";
+import toast from "react-hot-toast";
 
 function ProfileForm() {
   const user = useSelector((state) => state.profile.user);
@@ -21,7 +22,18 @@ function ProfileForm() {
 
   function handleChangeEmail(e) {}
 
-  function handleChangeMobile(e) {}
+  function handleChangeMobile(e) {
+    const newMobile = e.target.value.trim();
+    if (
+      newMobile &&
+      newMobile !== mobile &&
+      /^(?:\+98|0)?9[0-9]{9}$/.test(newMobile)
+    ) {
+      dispatch(changeMobile({ userId: id, mobile: newMobile }));
+    } else {
+      toast.error("Please enter a valid mobile number");
+    }
+  }
 
   function handleChangePassword(e) {}
 
@@ -95,7 +107,7 @@ function ProfileForm() {
             type="text"
             id="mobile"
             placeholder="Add number"
-            defaultValue={`+98 ${mobile || ""}`}
+            defaultValue={mobile}
             onBlur={handleChangeMobile}
             className="outline-none border-none w-1/2"
           />

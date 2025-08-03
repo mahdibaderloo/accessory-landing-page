@@ -6,6 +6,7 @@ import {
   signUpUser,
   updateEmail,
   updateFavorites,
+  updateMobile,
   updateUsername,
 } from "../../services/apiUsers";
 import toast from "react-hot-toast";
@@ -140,7 +141,7 @@ export const changeMobile = createAsyncThunk(
   "profile/changeMobile",
   async function ({ userId, mobile }, { rejectWithValue }) {
     try {
-      const updateUserMobile = await updateEmail(userId, mobile);
+      const updateUserMobile = await updateMobile(userId, mobile);
 
       if (!updateUserMobile) {
         return rejectWithValue("Failed to remove favorite item.");
