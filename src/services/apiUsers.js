@@ -235,3 +235,45 @@ export async function updateAddress(userId, address) {
 
   return data;
 }
+
+export async function updateOrders(userId, order) {
+  const { data: userData, error: ordersError } = await supabase
+    .from("Users")
+    .select("orders")
+    .eq("id", userId)
+    .single();
+
+  if (ordersError) {
+    console.log(ordersError.message);
+    return null;
+  }
+
+  let currentOrders = [];
+  try {
+    const raw = userData?.orders;
+
+    if (typeof raw === "string") {
+      currentOrders = JSON.parse(raw);
+    } else if (Array.isArray(raw)) {
+      currentOrders = raw;
+    }
+  } catch (err) {
+    console.log(err);
+    currentOrders = [];
+  }
+
+  const updatedOrders = [...currentOrders, order];
+
+  const { data, error } = await supabase
+    .from("Users")
+    .update({ orders: updatedOrders })
+    .eq("id", userId)
+    .select();
+
+  if (error) {
+    console.log(error.message);
+    return null;
+  }
+
+  return updatedOrders;
+}

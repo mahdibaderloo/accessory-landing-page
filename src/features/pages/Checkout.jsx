@@ -45,6 +45,10 @@ function Checkout() {
     setAddress("");
   }
 
+  function handleSave(e) {
+    e.preventDefault();
+  }
+
   function handleCancel() {
     navigate("/cart");
   }
@@ -150,7 +154,11 @@ function Checkout() {
           </label>
         </div>
         <div className="py-2 flex flex-col gap-4 laptop:flex-row justify-end">
-          <button className="bg-emerald-600 text-white px-3 py-1 rounded-sm hover:bg-emerald-700 transition-all duration-200 cursor-pointer">
+          <button
+            type="submit"
+            className="bg-emerald-600 text-white px-3 py-1 rounded-sm hover:bg-emerald-700 transition-all duration-200 cursor-pointer"
+            onClick={handleSave}
+          >
             Save and pay
           </button>
           <button
