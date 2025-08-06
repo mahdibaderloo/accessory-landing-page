@@ -21,8 +21,8 @@ function ProfileOrders() {
           </div>
           <ul className="divide-y-1 divide-zinc-800">
             {JSON.parse(orders)
-              .reverse()
-              .map((order) => (
+              ?.reverse()
+              ?.map((order) => (
                 <OrderItem order={order} key={order.orderId} />
               ))}
           </ul>
