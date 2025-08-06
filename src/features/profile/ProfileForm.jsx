@@ -51,7 +51,7 @@ function ProfileForm() {
     }
   }
 
-  function handleChangePassword(e) {}
+  // function handleChangePassword(e) {}
 
   function handleChangeAddress(e) {
     const newAddress = e.target.value;
@@ -133,7 +133,7 @@ function ProfileForm() {
             className="outline-none border-none w-1/2"
           />
         </div>
-        <div className="py-2 flex flex-col laptop:flex-row justify-between">
+        {/* <div className="py-2 flex flex-col laptop:flex-row justify-between">
           <label htmlFor="password" className="font-medium text-zinc-800">
             Password
           </label>
@@ -145,7 +145,7 @@ function ProfileForm() {
             onBlur={handleChangePassword}
             className="outline-none border-none w-1/2"
           />
-        </div>
+        </div> */}
         <div className="py-2 flex flex-col laptop:flex-row justify-between">
           <label htmlFor="address" className="font-medium text-zinc-800">
             Address
