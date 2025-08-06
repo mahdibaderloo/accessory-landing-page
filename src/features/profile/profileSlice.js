@@ -270,7 +270,7 @@ const profileSlice = createSlice({
       })
       .addCase(clearFavorites.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.favorites = action.payload;
+        state.favorites = Array.isArray(action.payload) ? action.payload : [];
         toast.success("Favorites cleared");
       })
       .addCase(clearFavorites.rejected, (state, action) => {

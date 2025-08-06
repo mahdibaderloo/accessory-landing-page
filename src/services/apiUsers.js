@@ -166,14 +166,14 @@ export async function removeAllFavorites(userId) {
     .from("Users")
     .update({ favorites: [] })
     .eq("id", userId)
-    .select();
+    .select("favorites");
 
   if (error) {
     console.error(error.message);
-    return null;
+    return [];
   }
 
-  return data;
+  return data?.[0]?.favorites ?? [];
 }
 
 export async function updateUsername(userId, name) {

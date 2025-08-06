@@ -26,8 +26,6 @@ function Categories({ items }) {
     watchesImage,
   };
 
-  console.log(uniqueCategories);
-
   function handleClick(category) {
     dispatch(showCategoryItems(category));
 

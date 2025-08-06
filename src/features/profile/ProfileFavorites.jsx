@@ -10,7 +10,7 @@ import Loader from "../../components/Loader";
 function ProfileFavorites() {
   useAuth();
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.profile.favorites);
+  const favorites = useSelector((state) => state.profile.favorites) || [];
   const user = useSelector((state) => state.profile.user);
   const status = useSelector((state) => state.profile.status);
 
@@ -41,9 +41,8 @@ function ProfileFavorites() {
         </div>
       </div>
       <ul className="w-full flex justify-center gap-2 flex-wrap mt-4 p-2 overflow-y-scroll laptop:overflow-y-auto">
-        {favorites.map((item) => (
-          <FavoriteItem item={item} key={item.id} />
-        ))}
+        {Array.isArray(favorites) &&
+          favorites?.map((item) => <FavoriteItem item={item} key={item.id} />)}
       </ul>
     </div>
   );
