@@ -1,13 +1,17 @@
 import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
+import Empty from "./Empty";
 
 function ProfileOrders() {
   const user = useSelector((state) => state.profile.user);
   const status = useSelector((state) => state.profile.status);
 
+  const { orders } = user[0];
+
   if (!user || status === "loading") return <Loader />;
 
-  const { orders } = user[0];
+  if (!JSON.parse(orders))
+    return <Empty>You have not placed an order yet!</Empty>;
 
   return (
     <div className="w-[95%] laptop:w-[70%] m-1 mx-auto laptop:m-8 rounded-sm laptop:rounded-3xl overflow-hidden">
