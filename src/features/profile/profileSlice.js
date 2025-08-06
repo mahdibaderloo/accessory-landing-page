@@ -8,6 +8,7 @@ import {
   updateEmail,
   updateFavorites,
   updateMobile,
+  updateOrders,
   updateUsername,
 } from "../../services/apiUsers";
 import toast from "react-hot-toast";
@@ -166,6 +167,23 @@ export const changeAddress = createAsyncThunk(
       }
 
       return updateUserAddress;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const addToOrders = createAsyncThunk(
+  "profile/addToOrders",
+  async function ({ userId, order }, { rejectWithValue }) {
+    try {
+      const updateUserOrders = await updateOrders(userId, order);
+
+      if (!updateUserOrders) {
+        return rejectWithValue("Failed to remove favorite item.");
+      }
+
+      return updateUserOrders;
     } catch (err) {
       return rejectWithValue(err.message);
     }
