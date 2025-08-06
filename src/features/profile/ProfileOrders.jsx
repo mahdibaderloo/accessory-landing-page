@@ -20,9 +20,11 @@ function ProfileOrders() {
             <p className="p-1 laptop:p-2 ">Desc</p>
           </div>
           <ul className="divide-y-1 divide-zinc-800">
-            {JSON.parse(orders).map((order) => (
-              <OrderItem order={order} key={order.orderId} />
-            ))}
+            {JSON.parse(orders)
+              .reverse()
+              .map((order) => (
+                <OrderItem order={order} key={order.orderId} />
+              ))}
           </ul>
         </div>
       </div>
