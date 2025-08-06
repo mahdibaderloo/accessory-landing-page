@@ -8,7 +8,6 @@ function ProfileOrders() {
   if (!user || status === "loading") return <Loader />;
 
   const { orders } = user[0];
-  console.log(JSON.parse(orders));
 
   return (
     <div className="w-[95%] laptop:w-[70%] m-1 mx-auto laptop:m-8 rounded-sm laptop:rounded-3xl overflow-hidden">

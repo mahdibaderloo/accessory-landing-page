@@ -36,7 +36,6 @@ function Checkout() {
   if (!user) return <Loader />;
 
   const { id, name: nameApi, mobile: mobileApi, address: addressApi } = user[0];
-  console.log(id);
 
   function myInformation() {
     setName(nameApi);
@@ -49,7 +48,7 @@ function Checkout() {
     setMobile("");
     setAddress("");
   }
-  console.log(cart.cart.length);
+
   function handleSave(e) {
     e.preventDefault();
 
@@ -64,7 +63,7 @@ function Checkout() {
         username: name,
         mobile,
         address,
-        itemsCount: cart.cart.length,
+        itemsCount: cart.cart.reduce((acc, cur) => acc + cur.count, 0),
       };
       dispatch(addToOrders({ userId: id, order: newOrder }));
       dispatch(clearCart());
@@ -95,16 +94,16 @@ function Checkout() {
         <ul className="flex items-center gap-2 text-zinc-800 mt-2">
           <p className="font-medium">Order Items: </p>
           {cart.cart?.map((item) => (
-            <li>{item.name},</li>
+            <li key={item.id}>{item.name},</li>
           ))}
         </ul>
         <div className="flex items-center gap-2 text-zinc-800 mt-2">
           <p className="font-medium">Total order price:</p>
-          <span>{`${cart.subTotal}$ (sub total) + ${
+          <span>{`$${cart.subTotal} (sub total) + $${
             cart.deliveryPrice
-          }$ (delivery) = ${(
+          } (delivery) = $${(
             Number(cart.subTotal) + cart.deliveryPrice
-          ).toFixed(2)}$`}</span>
+          ).toFixed(2)}`}</span>
         </div>
       </div>
 
