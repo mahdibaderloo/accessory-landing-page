@@ -7,7 +7,7 @@ const initialState = {
     .toFixed(2),
   deliveryPrice: 15,
   status: "idle",
-  isEmpty: JSON.parse(localStorage.getItem("cart")) ? false : true,
+  isEmpty: JSON.parse(localStorage.getItem("cart")).length ? false : true,
 };
 
 function calcSubTotal(subTotal, cart) {
