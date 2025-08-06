@@ -26,8 +26,8 @@ function Home() {
   );
 
   function handleClick() {
-    navigate("/products");
     setSearchParams({});
+    navigate("/products");
   }
 
   const searchTerm = searchParams.get("search-for")?.toLowerCase() || "";
