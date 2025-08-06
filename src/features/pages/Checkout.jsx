@@ -1,10 +1,13 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import checkIcon from "../../data/images/check.svg";
 import orderIcon from "../../data/images/order.svg";
+import toast from "react-hot-toast";
+import { addToOrders } from "../profile/profileSlice";
+import { clearCart } from "../cart/cartSlice";
 
 function Checkout() {
   const [name, setName] = useState("");
@@ -20,6 +23,7 @@ function Checkout() {
   const cart = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(
     function () {
@@ -31,7 +35,8 @@ function Checkout() {
 
   if (!user) return <Loader />;
 
-  const { name: nameApi, mobile: mobileApi, address: addressApi } = user[0];
+  const { id, name: nameApi, mobile: mobileApi, address: addressApi } = user[0];
+  console.log(id);
 
   function myInformation() {
     setName(nameApi);
@@ -44,9 +49,30 @@ function Checkout() {
     setMobile("");
     setAddress("");
   }
-
+  console.log(cart.cart.length);
   function handleSave(e) {
     e.preventDefault();
+
+    if (name && mobile && desc && address) {
+      const newOrder = {
+        orderId,
+        items: cart.cart,
+        subTotal: cart.subTotal,
+        deliveryPrice: cart.deliveryPrice,
+        totalPrice: Number(cart.subTotal) + cart.deliveryPrice,
+        description: desc,
+        username: name,
+        mobile,
+        address,
+        itemsCount: cart.cart.length,
+      };
+      dispatch(addToOrders({ userId: id, order: newOrder }));
+      dispatch(clearCart());
+      toast.success("Thank you for your purchase");
+      navigate("/profile/orders");
+    } else {
+      toast.error("Please enter the required information in full.");
+    }
   }
 
   function handleCancel() {
