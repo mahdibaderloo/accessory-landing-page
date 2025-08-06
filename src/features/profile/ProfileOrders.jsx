@@ -1,4 +1,15 @@
+import { useSelector } from "react-redux";
+import OrderItem from "./OrderItem";
+
 function ProfileOrders() {
+  const user = useSelector((state) => state.profile.user);
+  const status = useSelector((state) => state.profile.status);
+
+  if (!user || status === "loading") return <Loader />;
+
+  const { orders } = user[0];
+  console.log(JSON.parse(orders));
+
   return (
     <div className="w-[95%] laptop:w-[70%] m-1 mx-auto laptop:m-8 rounded-sm laptop:rounded-3xl overflow-hidden">
       <div className="overflow-x-auto">
@@ -10,12 +21,9 @@ function ProfileOrders() {
             <p className="p-1 laptop:p-2 ">Desc</p>
           </div>
           <ul className="divide-y-1 divide-zinc-800">
-            <li className="grid grid-cols-4 bg-zinc-200 divide-x-2 divide-zinc-100 text-sm laptop:text-md text-zinc-80 laptop:cursor-pointer">
-              <p className="p-2 break-words">498203hj398</p>
-              <p className="p-2 break-words">2</p>
-              <p className="p-2 break-words">$1200</p>
-              <p className="p-2 break-words">For my parents</p>
-            </li>
+            {JSON.parse(orders).map((order) => (
+              <OrderItem order={order} key={order.orderId} />
+            ))}
           </ul>
         </div>
       </div>
