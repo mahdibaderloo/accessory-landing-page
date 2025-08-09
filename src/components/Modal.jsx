@@ -1,7 +1,8 @@
+import { createPortal } from "react-dom";
 import closeIcon from "../data/images/close-square.svg";
 
 function Modal({ children }) {
-  return (
+  return createPortal(
     <div className="absolute left-0 top-0 w-full h-screen font-barlow">
       <div className="blur-md bg-zinc-200 opacity-90 w-full h-screen"></div>
       <div className="w-full h-screen absolute top-0 left-0 flex justify-center items-center">
@@ -20,7 +21,8 @@ function Modal({ children }) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

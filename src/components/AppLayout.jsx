@@ -24,7 +24,6 @@ function AppLayout() {
 
   return (
     <>
-      <Modal>Are you sure?</Modal>
       <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
         {/* <Header /> */}
         <Sidebar />
