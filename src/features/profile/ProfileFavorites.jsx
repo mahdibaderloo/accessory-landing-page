@@ -6,6 +6,8 @@ import useAuth from "../../components/useAuth";
 import { clearFavorites } from "./profileSlice";
 import Empty from "./Empty";
 import Loader from "../../components/Loader";
+import Modal from "../../components/Modal";
+import { openModal } from "../../components/modalSlice";
 
 function ProfileFavorites() {
   useAuth();
@@ -36,7 +38,7 @@ function ProfileFavorites() {
             src={trashIcon}
             alt="icon"
             className="w-4 laptop:w-6 laptop:cursor-pointer"
-            onClick={handleRemoveAll}
+            onClick={() => dispatch(openModal())}
           />
         </div>
       </div>
@@ -44,6 +46,10 @@ function ProfileFavorites() {
         {Array.isArray(favorites) &&
           favorites?.map((item) => <FavoriteItem item={item} key={item.id} />)}
       </ul>
+
+      <Modal onConfirm={handleRemoveAll}>
+        Are you sure you want to remove all favorites?
+      </Modal>
     </div>
   );
 }

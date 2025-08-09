@@ -24,9 +24,8 @@ function AppLayout() {
 
   return (
     <>
-      <Modal>hey</Modal>
       <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
-        {/* <Header /> */}
+        <Header />
         <Sidebar />
 
         {isLoading ? <Loader /> : <Outlet />}

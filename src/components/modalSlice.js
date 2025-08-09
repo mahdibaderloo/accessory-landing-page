@@ -2,20 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isOpen: false,
-  onConfirm: null,
 };
 
 const modalSlice = createSlice({
   name: "modal",
   initialState,
   reducers: {
-    openModal(state, action) {
+    openModal(state) {
       state.isOpen = true;
-      state.onConfirm = action.payload.onConfirm || null;
     },
     closeModal(state) {
       state.isOpen = false;
-      state.onConfirm = null;
     },
   },
 });
