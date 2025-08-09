@@ -4,6 +4,7 @@ import profileReducer from "./src/features/profile/profileSlice";
 import categoryReducer from "./src/features/products/categorySlice";
 import productReducer from "./src/features/products/productSlice";
 import cartReducer from "./src/features/cart/cartSlice";
+import modalReducer from "./src/components/modalSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     category: categoryReducer,
     product: productReducer,
     cart: cartReducer,
+    modal: modalReducer,
   },
 });
 
