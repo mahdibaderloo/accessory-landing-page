@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import Loader from "./Loader";
 import Footer from "./Footer";
 import useAuth from "./useAuth";
+import Modal from "./Modal";
 
 function AppLayout() {
   const navigation = useNavigation();
@@ -23,8 +24,9 @@ function AppLayout() {
 
   return (
     <>
+      <Modal>Are you sure?</Modal>
       <div className="font-barlow desktop:max-w-[1536px] desktop:mx-auto overflow-x-hidden">
-        <Header />
+        {/* <Header /> */}
         <Sidebar />
 
         {isLoading ? <Loader /> : <Outlet />}

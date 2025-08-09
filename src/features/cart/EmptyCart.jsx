@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function EmptyCart() {
   return (
-    <div className="w-full h-screen mt-16 flex flex-col justify-center items-center gap-6">
+    <div className="w-full h-screen flex flex-col justify-center items-center gap-6">
       <p className="text-4xl font-semibold">Cart is empty!</p>
       <Link
         to="/products"
