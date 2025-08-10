@@ -255,6 +255,23 @@ const profileSlice = createSlice({
         toast.error(action.payload);
       })
 
+      .addCase(logOut.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(logOut.fulfilled, (state) => {
+        state.status = "succeeded";
+        state.user = null;
+        state.isAuthenticated = false;
+        state.notifications = [];
+        state.favorites = [];
+        toast.success("You're successfully logged out");
+      })
+      .addCase(logOut.rejected, (state, action) => {
+        state.status = "Failed";
+        state.isAuthenticated = true;
+        toast.error(action.payload);
+      })
+
       .addCase(addToFavorites.pending, (state) => {
         state.status = "loading";
       })
