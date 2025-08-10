@@ -16,6 +16,7 @@ import toast from "react-hot-toast";
 const initialState = {
   activeSection: "profile",
   user: null,
+  notifications: [],
   favorites: [],
   status: "idle",
   isAuthenticated: false,
@@ -200,6 +201,9 @@ const profileSlice = createSlice({
     setUser(state, action) {
       state.user = action.payload;
     },
+    setNotifications(state, action) {
+      state.notifications = action.payload;
+    },
     setIsAuthenticated(state, action) {
       state.isAuthenticated = action.payload;
     },
@@ -332,6 +336,11 @@ const profileSlice = createSlice({
   },
 });
 
-export const { setActiveSection, setUser, setIsAuthenticated, setFavorites } =
-  profileSlice.actions;
+export const {
+  setActiveSection,
+  setUser,
+  setIsAuthenticated,
+  setFavorites,
+  setNotifications,
+} = profileSlice.actions;
 export default profileSlice.reducer;
