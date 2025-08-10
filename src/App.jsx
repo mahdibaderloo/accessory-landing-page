@@ -13,7 +13,9 @@ import Profile from "./features/pages/Profile";
 import ProfileForm from "./features/profile/ProfileForm";
 import ProfileOrders from "./features/profile/ProfileOrders";
 import ProfileFavorites from "./features/profile/ProfileFavorites";
-import Notifications from "./features/profile/Notifications";
+import Notifications, {
+  loader as notificationsLoader,
+} from "./features/profile/Notifications";
 import ContactUs from "./features/pages/ContactUs";
 import { Toaster } from "react-hot-toast";
 import Checkout from "./features/pages/Checkout";
@@ -78,6 +80,7 @@ function App() {
             {
               path: "/profile/notifications",
               element: <Notifications />,
+              loader: notificationsLoader,
             },
             {
               path: "/profile/notification/:notificationId",
