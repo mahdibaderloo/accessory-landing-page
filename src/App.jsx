@@ -17,6 +17,7 @@ import Notifications from "./features/profile/Notifications";
 import ContactUs from "./features/pages/ContactUs";
 import { Toaster } from "react-hot-toast";
 import Checkout from "./features/pages/Checkout";
+import Notification from "./features/profile/Notification";
 
 function App() {
   const router = createBrowserRouter([
@@ -77,6 +78,10 @@ function App() {
             {
               path: "/profile/notifications",
               element: <Notifications />,
+            },
+            {
+              path: "/profile/notification/:notificationId",
+              element: <Notification />,
             },
           ],
         },
