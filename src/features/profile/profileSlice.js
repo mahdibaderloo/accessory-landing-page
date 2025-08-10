@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   loginUser,
+  logOutUser,
   removeAllFavorites,
   removeFavorite,
   signUpUser,
@@ -50,6 +51,17 @@ export const login = createAsyncThunk(
         return rejectWithValue("Login filed. Please try again");
       }
       return user;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk(
+  "auth/logOutUser",
+  async function ({ rejectWithValue }) {
+    try {
+      await logOutUser();
     } catch (err) {
       return rejectWithValue(err.message);
     }
