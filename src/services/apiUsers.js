@@ -51,7 +51,7 @@ export async function logOutUser() {
 
   if (error) {
     toast.error(error.message);
-    return null;
+    throw new Error(error.message);
   }
 }
 
