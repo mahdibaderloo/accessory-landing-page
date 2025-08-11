@@ -1,10 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import notificationIcon from "../../data/images/notification.svg";
 import trashIcon from "../../data/images/trash.svg";
 
 function NotificationItem({ notification }) {
-  const { title } = notification;
+  const navigate = useNavigate();
 
-  function handleOpenNotification() {}
+  const { id, title } = notification;
+
+  function handleOpenNotification() {
+    navigate(`/profile/notification/${id}`);
+  }
 
   return (
     <li
