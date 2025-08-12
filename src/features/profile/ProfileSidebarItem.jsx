@@ -3,6 +3,7 @@ import { setActiveSection } from "./profileSlice";
 import { Link } from "react-router-dom";
 
 function ProfileSidebarItem({ item }) {
+  const notifications = useSelector((state) => state.profile.notifications);
   const active = useSelector((state) => state.profile.activeSection);
   const dispatch = useDispatch();
 
@@ -18,6 +19,11 @@ function ProfileSidebarItem({ item }) {
     >
       <img src={icon} alt="icon" className="w-6 laptop:w-8" />
       <span className="font-semibold">{label}</span>
+      {id === "notifications" && notifications?.length > 0 && (
+        <span className="text-[14px] bg-red-500 text-zinc-50 w-3.5 h-3.5 text-center rounded-full ml-auto">
+          {notifications.length}
+        </span>
+      )}
     </Link>
   );
 }
