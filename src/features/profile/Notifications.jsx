@@ -5,7 +5,7 @@ function Notifications() {
   const notifications = useSelector((state) => state.profile.notifications);
 
   return (
-    <ul className="w-[95%] h-screen mx-auto laptop:mx-8 laptop:w-[70%] m-8">
+    <ul className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
       {notifications?.map((notification) => (
         <NotificationItem notification={notification} key={notification.id} />
       ))}
