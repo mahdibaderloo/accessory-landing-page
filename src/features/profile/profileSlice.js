@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  getImageUrl,
   loginUser,
   logOutUser,
   removeAllFavorites,
@@ -11,8 +12,10 @@ import {
   updateMobile,
   updateOrders,
   updateUsername,
+  uploadImage,
 } from "../../services/apiUsers";
 import toast from "react-hot-toast";
+import supabase from "../../services/supabase";
 
 const initialState = {
   activeSection: "profile",
@@ -197,6 +200,37 @@ export const addToOrders = createAsyncThunk(
       }
 
       return updateUserOrders;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const uploadUserAvatar = createAsyncThunk(
+  "profile/uploadAvatar",
+  async function ({ file, userId }, { rejectWithValue }) {
+    try {
+      const uploadedPath = await uploadImage(file);
+      if (!uploadedPath) {
+        return rejectWithValue("Upload failed");
+      }
+
+      const { data: storedImage } = supabase.storage
+        .from("avatars")
+        .getPublicUrl(uploadedPath);
+
+      const publicUrl = storedImage.publicUrl;
+
+      const { error: urlError } = await supabase
+        .from("users")
+        .update({ image: publicUrl })
+        .eq("id", userId);
+
+      if (urlError) {
+        return rejectWithValue(urlError.message);
+      }
+
+      return publicUrl;
     } catch (err) {
       return rejectWithValue(err.message);
     }

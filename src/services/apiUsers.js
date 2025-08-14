@@ -299,5 +299,5 @@ export async function uploadImage(file) {
     return null;
   }
 
-  return data;
+  return data.path;
 }
