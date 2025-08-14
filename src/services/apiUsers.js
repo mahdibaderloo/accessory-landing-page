@@ -301,3 +301,18 @@ export async function uploadImage(file) {
 
   return data.path;
 }
+
+export async function storeImage(path, userId) {
+  const { data } = supabase.storage.from("avatars").getPublicUrl(path);
+
+  const publicUrl = data.publicUrl;
+
+  const { error: urlError } = await supabase
+    .from("users")
+    .update({ image: publicUrl })
+    .eq("id", userId);
+
+  if (urlError) {
+    throw new Error(urlError.message);
+  }
+}

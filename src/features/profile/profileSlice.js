@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
-  getImageUrl,
   getUser,
   loginUser,
   logOutUser,
   removeAllFavorites,
   removeFavorite,
   signUpUser,
+  storeImage,
   updateAddress,
   updateEmail,
   updateFavorites,
@@ -216,20 +216,7 @@ export const uploadUserAvatar = createAsyncThunk(
         return rejectWithValue("Upload failed");
       }
 
-      const { data: storedImage } = supabase.storage
-        .from("avatars")
-        .getPublicUrl(uploadedPath);
-
-      const publicUrl = storedImage.publicUrl;
-
-      const { error: urlError } = await supabase
-        .from("users")
-        .update({ image: publicUrl })
-        .eq("id", userId);
-
-      if (urlError) {
-        return rejectWithValue(urlError.message);
-      }
+      await storeImage(uploadedPath, userId);
 
       const updatedUser = await getUser(userId);
       return updatedUser;
