@@ -19,18 +19,18 @@ function Subscribe() {
         action=""
         className="flex justify-center items-center gap-2 mt-6 laptop:justify-start laptop:pl-7"
       >
-        <div className="bg-zinc-200 text-zinc-800 flex items-center text-sm p-1 laptop:p-2 rounded-lg w-[90%] laptop:w-[300px] desktop:w-[500px]">
+        <div className="bg-zinc-100 text-zinc-800 flex items-center text-sm p-1 laptop:p-2 rounded-lg w-[90%] laptop:w-[300px] desktop:w-[500px]">
           <img src={emailIcon} alt="icon" className="w-5" />
           <input
             type="text"
-            className="outline-none border-none pl-1 w-full text-[14px] laptop:text-[16px] desktop:text-sm autofill:bg-zinc-200 autofill:text-zinc-800"
+            className="outline-none border-none pl-1 w-full text-[14px] laptop:text-[16px] desktop:text-sm autofill:bg-zinc-100 autofill:text-zinc-800"
             placeholder="Your email..."
           />
           <button className="bg-zinc-800 text-zinc-100 p-2 rounded-lg laptop:hidden active:bg-zinc-700 transition-all font-medium duration-200">
             &rarr;
           </button>
         </div>
-        <button className="hidden laptop:block w-18 desktop:w-24 bg-zinc-200 laptop:text-[14px] desktop:text-sm text-zinc-800 px-1 h-[54px] rounded-lg laptop:cursor-pointer laptop:hover:bg-zinc-300 transition-all font-medium duration-200">
+        <button className="hidden laptop:block w-18 desktop:w-24 bg-zinc-100 laptop:text-[14px] desktop:text-sm text-zinc-800 px-1 h-[54px] rounded-lg laptop:cursor-pointer laptop:hover:bg-zinc-300 transition-all font-medium duration-200">
           Subscribe &rarr;
         </button>
       </form>
