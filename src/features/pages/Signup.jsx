@@ -38,7 +38,7 @@ function Signup() {
 
   return (
     <div className="tablet:bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
-      <section className="w-full p-2 bg-zinc-100 flex flex-col justify-center gap-6 items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
+      <section className="w-full p-2 bg-zinc-50 flex flex-col justify-center gap-6 items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
         <img src={signupImage} alt="" className="w-40 laptop:hidden" />
         <form
           action=""
@@ -61,7 +61,7 @@ function Signup() {
               value={name}
               disabled={isLoading}
               onChange={(e) => setName(e.target.value)}
-              className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <div className="flex flex-col">
@@ -78,7 +78,7 @@ function Signup() {
               value={email}
               disabled={isLoading}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <div className="flex flex-col">
@@ -95,7 +95,7 @@ function Signup() {
               value={password}
               disabled={isLoading}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <button
