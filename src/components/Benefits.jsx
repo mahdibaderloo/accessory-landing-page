@@ -5,16 +5,16 @@ import discountIcon from "../data/images/discount.svg";
 function Benefits() {
   return (
     <div className="w-full flex items-center justify-center flex-wrap gap-8 bg-zinc-100 p-8">
-      <div className="flex justify-center items-center text-sm font-bold text-zinc-800">
-        <img src={deliveryIcon} alt="icon" className="w-16" />
+      <div className="flex justify-center items-center text-[16px] tablet:text-sm font-bold text-zinc-800">
+        <img src={deliveryIcon} alt="icon" className="w-12 tablet:w-16" />
         <p>Fast Delivery</p>
       </div>
-      <div className="flex justify-center items-center text-sm font-bold text-zinc-800">
-        <img src={supportIcon} alt="icon" className="w-14" />
+      <div className="flex justify-center items-center text-[16px] tablet:text-sm font-bold text-zinc-800">
+        <img src={supportIcon} alt="icon" className="w-11 tablet:w-14" />
         <p>24-hour Support</p>
       </div>
-      <div className="flex justify-center items-center text-sm font-bold text-zinc-800">
-        <img src={discountIcon} alt="icon" className="w-16" />
+      <div className="flex justify-center items-center text-[16px] tablet:text-sm font-bold text-zinc-800">
+        <img src={discountIcon} alt="icon" className="w-12 tablet:w-16" />
         <p>10% Discount On Purchases</p>
       </div>
     </div>
