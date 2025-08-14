@@ -2,12 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem("cart")) || [],
-  subTotal: JSON.parse(localStorage.getItem("cart"))
-    .reduce((acc, cur) => acc + cur.totalPrice, 0)
-    .toFixed(2),
+  subTotal:
+    JSON.parse(localStorage.getItem("cart"))
+      ?.reduce((acc, cur) => acc + cur.totalPrice, 0)
+      ?.toFixed(2) || 0,
   deliveryPrice: 15,
   status: "idle",
-  isEmpty: JSON.parse(localStorage.getItem("cart")).length ? false : true,
+  isEmpty: JSON.parse(localStorage.getItem("cart"))?.length ? false : true,
 };
 
 function calcSubTotal(subTotal, cart) {
