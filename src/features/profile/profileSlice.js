@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   getImageUrl,
+  getUser,
   loginUser,
   logOutUser,
   removeAllFavorites,
@@ -230,7 +231,8 @@ export const uploadUserAvatar = createAsyncThunk(
         return rejectWithValue(urlError.message);
       }
 
-      return publicUrl;
+      const updatedUser = await getUser(userId);
+      return updatedUser;
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -393,6 +395,19 @@ const profileSlice = createSlice({
         toast.success("Your Address updated");
       })
       .addCase(changeAddress.rejected, (state, action) => {
+        state.status = "failed";
+        toast.error(action.payload);
+      })
+
+      .addCase(uploadUserAvatar.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(uploadUserAvatar.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload;
+        toast.success("Your Image updated");
+      })
+      .addCase(uploadUserAvatar.rejected, (state, action) => {
         state.status = "failed";
         toast.error(action.payload);
       });
