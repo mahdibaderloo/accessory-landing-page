@@ -52,7 +52,10 @@ function ProductOptions({ product }) {
 
   function handleAddToCart(e) {
     e.preventDefault();
-    if (user === null) return;
+    if (user === null) {
+      toast.error("Please login first");
+      return;
+    }
 
     if (!user || user.length < 1) {
       loginFirst();
@@ -77,7 +80,10 @@ function ProductOptions({ product }) {
 
   function handleRemoveFromCart(e) {
     e.preventDefault();
-    if (user === null) return;
+    if (user === null) {
+      toast.error("Please login first");
+      return;
+    }
 
     if (!user || user.length < 1) {
       loginFirst();
@@ -101,7 +107,10 @@ function ProductOptions({ product }) {
   }
 
   function handleAddToFavorites() {
-    if (user === null) return;
+    if (user === null) {
+      toast.error("Please login first");
+      return;
+    }
 
     if (!user || user.length < 1) {
       loginFirst();
