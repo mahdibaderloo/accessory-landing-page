@@ -22,17 +22,16 @@ function ProfileForm() {
 
   function handleChangeName(e) {
     const newName = e.target.value.trim();
-    if (newName && newName !== name)
-      dispatch(changeName({ userId: id, name: newName }));
+    if (newName === name) return;
+
+    if (newName) dispatch(changeName({ userId: id, name: newName }));
   }
 
   function handleChangeEmail(e) {
     const newEmail = e.target.value;
-    if (
-      newEmail &&
-      newEmail !== email &&
-      /^[a-zA-Z0-9._%+-]+@(gmail|yahoo)\.com$/.test(newEmail)
-    ) {
+    if (newEmail === email) return;
+
+    if (newEmail && /^[a-zA-Z0-9._%+-]+@(gmail|yahoo)\.com$/.test(newEmail)) {
       dispatch(changeEmail({ userId: id, email: newEmail }));
     } else {
       toast.error("Please enter a valid email");
@@ -41,11 +40,9 @@ function ProfileForm() {
 
   function handleChangeMobile(e) {
     const newMobile = e.target.value.trim();
-    if (
-      newMobile &&
-      newMobile !== mobile &&
-      /^(?:\+98|0)?9[0-9]{9}$/.test(newMobile)
-    ) {
+    if (newMobile === mobile) return;
+
+    if (newMobile && /^(?:\+98|0)?9[0-9]{9}$/.test(newMobile)) {
       dispatch(changeMobile({ userId: id, mobile: newMobile }));
     } else {
       toast.error("Please enter a valid mobile number");
@@ -56,7 +53,9 @@ function ProfileForm() {
 
   function handleChangeAddress(e) {
     const newAddress = e.target.value;
-    if (newAddress.trim() && newAddress !== address) {
+    if (newAddress === address) return;
+
+    if (newAddress.trim()) {
       dispatch(changeAddress({ userId: id, address: newAddress }));
     }
   }
@@ -68,7 +67,6 @@ function ProfileForm() {
 
     dispatch(uploadUserAvatar({ file, userId: id }));
   }
-  console.log(image);
 
   return (
     <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
