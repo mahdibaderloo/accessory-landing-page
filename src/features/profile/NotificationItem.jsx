@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import notificationIcon from "../../data/images/notification.svg";
-import trashIcon from "../../data/images/trash.svg";
+// import trashIcon from "../../data/images/trash.svg";
 
 function NotificationItem({ notification }) {
   const navigate = useNavigate();
@@ -22,11 +22,11 @@ function NotificationItem({ notification }) {
           {title}
         </p>
       </div>
-      <img
+      {/* <img
         src={trashIcon}
         alt="icon"
         className="w-5 laptop:w-6 laptop:cursor-pointer"
-      />
+      /> */}
     </li>
   );
 }
