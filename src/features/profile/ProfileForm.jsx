@@ -60,7 +60,13 @@ function ProfileForm() {
     }
   }
 
-  // function handleChangeImage () {}
+  function handleChangeImage(e) {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    console.log(file);
+  }
 
   return (
     <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
@@ -82,6 +88,7 @@ function ProfileForm() {
             accept="Image/*"
             id="changeImage"
             className="hidden"
+            onChange={handleChangeImage}
           />
         </div>
         <div className="laptop:text-lg">

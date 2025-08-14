@@ -286,3 +286,18 @@ export async function updateOrders(userId, order) {
 
   return updatedOrders;
 }
+
+export async function uploadImage(file) {
+  const fileName = `${Date.now()}-${file.name}`;
+
+  const { data, error } = await supabase.storage
+    .from("avatars")
+    .upload(fileName, file);
+
+  if (error) {
+    console.log(error.message);
+    return null;
+  }
+
+  return data;
+}
