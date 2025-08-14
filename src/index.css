@@ -20,6 +20,13 @@
   }
 }
 
+@layer utilities {
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #e7e3e4 inset;
+    -webkit-text-fill-color: #2a2627;
+  }
+}
+
 @keyframes Translate {
   0% {
     transform: translateX(0);

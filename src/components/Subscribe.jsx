@@ -4,7 +4,7 @@ import emailIcon from "../data/images/sms.svg";
 function Subscribe() {
   return (
     <div className="text-zinc-50 tablet:w-[50%] mb-8">
-      <div className="flex items-center justify-center laptop:justify-start">
+      <div className="flex items-center justify-center pr-6 laptop:pr-0 laptop:justify-start">
         <img src={Logo} alt="icon" className="w-20 laptop:w-24" />
         <h3 className="text-lg laptop:text-2xl font-bold">Accessory</h3>
       </div>
@@ -23,7 +23,7 @@ function Subscribe() {
           <img src={emailIcon} alt="icon" className="w-5" />
           <input
             type="text"
-            className="outline-none border-none pl-1 w-full text-[14px] laptop:text-[16px] desktop:text-sm"
+            className="outline-none border-none pl-1 w-full text-[14px] laptop:text-[16px] desktop:text-sm autofill:bg-zinc-200 autofill:text-zinc-800"
             placeholder="Your email..."
           />
           <button className="bg-zinc-800 text-zinc-100 p-2 rounded-lg laptop:hidden active:bg-zinc-700 transition-all font-medium duration-200">
