@@ -32,7 +32,7 @@ function LoginPage() {
 
   return (
     <div className="h-screen bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
-      <section className="w-full p-2 bg-zinc-100 flex flex-col gap-6 justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
+      <section className="w-full p-2 bg-zinc-50 flex flex-col gap-6 justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
         <img
           src={loginImage}
           alt=""
@@ -58,7 +58,7 @@ function LoginPage() {
               placeholder="Email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <div className="flex flex-col">
@@ -74,7 +74,7 @@ function LoginPage() {
               placeholder="Password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-zinc-300 p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <button
