@@ -8,7 +8,7 @@ function Notification() {
     (notification) => notification.id === params.notificationId
   );
 
-  const { title, description, created_at, link } = notification[0];
+  const { title, description, created_at } = notification[0];
 
   return (
     <div className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
@@ -20,12 +20,12 @@ function Notification() {
       </Link>
       <div className="flex flex-col gap-6 mt-8 bg-zinc-50 h-fit p-4 rounded-lg laptop:rounded-2xl shadow">
         <h3 className="text-3xl font-medium text-zinc-800">{title}</h3>
-        <p
-          className="text-zinc-700 font-medium mb-8"
+        <div
+          className="text-zinc-700 font-medium mb-8 flex"
           dangerouslySetInnerHTML={{
-            __html: `${description} <a class="text-red-900 underline font-mono ml-2 text-sm" href="${link}">Github</a>`,
+            __html: description,
           }}
-        ></p>
+        ></div>
         <span className="mt-auto text-sm text-zinc-700">{`${created_at.slice(
           0,
           10
