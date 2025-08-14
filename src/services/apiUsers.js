@@ -308,7 +308,7 @@ export async function storeImage(path, userId) {
   const publicUrl = data.publicUrl;
 
   const { error: urlError } = await supabase
-    .from("users")
+    .from("Users")
     .update({ image: publicUrl })
     .eq("id", userId);
 

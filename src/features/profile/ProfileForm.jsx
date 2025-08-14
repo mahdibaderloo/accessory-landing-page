@@ -7,6 +7,7 @@ import {
   changeEmail,
   changeMobile,
   changeName,
+  uploadUserAvatar,
 } from "./profileSlice";
 import toast from "react-hot-toast";
 
@@ -65,15 +66,16 @@ function ProfileForm() {
 
     if (!file) return;
 
-    console.log(file);
+    dispatch(uploadUserAvatar({ file, userId: id }));
   }
+  console.log(image);
 
   return (
     <form action="" className="w-full laptop:w-[70%] p-4 laptop:p-0 laptop:m-8">
       <section className="w-full flex gap-6 items-center border-zinc-300 border-b-2 pb-4">
         <div className="relative">
           <img
-            src={`${image}`}
+            src={image}
             alt="userImage"
             className="w-14 h-14 bg-zinc-900 laptop:w-17 laptop:h-17 rounded-full"
           />
