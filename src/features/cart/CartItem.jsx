@@ -6,6 +6,7 @@ function CartItem({ item }) {
   const dispatch = useDispatch();
 
   const { id, name, price, image, count } = item;
+  console.log(image);
 
   function handleDecrease() {
     dispatch(decreaseItemCount(id));

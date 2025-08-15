@@ -28,7 +28,7 @@ function ProductOptions({ product }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { id, name, price, description } = product;
+  const { id, name, price, image, description } = product;
 
   useEffect(
     function () {
@@ -67,6 +67,7 @@ function ProductOptions({ product }) {
         description,
         size,
         color,
+        image,
         count: 1,
         totalPrice: price * 1,
       };
