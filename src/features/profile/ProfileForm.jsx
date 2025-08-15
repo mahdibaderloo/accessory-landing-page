@@ -18,7 +18,7 @@ function ProfileForm() {
 
   if (!user || status === "loading") return <Loader />;
 
-  const { id, name, email, image, mobile, password, address } = user[0];
+  const { id, name, email, image, mobile, address } = user[0];
 
   function handleChangeName(e) {
     const newName = e.target.value.trim();
@@ -95,7 +95,7 @@ function ProfileForm() {
           <p className="text-sm font-semibold tracking-wide text-zinc-800">
             {name ? name : "Username"}
           </p>
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-zinc-600 hidden tablet:block">
             {email ? email : "user@gmail.com"}
           </p>
         </div>
