@@ -4,7 +4,6 @@ import Sidebar from "./Sidebar";
 import Loader from "./Loader";
 import Footer from "./Footer";
 import useAuth from "./useAuth";
-import Modal from "./Modal";
 
 function AppLayout() {
   const navigation = useNavigation();
