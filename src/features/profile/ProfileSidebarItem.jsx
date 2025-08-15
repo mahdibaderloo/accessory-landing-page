@@ -17,10 +17,10 @@ function ProfileSidebarItem({ item }) {
         active === item.id && "bg-zinc-300 text-black"
       }`}
     >
-      <img src={icon} alt="icon" className="w-6 laptop:w-8" />
-      <span className="font-semibold">{label}</span>
+      <img src={icon} alt="icon" className="w-6 tablet:w-7 desktop:w-8" />
+      <span className="font-semibold text-sm desktop:text-lg">{label}</span>
       {id === "notifications" && notifications?.length > 0 && (
-        <span className="text-[14px] bg-red-500 text-zinc-50 w-3.5 h-3.5 text-center rounded-full ml-auto">
+        <span className="text-[12px] desktop:text-[14px] bg-red-500 text-zinc-50 w-3 h-3 desktop:w-3.5 desktop:h-3.5 text-center rounded-full ml-auto">
           {notifications.length}
         </span>
       )}
