@@ -75,7 +75,7 @@ function ProfileForm() {
           <img
             src={image}
             alt="userImage"
-            className="w-14 h-14 bg-zinc-900 laptop:w-17 laptop:h-17 rounded-full"
+            className="w-14 h-14 bg-zinc-900 laptop:w-17 laptop:h-17 rounded-full object-cover"
           />
           <label
             htmlFor="changeImage"
@@ -124,7 +124,7 @@ function ProfileForm() {
             placeholder="yourname@gmail.com"
             defaultValue={email}
             onBlur={handleChangeEmail}
-            className="outline-none border-none w-1/2"
+            className="outline-none border-none w-[90%] laptop:w-1/2"
           />
         </div>
         <div className="py-2 flex flex-col laptop:flex-row justify-between">
@@ -137,7 +137,7 @@ function ProfileForm() {
             placeholder="Add number"
             defaultValue={mobile}
             onBlur={handleChangeMobile}
-            className="outline-none border-none w-1/2"
+            className="outline-none border-none w-2/3 laptop:w-1/2"
           />
         </div>
         {/* <div className="py-2 flex flex-col laptop:flex-row justify-between">
@@ -164,7 +164,7 @@ function ProfileForm() {
             dir="ltr"
             defaultValue={address}
             onBlur={handleChangeAddress}
-            className="outline-none border-none w-1/2"
+            className="outline-none border-none w2/3 laptop:w-1/2"
           ></textarea>
         </div>
       </section>
