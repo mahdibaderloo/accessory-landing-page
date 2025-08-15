@@ -16,7 +16,6 @@ import {
   uploadImage,
 } from "../../services/apiUsers";
 import toast from "react-hot-toast";
-import supabase from "../../services/supabase";
 
 const initialState = {
   activeSection: "profile",
