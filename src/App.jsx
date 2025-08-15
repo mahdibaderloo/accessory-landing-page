@@ -18,6 +18,7 @@ import ContactUs from "./features/pages/ContactUs";
 import { Toaster } from "react-hot-toast";
 import Checkout from "./features/pages/Checkout";
 import Notification from "./features/profile/Notification";
+import ErrorFallback from "./components/ErrorFallback";
 
 function App() {
   const router = createBrowserRouter([
@@ -87,6 +88,7 @@ function App() {
         },
       ],
     },
+    { path: "*", element: <ErrorFallback /> },
     {
       path: "/login",
       element: <LoginPage />,
