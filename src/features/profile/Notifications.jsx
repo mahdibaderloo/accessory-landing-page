@@ -1,4 +1,4 @@
-import NotificationItem from "./notificationItem";
+import NotificationItem from "./NotificationItem";
 import { useSelector } from "react-redux";
 
 function Notifications() {
