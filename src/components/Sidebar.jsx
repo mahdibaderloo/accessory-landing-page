@@ -7,7 +7,6 @@ import closeIcon from "../data/images/close.svg";
 function Sidebar() {
   const leftPos = useSelector((state) => state.sidebar.left);
   const isAuth = useSelector((state) => state.profile.isAuthenticated);
-  console.log(isAuth);
   const dispatch = useDispatch();
 
   return (
