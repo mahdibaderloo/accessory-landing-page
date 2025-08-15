@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import editIcon from "../../data/images/edit.svg";
+// import editIcon from "../../data/images/edit.svg";
 import trashIcon from "../../data/images/trash-red.svg";
 import FavoriteItem from "./FavoriteItem";
 import useAuth from "../../components/useAuth";
@@ -29,11 +29,11 @@ function ProfileFavorites() {
     <div className="w-full h-screen laptop:w-[70%] p-2 laptop:p-0 laptop:m-8 overflow-hidden">
       <div>
         <div className="flex justify-end items-center gap-2">
-          <img
+          {/* <img
             src={editIcon}
             alt="icon"
             className="w-3.5 laptop:w-5.5 laptop:cursor-pointer"
-          />
+          /> */}
           <img
             src={trashIcon}
             alt="icon"
