@@ -8,7 +8,7 @@
 
 > 🛍 **Accessory Store** is a modern and stylish e-commerce web app for buying accessories online, built with **React**, powered by **Redux** for state management, and **Supabase** for backend services.  
 >
-> 🚀 Check it out here: [Accessory Store App](https://your-live-demo-link.com)  
+> 🚀 Check it out here: [Accessory Store App](https://accessory-landing-page.vercel.app/)  
 
 <br>
 
@@ -30,7 +30,3 @@
 ![](https://img.shields.io/badge/React_Hot_Toast-FFB347?style=for-the-badge)
 
 <br>
-
----
-
-📌 **Source Code:** [GitHub Repository](https://github.com/yourusername/accessory-store)
