@@ -23,7 +23,7 @@ function Header() {
     <header className="flex justify-between items-center pl-2 fixed z-40 bg-white shadow-sm tablet:shadow-none top-0 left-0 right-0 desktop:max-w-[1536px] desktop:mx-auto desktop:h-16">
       <img
         src={menuIcon}
-        className="w-10 laptop:hidden"
+        className="w-12 laptop:hidden"
         alt="menu"
         onClick={() => dispatch(openSidebar(0))}
       />
@@ -76,7 +76,7 @@ function Header() {
         </li>
       </ul>
       <Link to="/" className="laptop:hidden">
-        <img src={logoIcon} className="w-12 desktop:w-14" alt="logo" />
+        <img src={logoIcon} className="w-14 desktop:w-14" alt="logo" />
       </Link>
     </header>
   );
