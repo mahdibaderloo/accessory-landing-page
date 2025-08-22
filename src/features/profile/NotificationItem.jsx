@@ -13,12 +13,12 @@ function NotificationItem({ notification }) {
 
   return (
     <li
-      className="flex justify-between items-center bg-zinc-300 hover:bg-zinc-400 transition-all duration-200 rounded-lg laptop:rounded-2xl p-1.5 laptop:p-3 mb-1 laptop:cursor-pointer"
+      className="flex justify-between items-center bg-zinc-300 hover:bg-zinc-400 transition-all duration-200 rounded-lg laptop:rounded-2xl p-1.5 laptop:p-3 mb-2 laptop:cursor-pointer"
       onClick={handleOpenNotification}
     >
       <div className="flex items-center">
-        <img src={notificationIcon} alt="icon" className="w-6 laptop:w-8" />
-        <p className="text-zinc-800 text-sm laptop:text-lg font-medium">
+        <img src={notificationIcon} alt="icon" className="w-8 laptop:w-10" />
+        <p className="text-zinc-800 text-md laptop:text-lg font-medium">
           {title}
         </p>
       </div>
