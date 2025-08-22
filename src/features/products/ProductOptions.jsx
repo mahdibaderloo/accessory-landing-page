@@ -13,12 +13,9 @@ import MiniLoader from "../../components/MiniLoader";
 function ProductOptions({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const size = useSelector((state) => state.product.size);
-  const color = useSelector((state) => state.product.color);
+  const { size, color } = useSelector((state) => state.product);
   const cart = useSelector((state) => state.cart.cart);
-  const user = useSelector((state) => state.profile.user);
-  const favorites = useSelector((state) => state.profile.favorites);
-  const status = useSelector((state) => state.profile.status);
+  const { user, favorites, status } = useSelector((state) => state.profile);
   const isLoading = status === "loading";
 
   const isItemInCart = cart.find((item) => item.id === product.id)
