@@ -22,17 +22,17 @@ function Sidebar() {
           onClick={() => dispatch(closeSidebar())}
         />
       </li>
-      <li className="text-md font-medium">
+      <li className="text-lg font-medium">
         <Link to="/products" onClick={() => dispatch(closeSidebar())}>
           Products
         </Link>
       </li>
-      <li className="text-md font-medium">
+      <li className="text-lg font-medium">
         <Link to="/Cart" onClick={() => dispatch(closeSidebar())}>
           Shopping Cart
         </Link>
       </li>
-      <li className="text-md font-medium">
+      <li className="text-lg font-medium">
         {isAuth ? (
           <Link to="/profile" onClick={() => dispatch(closeSidebar())}>
             Dashboard
@@ -43,12 +43,12 @@ function Sidebar() {
           </Link>
         )}
       </li>
-      <li className="text-md font-medium">
+      <li className="text-lg font-medium">
         <Link to="/" onClick={() => dispatch(closeSidebar())}>
           About us
         </Link>
       </li>
-      <li className="text-md font-medium">
+      <li className="text-lg font-medium">
         <Link to="/contact-us" onClick={() => dispatch(closeSidebar())}>
           Contact us
         </Link>

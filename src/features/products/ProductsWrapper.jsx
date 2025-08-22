@@ -15,7 +15,7 @@ function ProductsWrapper({ products, count }) {
   }
 
   return (
-    <ul className="mx-auto flex flex-wrap justify-center gap-2 tablet:mx-2 tablet:gap-3 laptop:gap-5">
+    <ul className="mx-auto flex flex-wrap justify-center gap-4 tablet:mx-2 tablet:gap-3 laptop:gap-5">
       {visibleProducts.slice(0, count).map((product) => (
         <ProductItem
           product={product}
