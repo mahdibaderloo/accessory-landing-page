@@ -9,7 +9,7 @@ function ProductItem({ product, onClick }) {
       <img
         src={image}
         alt="productImage"
-        className="w-34 h-34 self-center rounded-sm laptop:rounded-lg desktop:rounded-xl tablet:w-44 tablet:h-44 laptop:w-44 laptop:h-44 desktop:w-44 desktop:h-44"
+        className="w-34 h-34 self-center rounded-sm laptop:rounded-lg desktop:rounded-xl tablet:w-44 tablet:h-44"
       />
       <div className="w-full">
         <p className="font-medium break-all text-lg tablet:text-xl laptop:text-xl desktop:text-xl truncate">

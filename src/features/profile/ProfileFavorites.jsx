@@ -37,7 +37,7 @@ function ProfileFavorites() {
           <img
             src={trashIcon}
             alt="icon"
-            className="w-4 laptop:w-6 laptop:cursor-pointer"
+            className="w-6 m-2 laptop:w-8 laptop:cursor-pointer"
             onClick={() => dispatch(openModal())}
           />
         </div>

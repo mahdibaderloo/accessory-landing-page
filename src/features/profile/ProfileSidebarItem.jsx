@@ -31,7 +31,7 @@ function ProfileSidebarItem({ item }) {
       <img src={icon} alt="icon" className="w-8 tablet:w-10 desktop:w-8" />
       <span className="font-semibold text-lg desktop:text-xl">{label}</span>
       {id === "notifications" && notifications?.length > 0 && (
-        <span className="text-sm desktop:text-md bg-red-500 text-zinc-50 w-5 h-5 desktop:w-3.5 desktop:h-3.5 text-center rounded-full ml-auto">
+        <span className="text-sm desktop:text-md bg-red-500 text-zinc-50 w-5 h-5 text-center rounded-full ml-auto">
           {notifications.length}
         </span>
       )}
