@@ -117,7 +117,7 @@ function ProductOptions({ product }) {
       loginFirst();
     } else {
       if (!favorites.find((item) => item.id === id)) {
-        dispatch(addToFavorites({ item: product, id: user?.[0]?.id }))
+        dispatch(addToFavorites({ item: product, userId: user?.[0]?.id }))
           .unwrap()
           .then(() => {
             setIsFavorite(true);

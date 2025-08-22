@@ -73,14 +73,14 @@ export const logOut = createAsyncThunk(
 
 export const addToFavorites = createAsyncThunk(
   "favorites/addToFavorites",
-  async function ({ item, id }, { rejectWithValue }) {
+  async function ({ item, userId }, { rejectWithValue }) {
     try {
-      const favoriteData = await updateFavorites(item, id);
+      const favoriteData = await updateFavorites(item, userId);
 
       if (!favoriteData) {
         return rejectWithValue("There was a problem. Try again");
       }
-      return favoriteData[0];
+      return favoriteData;
     } catch (err) {
       return rejectWithValue(err.message);
     }

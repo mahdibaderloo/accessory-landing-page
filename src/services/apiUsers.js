@@ -85,11 +85,11 @@ export async function UpdateUser(user) {
   return data;
 }
 
-export async function updateFavorites(item, id) {
+export async function updateFavorites(item, userId) {
   const { data: userData, error: fetchError } = await supabase
     .from("Users")
     .select("favorites")
-    .eq("id", id)
+    .eq("id", userId)
     .single();
 
   if (fetchError) {
@@ -116,14 +116,13 @@ export async function updateFavorites(item, id) {
   const { data, error } = await supabase
     .from("Users")
     .update({ favorites: updatedFavorites })
-    .eq("id", id)
-    .select();
+    .eq("id", userId);
+  // .select();
 
   if (error) {
     console.log(error.message);
     return null;
   }
-
   return updatedFavorites;
 }
 
@@ -166,7 +165,6 @@ export async function removeFavorite(itemId, userId) {
     console.error(error.message);
     return null;
   }
-
   return updatedFavorites;
 }
 
