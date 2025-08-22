@@ -47,8 +47,10 @@ function ProfileSidebar() {
         className="flex items-center justify-start gap-2 mt-auto pl-1 mb-1 p-2 text-sm laptop:text-lg rounded-lg laptop:hover:bg-zinc-300 transition-all duration-200 laptop:cursor-pointer"
         onClick={() => dispatch(openModal())}
       >
-        <img src={logoutIcon} alt="icon" className="w-6 laptop:w-8" />
-        <span className="font-semibold text-red-950">Logout</span>
+        <img src={logoutIcon} alt="icon" className="w-8 laptop:w-10" />
+        <span className="font-semibold text-lg desktop:text-xl text-red-950">
+          Logout
+        </span>
       </div>
 
       <Modal onConfirm={handleLogout}>
