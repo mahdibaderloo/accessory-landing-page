@@ -4,9 +4,9 @@ import emailIcon from "../data/images/sms.svg";
 function Subscribe() {
   return (
     <div className="text-zinc-50 tablet:w-[50%] mb-8">
-      <div className="flex items-center justify-center pr-6 laptop:pr-0 laptop:justify-start">
-        <img src={Logo} alt="icon" className="w-20 laptop:w-24" />
-        <h3 className="text-lg laptop:text-2xl font-bold">Accessory</h3>
+      <div className="flex items-center justify-center pr-8 laptop:pr-0 laptop:justify-start">
+        <img src={Logo} alt="icon" className="w-24 laptop:w-28" />
+        <h3 className="text-xl laptop:text-2xl font-bold">Accessory</h3>
       </div>
       <p className="text-[14px] laptop:text-[16px] font-medium mt-4 text-zinc-200 p-2 text-center laptop:text-left laptop:pl-7">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quos
@@ -19,14 +19,14 @@ function Subscribe() {
         action=""
         className="flex justify-center items-center gap-2 mt-6 laptop:justify-start laptop:pl-7"
       >
-        <div className="bg-zinc-100 text-zinc-800 flex items-center text-sm p-1 laptop:p-2 rounded-lg w-[90%] laptop:w-[300px] desktop:w-[500px]">
-          <img src={emailIcon} alt="icon" className="w-5" />
+        <div className="bg-zinc-100 text-zinc-800 flex items-center p-1 laptop:p-2 rounded-lg w-[90%] laptop:w-[300px] desktop:w-[500px]">
+          <img src={emailIcon} alt="icon" className="w-8" />
           <input
             type="text"
-            className="outline-none border-none pl-1 w-full text-[14px] laptop:text-[16px] desktop:text-sm autofill:bg-zinc-100 autofill:text-zinc-800"
+            className="outline-none border-none pl-1 w-full text-sm laptop:text-md desktop:text-lg autofill:bg-zinc-100 autofill:text-zinc-800"
             placeholder="Your email..."
           />
-          <button className="bg-zinc-800 text-zinc-100 p-2 rounded-lg laptop:hidden active:bg-zinc-700 transition-all font-medium duration-200">
+          <button className="bg-zinc-800 text-zinc-100 p-2.5 text-lg font-bold rounded-lg laptop:hidden active:bg-zinc-700 transition-all duration-200">
             &rarr;
           </button>
         </div>
