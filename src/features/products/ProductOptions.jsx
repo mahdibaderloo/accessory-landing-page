@@ -138,14 +138,14 @@ function ProductOptions({ product }) {
   }
 
   return (
-    <form className="w-full p-2 tablet:w-[70%] tablet:mx-auto laptop:mx-0 laptop:p-0 laptop:mt-4 laptop:w-full">
+    <form className="w-full p-2 tablet:w-full tablet:mx-auto laptop:mx-0 laptop:p-0 laptop:mt-4 laptop:w-full">
       {isFavorite ? (
         <div
-          className="flex items-center gap-1 mb-4 bg-zinc-200 w-fit px-2 py-1.5 laptop:px-3 laptop:cursor-pointer hover:bg-zinc-300 transition-all duration-200"
+          className="flex items-center gap-1 mb-4 bg-zinc-200 w-fit px-3.5 py-2 tablet:w-full tablet:justify-center laptop:px-3 laptop:cursor-pointer hover:bg-zinc-300 transition-all duration-200"
           onClick={handleRemoveFromFavorites}
         >
-          <img src={FillHeartIcon} alt="" className="w-5" />
-          <div className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
+          <img src={FillHeartIcon} alt="" className="w-8" />
+          <div className=" text-zinc-800 text-lg font-medium tablet:text-[24px] laptop:text-lg">
             {isLoading ? (
               <MiniLoader color="bg-zinc-800" />
             ) : (
@@ -155,11 +155,11 @@ function ProductOptions({ product }) {
         </div>
       ) : (
         <div
-          className="flex items-center gap-1 mb-4 bg-zinc-200 w-fit px-2 py-1.5 laptop:px-3 laptop:cursor-pointer hover:bg-zinc-300 transition-all duration-200"
+          className="flex items-center gap-1 mb-4 bg-zinc-200 w-fit px-3.5 py-2 tablet:w-full tablet:justify-center laptop:px-3 laptop:cursor-pointer hover:bg-zinc-300 transition-all duration-200"
           onClick={handleAddToFavorites}
         >
-          <img src={EmptyHeartIcon} alt="" className="w-5" />
-          <div className=" text-zinc-800 text-sm tablet:text-[24px] laptop:text-lg">
+          <img src={EmptyHeartIcon} alt="" className="w-8" />
+          <div className=" text-zinc-800 text-lg font-medium tablet:text-[24px] laptop:text-lg">
             {isLoading ? (
               <MiniLoader color="bg-zinc-800" />
             ) : (
@@ -182,14 +182,14 @@ function ProductOptions({ product }) {
       </div>
       {isItemInCart ? (
         <button
-          className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
+          className="w-full bg-zinc-600 text-zinc-50 text-lg font-medium mt-2 py-2.5 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
           onClick={handleRemoveFromCart}
         >
           Remove from cart
         </button>
       ) : (
         <button
-          className="w-full bg-zinc-600 text-zinc-50 mt-2 py-1 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
+          className="w-full bg-zinc-600 text-zinc-50 text-lg font-medium mt-2 py-2.5 hover:bg-zinc-700 transition-all duration-200 laptop:text-xl laptop:py-2 laptop:cursor-pointer"
           onClick={handleAddToCart}
         >
           Add to cart
