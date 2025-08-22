@@ -11,28 +11,28 @@ function Sidebar() {
 
   return (
     <ul
-      className="w-full bg-zinc-800 fixed z-50 top-0 bottom-0 p-2 pl-4 flex flex-col gap-4 text-zinc-200 transition-all duration-300 ease-in-out overflow-hidden"
+      className="w-full bg-zinc-800 fixed z-50 top-0 bottom-0 p-2 pl-4 flex flex-col gap-8 text-zinc-200 transition-all duration-300 ease-in-out overflow-hidden"
       style={{ left: leftPos }}
     >
-      <li className="flex justify-end mb-6">
+      <li className="flex justify-end m-4">
         <img
           src={closeIcon}
           alt="close"
-          className="w-8"
+          className="w-10"
           onClick={() => dispatch(closeSidebar())}
         />
       </li>
-      <li>
+      <li className="text-md font-medium">
         <Link to="/products" onClick={() => dispatch(closeSidebar())}>
           Products
         </Link>
       </li>
-      <li>
+      <li className="text-md font-medium">
         <Link to="/Cart" onClick={() => dispatch(closeSidebar())}>
           Shopping Cart
         </Link>
       </li>
-      <li>
+      <li className="text-md font-medium">
         {isAuth ? (
           <Link to="/profile" onClick={() => dispatch(closeSidebar())}>
             Dashboard
@@ -43,12 +43,12 @@ function Sidebar() {
           </Link>
         )}
       </li>
-      <li>
+      <li className="text-md font-medium">
         <Link to="/" onClick={() => dispatch(closeSidebar())}>
           About us
         </Link>
       </li>
-      <li>
+      <li className="text-md font-medium">
         <Link to="/contact-us" onClick={() => dispatch(closeSidebar())}>
           Contact us
         </Link>
