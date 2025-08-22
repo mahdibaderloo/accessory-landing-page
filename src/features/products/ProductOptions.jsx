@@ -4,7 +4,7 @@ import FillHeartIcon from "../../data/images/heart-fill.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { chooseColor, chooseSize } from "./productSlice";
 import { addToFavorites, removeFromFavorites } from "../profile/profileSlice";
-import { addItem } from "../cart/cartSlice";
+import { addItem, removeItem } from "../cart/cartSlice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -89,19 +89,8 @@ function ProductOptions({ product }) {
     if (!user || user.length < 1) {
       loginFirst();
     } else {
-      const newItem = {
-        id,
-        name,
-        price,
-        description,
-        size,
-        color,
-        count: 1,
-        totalPrice: price * 1,
-      };
-
-      if (!cart.find((item) => item.id === id)) {
-        dispatch(addItem(newItem));
+      if (cart.find((item) => item.id === id)) {
+        dispatch(removeItem(id));
         toast.success(`${name} added to cart`);
       }
     }
