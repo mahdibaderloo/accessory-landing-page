@@ -28,7 +28,7 @@ function Sidebar() {
         </Link>
       </li>
       <li className="text-lg font-medium">
-        <Link to="/Cart" onClick={() => dispatch(closeSidebar())}>
+        <Link to="/cart" onClick={() => dispatch(closeSidebar())}>
           Shopping Cart
         </Link>
       </li>
