@@ -16,15 +16,15 @@ function Modal({ children, onConfirm }) {
             <img
               src={closeIcon}
               alt="icon"
-              className="w-4 laptop:w-6 cursor-pointer"
+              className="w-8 laptop:w-10 cursor-pointer"
               onClick={() => dispatch(closeModal())}
             />
-            <p className="text-center font-medium text-sm laptop:text-xl text-zinc-800 mt-2">
+            <p className="text-center font-medium text-lg laptop:text-xl text-zinc-800 mt-4">
               {children}
             </p>
-            <div className="flex justify-center gap-3 mt-4">
+            <div className="flex justify-center gap-6 mt-6">
               <button
-                className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-200 text-sm laptop:text-lg shadow text-zinc-50 px-3 py-1 rounded-md cursor-pointer"
+                className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-200 text-lg font-medium laptop:text-xl shadow text-zinc-50 px-8 py-2 rounded-md cursor-pointer"
                 onClick={() => {
                   if (onConfirm) onConfirm();
                   dispatch(closeModal());
@@ -33,7 +33,7 @@ function Modal({ children, onConfirm }) {
                 Yes
               </button>
               <button
-                className="bg-red-600 hover:bg-red-700 transition-all duration-200 text-sm laptop:text-lg shadow text-zinc-50 px-3 py-1 rounded-md cursor-pointer"
+                className="bg-red-600 hover:bg-red-700 transition-all duration-200 text-lg font-medium laptop:text-xl shadow text-zinc-50 px-8 py-2 rounded-md cursor-pointer"
                 onClick={() => dispatch(closeModal())}
               >
                 No
