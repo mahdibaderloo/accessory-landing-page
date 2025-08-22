@@ -25,26 +25,36 @@ function CartItem({ item }) {
         <img
           src={image}
           alt="product"
-          className="w-14 h-14 rounded-lg laptop:h-20 laptop:w-20"
+          className="w-18 h-18 rounded-lg laptop:h-24 laptop:w-24"
         />
         <div>
-          <p className="text-sm font-medium tracking-wide laptop:font-semibold laptop:text-xl">
+          <p className="text-md font-medium tracking-wide laptop:font-semibold laptop:text-xl">
             {name}
           </p>
-          <p className="hidden tracking-wide text-lg laptop:block">${price}</p>
+          <p className="hidden tracking-wide text-lg font-medium text-zinc-800 laptop:block">
+            ${price}
+          </p>
         </div>
       </div>
       <div className="w-full flex justify-between tablet:flex-row laptop:justify-end gap-2 mt-2">
-        <div className="bg-zinc-700 rounded-md w-14 text-zinc-100 px-1.5 flex items-center justify-between laptop:text-xl laptop:w-16 font-semibold">
-          <button onClick={handleDecrease} className="laptop:cursor-pointer">
+        <div className="bg-zinc-700 rounded-md w-18 text-zinc-100 text-lg px-1.5 py-1 flex items-center justify-between laptop:text-xl laptop:w-16 font-semibold">
+          <button
+            onClick={handleDecrease}
+            className="laptop:cursor-pointer font-semibold text-lg"
+          >
             -
           </button>
           <span>{count}</span>
-          <button onClick={handleIncrease} className="laptop:cursor-pointer">
+          <button
+            onClick={handleIncrease}
+            className="laptop:cursor-pointer font-semibold text-lg"
+          >
             +
           </button>
         </div>
-        <p className="tracking-wide text-lg laptop:hidden">${price}</p>
+        <p className="tracking-wide text-lg font-medium text-zinc-800 laptop:hidden">
+          ${price}
+        </p>
         <img
           src={trashIcon}
           onClick={handleRemove}

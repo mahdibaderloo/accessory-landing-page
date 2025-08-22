@@ -20,12 +20,12 @@ function Cart() {
         <EmptyCart />
       ) : (
         <>
-          <ul className="h-[60%] rounded-lg mt-13 p-2 laptop:p-3 desktop:p-10 laptop:h-[65vh] laptop:overflow-y-scroll">
+          <ul className="h-[50vh] rounded-lg mt-13 p-2 laptop:p-3 desktop:p-10 laptop:h-[65vh] laptop:overflow-y-scroll">
             {cartItems.map((item) => (
               <CartItem item={item} key={item.id} />
             ))}
           </ul>
-          <div className="flex flex-col p-4 text-zinc-700 laptop:text-xl laptop:p-6 laptop:mt-1">
+          <div className="flex flex-col p-4 text-zinc-700 text-lg laptop:text-xl laptop:p-6 laptop:mt-1">
             <div className="flex justify-between laptop:pb-2">
               <p>Subtotal:</p>
               <p>${subTotal}</p>
@@ -40,7 +40,7 @@ function Cart() {
             </div>
           </div>
           <button
-            className="bg-zinc-800 w-24 h-8 rounded-md text-zinc-100 mx-auto mb-4 mt-2 laptop:cursor-pointer laptop:w-40 laptop:h-12 laptop:rounded-xl laptop:text-2xl hover:bg-zinc-700 transition-all duration-200"
+            className="bg-zinc-800 w-40 h-12 rounded-md text-xl text-zinc-100 mx-auto mb-4 mt-2 laptop:cursor-pointer laptop:w-40 laptop:h-12 laptop:rounded-xl laptop:text-2xl hover:bg-zinc-700 transition-all duration-200"
             onClick={() => navigate("/checkout")}
           >
             Checkout
