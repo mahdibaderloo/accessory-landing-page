@@ -15,9 +15,7 @@ function Checkout() {
   const [address, setAddress] = useState("");
   const [desc, setDesc] = useState("");
   const [isCheck, setIsCheck] = useState(false);
-  const [orderId, setOrderId] = useState(
-    Math.floor(Math.random() * 100_000_000_000)
-  );
+  const [orderId, setOrderId] = useState(Date.now());
 
   const user = useSelector((state) => state.profile.user);
   const cart = useSelector((state) => state.cart);
@@ -82,26 +80,28 @@ function Checkout() {
     <>
       <div className="mt-16 laptop:mx-4 p-4 laptop:border laptop:border-zinc-300 laptop:shadow laptop:rounded-xl border-b border-b-zinc-200 laptop:border-b-none">
         <div className="flex items-center gap-2 border-b border-b-zinc-500 w-fit pb-2 mb-8">
-          <img src={orderIcon} alt="order icon" className="w-7" />
-          <h3 className="font-semibold text-lg laptop:text-xl text-zinc-800">
+          <img src={orderIcon} alt="order icon" className="w-8" />
+          <h3 className="font-semibold text-xl laptop:text-2xl text-zinc-800">
             Order Information
           </h3>
         </div>
-        <div className="flex flex-col laptop:flex-row items-start laptop:gap-2 text-zinc-800">
-          <p className="font-medium text-lg">Order ID:</p>
-          <span>{orderId}</span>
+        <div className="flex flex-col laptop:flex-row items-start laptop:gap-2 laptop:items-end text-zinc-800">
+          <p className="font-medium text-xl">Order ID:</p>
+          <span className="text-md laptop:text-lg">{orderId}</span>
         </div>
-        <ul className="flex flex-col laptop:flex-row items-start laptop:gap-2 text-zinc-800 mt-2">
-          <p className="font-medium text-lg">Order Items: </p>
+        <ul className="flex flex-col laptop:flex-row items-start laptop:gap-2 laptop:items-end text-zinc-800 mt-2">
+          <p className="font-medium text-xl">Order Items: </p>
           {cart.cart?.map((item) => (
-            <li key={item.id}>{item.name},</li>
+            <li className="text-md laptop:text-lg" key={item.id}>
+              {item.name},
+            </li>
           ))}
         </ul>
-        <div className="flex flex-col laptop:flex-row items-start laptop:gap-2 text-zinc-800 mt-2">
-          <p className="font-medium text-lg">Total order price:</p>
-          <span>{`$${cart.subTotal} (sub total) + $${
-            cart.deliveryPrice
-          } (delivery) = $${(
+        <div className="flex flex-col laptop:flex-row items-start laptop:gap-2 laptop:items-end text-zinc-800 mt-2">
+          <p className="font-medium text-xl">Total order price:</p>
+          <span className="text-md laptop:text-lg">{`$${
+            cart.subTotal
+          } (sub total) + $${cart.deliveryPrice} (delivery) = $${(
             Number(cart.subTotal) + cart.deliveryPrice
           ).toFixed(2)}`}</span>
         </div>
@@ -109,13 +109,16 @@ function Checkout() {
 
       <form className="mt-4 laptop:mx-4 p-4 laptop:border laptop:border-zinc-300 laptop:shadow laptop:rounded-xl">
         <div className="flex items-center gap-2 border-b border-b-zinc-500 w-fit pb-2 mb-8">
-          <img src={checkIcon} alt="" className="w-7" />
-          <p className="font-semibold text-md laptop:text-xl text-zinc-800">
+          <img src={checkIcon} alt="" className="w-8" />
+          <p className="font-semibold text-lg laptop:text-2xl text-zinc-800">
             Please complete the information below
           </p>
         </div>
-        <div className="py-3 flex items-start laptop:items-center flex-col laptop:flex-row justify-between border-b border-b-zinc-200">
-          <label htmlFor="username" className="font-medium text-zinc-800">
+        <div className="py-3 flex items-start gap-2 laptop:items-center flex-col laptop:flex-row justify-between border-b border-b-zinc-200">
+          <label
+            htmlFor="username"
+            className="font-medium text-lg text-zinc-800"
+          >
             Name
           </label>
           <input
@@ -124,11 +127,11 @@ function Checkout() {
             placeholder="your name"
             defaultValue={name}
             onChange={(e) => setName(e.target.value)}
-            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-2 rounded-lg"
+            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-2.5 text-lg rounded-lg"
           />
         </div>
-        <div className="py-3 flex items-start laptop:items-center flex-col laptop:flex-row justify-between border-b border-b-zinc-200">
-          <label htmlFor="mobile" className="font-medium text-zinc-800">
+        <div className="py-3 flex items-start gap-2 laptop:items-center flex-col laptop:flex-row justify-between border-b border-b-zinc-200">
+          <label htmlFor="mobile" className="font-medium text-lg text-zinc-800">
             Mobile number
           </label>
           <input
@@ -137,11 +140,14 @@ function Checkout() {
             placeholder="Add number"
             defaultValue={mobile}
             onChange={(e) => setMobile(e.target.value)}
-            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-2 rounded-lg"
+            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-2.5 text-lg rounded-lg"
           />
         </div>
-        <div className="py-3 flex items-start laptop:items-center flex-col laptop:flex-row justify-between border-b border-b-zinc-200">
-          <label htmlFor="description" className="font-medium text-zinc-800">
+        <div className="py-3 flex items-start gap-2 laptop:items-center flex-col laptop:flex-row justify-between border-b border-b-zinc-200">
+          <label
+            htmlFor="description"
+            className="font-medium text-lg text-zinc-800"
+          >
             Description
           </label>
           <input
@@ -150,11 +156,14 @@ function Checkout() {
             placeholder="Description..."
             defaultValue={desc}
             onChange={(e) => setDesc(e.target.value)}
-            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-2 rounded-lg"
+            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-2.5 text-lg rounded-lg"
           />
         </div>
-        <div className="py-2 flex flex-col laptop:flex-row justify-between">
-          <label htmlFor="address" className="font-medium text-zinc-800">
+        <div className="py-2 flex flex-col gap-2 laptop:flex-row justify-between">
+          <label
+            htmlFor="address"
+            className="font-medium text-lg text-zinc-800"
+          >
             Address
           </label>
 
@@ -164,10 +173,10 @@ function Checkout() {
             dir="ltr"
             defaultValue={address}
             onChange={(e) => setAddress(e.target.value)}
-            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-1 rounded-lg"
+            className="outline-none border-none w-full laptop:w-1/2 bg-zinc-50 p-1.5 text-lg rounded-lg"
           ></textarea>
         </div>
-        <div className="flex items-center gap-1 text-zinc-800 hover:text-zinc-900 transition-all duration-200 cursor-pointer">
+        <div className="flex items-center gap-2 text-zinc-800 hover:text-zinc-900 transition-all duration-200 cursor-pointer mt-2">
           <input
             type="checkbox"
             id="check"
@@ -181,16 +190,16 @@ function Checkout() {
             Use my information
           </label>
         </div>
-        <div className="py-2 flex flex-col gap-2 laptop:gap-4 laptop:flex-row justify-end">
+        <div className="py-2 mt-2 flex flex-col gap-2 laptop:gap-4 laptop:flex-row justify-end">
           <button
             type="submit"
-            className="bg-emerald-600 text-white px-3 py-1 rounded-sm hover:bg-emerald-700 transition-all duration-200 cursor-pointer"
+            className="bg-emerald-600 text-white px-3 py-2 text-lg font-medium rounded-sm hover:bg-emerald-700 transition-all duration-200 cursor-pointer"
             onClick={handleSave}
           >
             Save and pay
           </button>
           <button
-            className="bg-red-500 text-white px-3 py-1 rounded-sm hover:bg-red-600 transition-all duration-200 cursor-pointer"
+            className="bg-red-500 text-white px-3 py-2 text-lg font-medium rounded-sm hover:bg-red-600 transition-all duration-200 cursor-pointer"
             onClick={handleCancel}
           >
             Cancel
