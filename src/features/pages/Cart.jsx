@@ -7,10 +7,9 @@ function Cart() {
   const navigate = useNavigate();
 
   const cartItems = useSelector((state) => state.cart.cart);
-  const deliveryPrice = useSelector((state) => state.cart.deliveryPrice);
-  const subTotal = useSelector((state) => state.cart.subTotal);
-
-  const isEmpty = useSelector((state) => state.cart.isEmpty);
+  const { deliveryPrice, subTotal, isEmpty } = useSelector(
+    (state) => state.cart
+  );
 
   const total = (Number(subTotal) + deliveryPrice).toFixed(2);
 
@@ -20,7 +19,7 @@ function Cart() {
         <EmptyCart />
       ) : (
         <>
-          <ul className="h-[50vh] rounded-lg mt-13 p-2 laptop:p-3 desktop:p-10 laptop:h-[65vh] laptop:overflow-y-scroll">
+          <ul className="h-[60vh] rounded-lg mt-13 p-2 laptop:p-3 desktop:p-10 laptop:h-[65vh] laptop:overflow-y-scroll">
             {cartItems.map((item) => (
               <CartItem item={item} key={item.id} />
             ))}
