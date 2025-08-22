@@ -1,12 +1,32 @@
-# React + Vite
+<h1>
+  <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-accessories-fashion-flaticons-lineal-color-flat-icons.png" width="60px">
+  Accessory Store
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br>
+<br>
 
-Currently, two official plugins are available:
+> 🛍 **Accessory Store** is a modern and stylish e-commerce web app for buying accessories online, built with **React**, powered by **Redux** for state management, and **Supabase** for backend services.  
+>
+> 🚀 Check it out here: [Accessory Store App](https://accessory-landing-page.vercel.app/)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br>
 
-## Expanding the ESLint configuration
+- ✨ **Features:**
+  - 🛒 Browse and purchase accessories with ease
+  - 🔐 Authentication & database powered by Supabase
+  - 🧭 Seamless navigation using React Router
+  - 📱 Fully responsive and modern design
+  - 🔔 Beautiful toast notifications with **React Hot Toast**
+<br>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛠️ **Technologies Used** :
+![](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![](https://img.shields.io/badge/redux-%23764ABC.svg?style=for-the-badge&logo=redux&logoColor=white)
+![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![](https://img.shields.io/badge/Vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![](https://img.shields.io/badge/React_Hot_Toast-FFB347?style=for-the-badge)
+
+<br>

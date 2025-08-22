@@ -30,12 +30,12 @@ function Search() {
     >
       <button
         type="submit"
-        className="bg-zinc-800 px-3.5 py-1 tablet:py-2 tablet:px-2.5 rounded-full flex justify-center items-center"
+        className="bg-zinc-800 px-3 py-1 tablet:py-2 tablet:px-2.5 rounded-full flex justify-center items-center"
       >
         <img
           src={searchIcon}
           alt="search-icon"
-          className="w-4 tablet:w-6 cursor-pointer"
+          className="w-5 tablet:w-7 cursor-pointer"
         />
       </button>
       <input
@@ -44,7 +44,7 @@ function Search() {
         placeholder="Search..."
         value={value}
         onChange={(e) => handleChange(e)}
-        className="w-full h-full outline-none border-none text-md tracking-wide tablet:text-xl"
+        className="w-full h-full outline-none border-none text-lg tracking-wide tablet:text-xl"
       />
     </form>
   );
