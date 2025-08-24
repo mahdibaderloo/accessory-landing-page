@@ -9,13 +9,17 @@ function ProfileSidebarItem({ item }) {
   const dispatch = useDispatch();
 
   const location = useLocation();
-  const currentLocation = location.pathname.slice(9);
+  const currentLocation = location.pathname;
 
   const { id, to, label, icon } = item;
 
   useEffect(
     function () {
-      dispatch(setActiveSection(currentLocation));
+      if (currentLocation === "/profile") {
+        dispatch(setActiveSection(currentLocation.slice(1)));
+      } else {
+        dispatch(setActiveSection(currentLocation.slice(9)));
+      }
     },
     [dispatch, currentLocation]
   );
