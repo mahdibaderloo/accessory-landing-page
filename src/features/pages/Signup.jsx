@@ -38,8 +38,8 @@ function Signup() {
 
   return (
     <div className="tablet:bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
-      <section className="w-full p-2 bg-zinc-50 flex flex-col justify-center gap-6 items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
-        <img src={signupImage} alt="" className="w-40 laptop:hidden" />
+      <section className="w-full h-screen p-2 bg-zinc-50 flex flex-col justify-center gap-6 items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
+        <img src={signupImage} alt="" className="w-50 laptop:hidden" />
         <form
           action=""
           className="w-full flex flex-col gap-3 desktop:w-[700px] desktop:shadow desktop:p-8 desktop:rounded-2xl"
@@ -49,7 +49,7 @@ function Signup() {
           </p>
           <div className="flex flex-col">
             <label
-              className="text-sm font-semibold mb-0.5 text-zinc-800 tablet:text-lg"
+              className="text-md font-semibold mb-2 text-zinc-800 tablet:text-lg"
               htmlFor="username"
             >
               Your name
@@ -61,12 +61,12 @@ function Signup() {
               value={name}
               disabled={isLoading}
               onChange={(e) => setName(e.target.value)}
-              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-md py-2 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <div className="flex flex-col">
             <label
-              className="text-sm font-semibold mb-0.5 text-zinc-800 tablet:text-lg"
+              className="text-md font-semibold mb-2 text-zinc-800 tablet:text-lg"
               htmlFor="email"
             >
               Email
@@ -78,12 +78,12 @@ function Signup() {
               value={email}
               disabled={isLoading}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-md py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <div className="flex flex-col">
             <label
-              className="text-sm font-semibold mb-0.5 text-zinc-800 tablet:text-lg"
+              className="text-md font-semibold mb-2 text-zinc-800 tablet:text-lg"
               htmlFor="password"
             >
               Password
@@ -95,11 +95,11 @@ function Signup() {
               value={password}
               disabled={isLoading}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-md py-2 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <button
-            className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
+            className="mt-5 bg-zinc-800 w-28 mx-auto font-medium rounded-md laptop:rounded-2xl text-zinc-100 p-2 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
             onClick={handleSignUp}
             disabled={isLoading}
           >
@@ -107,14 +107,14 @@ function Signup() {
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">
             I have an account?{" "}
-            <Link className="text-zinc-900" to="/login">
+            <Link className="text-zinc-900 font-medium" to="/login">
               Sign in
             </Link>
           </p>
         </form>
         <Link
           to="/"
-          className="text- text-center leading-[30px] rounded-md font-barlow bg-zinc-500 hover:bg-zinc-800 text-zinc-100 transition-all duration-200 laptop:rounded-xl py-1 px-2 laptop:py-2 laptop:px-3 laptop:leading-[40px] desktop:mr-87"
+          className=" text-center leading-[30px] rounded-md font-barlow bg-zinc-500 hover:bg-zinc-800 text-zinc-100 transition-all duration-200 laptop:rounded-xl py-1 px-2 laptop:py-2 laptop:px-3 laptop:leading-[40px] desktop:mr-87"
         >
           &larr; Back to home
         </Link>
