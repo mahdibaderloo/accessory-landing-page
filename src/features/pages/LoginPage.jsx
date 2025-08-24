@@ -32,11 +32,11 @@ function LoginPage() {
 
   return (
     <div className="h-screen bg-zinc-100 laptop:flex desktop:mx-auto desktop:bg-zinc-800 ">
-      <section className="w-full p-2 bg-zinc-50 flex flex-col gap-6 justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
+      <section className="w-full h-screen p-2 bg-zinc-50 flex flex-col gap-6 justify-center items-center tablet:w-[500px] tablet:mx-auto desktop:w-[60%]">
         <img
           src={loginImage}
           alt=""
-          className="w-40 laptop:hidden tablet:w-60 tablet:mt-8"
+          className="w-50 laptop:hidden tablet:w-60 tablet:mt-8"
         />
         <form
           action=""
@@ -47,7 +47,7 @@ function LoginPage() {
           </p>
           <div className="flex flex-col">
             <label
-              className="text-sm mb-0.5 text-zinc-800 font-semibold tablet:text-lg"
+              className="text-md mb-2 text-zinc-800 font-semibold tablet:text-lg"
               htmlFor="username"
             >
               Email
@@ -58,12 +58,12 @@ function LoginPage() {
               placeholder="Email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-md py-2 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <div className="flex flex-col">
             <label
-              className="text-sm mb-0.5 text-zinc-800 font-semibold tablet:text-lg"
+              className="text-md mb-2 text-zinc-800 font-semibold tablet:text-lg"
               htmlFor="password"
             >
               Password
@@ -74,18 +74,18 @@ function LoginPage() {
               placeholder="Password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-sm py-1 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
+              className="bg-zinc-100 shadow p-0.5 pl-2 outline-none rounded-md text-md py-2 laptop:rounded-xl tablet:p-1 tablet:pl-3 tablet:text-lg"
             />
           </div>
           <button
-            className="mt-5 bg-zinc-800 w-20 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-1 tablet:p-2.5 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
+            className="mt-5 bg-zinc-800 font-medium w-28 mx-auto rounded-md laptop:rounded-2xl text-zinc-100 p-2 tablet:p-3 tablet:w-28 tablet:text-lg laptop:cursor-pointer"
             onClick={handleLogin}
           >
             {isLoading ? <MiniLoader /> : "SIGN IN"}
           </button>
           <p className="mx-auto mt-2 text-sm text-zinc-500 tablet:text-lg">
             I don't have an account?{" "}
-            <Link className="text-zinc-900" to="/signup">
+            <Link className="text-zinc-900 font-medium" to="/signup">
               Sign up
             </Link>
           </p>
