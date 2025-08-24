@@ -75,13 +75,13 @@ function ProfileForm() {
           <img
             src={image}
             alt="userImage"
-            className="w-14 h-14 bg-zinc-900 laptop:w-17 laptop:h-17 rounded-full object-cover"
+            className="w-20 h-20 bg-zinc-900 laptop:w-26 laptop:h-26 rounded-full object-cover"
           />
           <label
             htmlFor="changeImage"
-            className="bg-white w-4.5 h-4.5 laptop:w-5 laptop:h-5 flex justify-center items-center rounded-full shadow-sm absolute bottom-0 left-11 laptop:left-13 z-20 laptop:cursor-pointer"
+            className="bg-white w-6 h-6 laptop:w-7.5 laptop:h-7.5 flex justify-center items-center rounded-full shadow-sm absolute bottom-0 left-14 laptop:left-19 z-20 laptop:cursor-pointer"
           >
-            <img src={pencilIcon} alt="pencil" className="w-3 laptop:w-3.5" />
+            <img src={pencilIcon} alt="pencil" className="w-4 laptop:w-5" />
           </label>
           <input
             type="file"
@@ -92,7 +92,7 @@ function ProfileForm() {
           />
         </div>
         <div className="laptop:text-lg">
-          <p className="text-sm font-semibold tracking-wide text-zinc-800">
+          <p className="text-md font-semibold laptop:text-lg tracking-wide text-zinc-800">
             {name ? name : "Username"}
           </p>
           <p className="text-sm text-zinc-600 hidden tablet:block">
@@ -102,7 +102,10 @@ function ProfileForm() {
       </section>
       <section className="flex flex-col mt-4 divide-y divide-zinc-200">
         <div className="py-2 flex flex-col laptop:flex-row justify-between">
-          <label htmlFor="username" className="font-medium text-zinc-800">
+          <label
+            htmlFor="username"
+            className="font-medium text-lg text-zinc-800"
+          >
             Name
           </label>
           <input
@@ -111,11 +114,11 @@ function ProfileForm() {
             placeholder="your name"
             defaultValue={name}
             onBlur={handleChangeName}
-            className="outline-none border-none w-1/2"
+            className="outline-none text-lg text-zinc-700 border-none w-1/2"
           />
         </div>
         <div className="py-2 flex flex-col laptop:flex-row justify-between">
-          <label htmlFor="email" className="font-medium text-zinc-800">
+          <label htmlFor="email" className="font-medium text-lg text-zinc-800">
             Email
           </label>
           <input
@@ -124,11 +127,11 @@ function ProfileForm() {
             placeholder="yourname@gmail.com"
             defaultValue={email}
             onBlur={handleChangeEmail}
-            className="outline-none border-none w-[90%] laptop:w-1/2"
+            className="outline-none text-lg text-zinc-700 border-none w-[90%] laptop:w-1/2"
           />
         </div>
         <div className="py-2 flex flex-col laptop:flex-row justify-between">
-          <label htmlFor="mobile" className="font-medium text-zinc-800">
+          <label htmlFor="mobile" className="font-medium text-lg text-zinc-800">
             Mobile number
           </label>
           <input
@@ -137,7 +140,7 @@ function ProfileForm() {
             placeholder="Add number"
             defaultValue={mobile}
             onBlur={handleChangeMobile}
-            className="outline-none border-none w-2/3 laptop:w-1/2"
+            className="outline-none text-lg text-zinc-700 border-none w-2/3 laptop:w-1/2"
           />
         </div>
         {/* <div className="py-2 flex flex-col laptop:flex-row justify-between">
@@ -154,7 +157,10 @@ function ProfileForm() {
           />
         </div> */}
         <div className="py-2 flex flex-col laptop:flex-row justify-between">
-          <label htmlFor="address" className="font-medium text-zinc-800">
+          <label
+            htmlFor="address"
+            className="font-medium text-lg text-zinc-800"
+          >
             Address
           </label>
 
@@ -164,7 +170,7 @@ function ProfileForm() {
             dir="ltr"
             defaultValue={address}
             onBlur={handleChangeAddress}
-            className="outline-none border-none w2/3 laptop:w-1/2"
+            className="outline-none text-lg text-zinc-700 border-none w2/3 laptop:w-1/2"
           ></textarea>
         </div>
       </section>
